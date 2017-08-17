@@ -28,7 +28,7 @@ object lucia {
 	method tuHabilidadSiCantasEnGrupo() {
 	habilidad = habilidad - 20 }
 	
-	//method interpretasBien() = 
+	method interpretasBien(cancion) =cancion.contains("familia") //VER COMO ES PARA QUE HACEPTE MAYUSCULAS TAMBIEN
 	
 	method cobrasSegunConcurrencia (duracionPresentacion, concurrencia) { 
 		
@@ -39,7 +39,7 @@ object lucia {
 		  
 	}
 }
-
+/* 
 object luisAlberto {
 
 	var guitarras = [fender, gibson]  
@@ -77,3 +77,4 @@ object laFamilia {
 }
 
 object presentacion {}
+*/
