@@ -2,13 +2,13 @@ object joaquin {
 	
 	const grupo = "pimpinela"
 	var habilidad = 20
-	var cobra=0
+	var cobra=0   
 	method tuHabilidad() = habilidad
 	
 	method tuHabilidadSiCantasEnGrupo() {
 	habilidad = habilidad + 5 }
 	
-	method interpretasBien(duracionCancion) = ( duracionCancion > 300 )
+	method interpretasBien(duracionCancion) = ( duracionCancion > 300 )  //ACA PIENSO QUE DEBERIA PASARSE LA CANCION Y NO LA DURACION
 	
 	method cobrasSegunSiSosSolistaONo (duracionPresentacion, showSolista) { 
 		 if (showSolista)
@@ -91,5 +91,42 @@ object laFamilia {
 	const letra = "Quiero brindar por mi gente sencilla, por el amor brindo por la familia"
 }
 
-object presentacion {}
+object lunaPark{
+	var capacidad = 9290
+}
+
+object laTrastienda {
+	var plantaBaja = 400
+	var primerPiso = 300
+	var capacidad = plantaBaja + primerPiso
+
+	//VER COMO AGREGAR LO DE LOS SABADOS 
+}
+	
+
+object presentacion {
+	
+	method presentacion1 () {
+		sePresentan = [luisAlberto, joquin, lucia]
+		var lugar = lunaPark
+		var fechaPresentacion =20042017
+	}
+	method presentacion2(){
+		sePresentan = [luisAlberto, joquin, lucia]
+		var lugar = laTrastienda
+		var fechaPresentacion = 15112017
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
 */
