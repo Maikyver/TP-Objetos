@@ -39,31 +39,46 @@ object lucia {
 		  
 	}
 }
-/* 
+ 
 object luisAlberto {
 
 	var guitarras = [fender, gibson]  
 
-	method habilidad () = valorGuitarra() * 8
+	method habilidad (guitarra, estado) {
+		if (guitarra.valorGuitarra(estado) * 8<100) 
+		
+			return guitarra.valorGuitarra(estado) * 8
+		else
+			return 100
+	} 
 	
-	method interpretasBien() = True
+	method interpretasBien() = true
 	
-	method cobras () = 
+	method cobrasPorFecha (fechaNumeros) {
+		if(fechaNumeros < 01092017)
+			return 1000
+		else
+		return 1200
+	} 
 }
 
 object fender{
-	method valorGuitarra () = 10
+	method valorGuitarra (estado) = 10
 }
 
 object gibson{
-	method valorGuitarra () = 15
 	
-	method estasRota () {
-	valorGuitarra () = 5
+	var valorGuitarra =15
+	method valorGuitarra (estado) {
+		if (estado.equals("rota"))
+		return 5
+		else
+		return 15
 	}
 	
+	
 }
-
+/* 
 
 object cisne {
 	var duracionCancion = 312
