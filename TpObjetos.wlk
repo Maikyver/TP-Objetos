@@ -1,35 +1,48 @@
 object joaquin {
-	var duracionCancion = 1
-	var duracionPresentacion = 1
-	const pimpinela = [joaquin,lucia]
 	
-	method habilidad() = 20
+	const grupo = "pimpinela"
+	var habilidad = 20
+	var cobra=0
+	method tuHabilidad() = habilidad
 	
-	method cantasEnGrupo() {
-	habilidad() = 25}
+	method tuHabilidadSiCantasEnGrupo() {
+	habilidad = habilidad + 5 }
 	
-	method interpretasBien() = duracionCancion > 300
+	method interpretasBien(duracionCancion) = ( duracionCancion > 300 )
 	
-	method cobras () = 100* duracionPresentacion || if self.cantasEnGrupo  *(no tengo idea como hacer esta parte)*
-	
+	method cobrasSegunSiSosSolistaONo (duracionPresentacion, showSolista) { 
+		 if (showSolista)
+		cobra =100* duracionPresentacion
+		else
+		cobra =50* duracionPresentacion
+		}
 	}
 
 object lucia {
 
-	method habilidad() = 70
+	var habilidad = 70
+	const grupo = "pimpinela"
+	var cobra=0
+	method tuHabilidad() = habilidad
 	
-	method cantasEnGrupo() {
-	habilidad() = 50}
+	method tuHabilidadSiCantasEnGrupo() {
+	habilidad = habilidad - 20 }
 	
-	method interpretasBien() = 
+	//method interpretasBien() = 
 	
-	method cobras () =  
-	
+	method cobrasSegunConcurrencia (duracionPresentacion, concurrencia) { 
+		
+		 if (concurrencia>5000)
+		cobra =500
+		else
+		cobra =400
+		  
+	}
 }
 
 object luisAlberto {
 
-	var guitarras [fender, gibson]  
+	var guitarras = [fender, gibson]  
 
 	method habilidad () = valorGuitarra() * 8
 	
