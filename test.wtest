@@ -1,0 +1,35 @@
+import TpObjetos.*
+test "1.Joaquín canta en el grupo Pimpinela. Queremos conocer su habilidad" {
+
+	assert.equals(joaquin.tuHabilidadSiCantasEnGrupo(), 25)
+
+}
+test "2.Joaquín canta en el grupo Pimpinela, y decide lanzar su carrera solista. Queremos conocer su habilidad" {
+
+	assert.equals(joaquin.tuHabilidad(), 20)
+
+}
+test "3.Lucia canta en el grupo Pimpinela. Queremos conocer su habilidad" {
+
+	assert.equals(lucia.tuHabilidadSiCantasEnGrupo(), 50)
+
+}
+test "4.Lucia canta en el grupo Pimpinela, y decide lanzar su carrera solista. Queremos conocer su habilidad" {
+
+	assert.equals(lucia.tuHabilidad(), 70)
+
+}
+test "5.Luis Alberto toca con la Fender. Queremos saber su habilidad" {
+
+	var sana//porque....
+
+	assert.equals(luisAlberto.habilidad(fender, sana), 80)
+
+}
+test "6.Luis Alberto toca con la Guibson sana. Queremos saber su habilidad" {
+
+	var sana//porque....
+
+	assert.equals(luisAlberto.habilidad(gibson, sana), 100)
+
+}

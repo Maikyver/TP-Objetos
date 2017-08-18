@@ -5,8 +5,7 @@ object joaquin {
 	var cobra=0   
 	method tuHabilidad() = habilidad
 	
-	method tuHabilidadSiCantasEnGrupo() {
-	habilidad = habilidad + 5 }
+	method tuHabilidadSiCantasEnGrupo()= habilidad + 5 
 	
 	method interpretasBien(duracionCancion) = ( duracionCancion > 300 )  //ACA PIENSO QUE DEBERIA PASARSE LA CANCION Y NO LA DURACION
 	
@@ -25,8 +24,7 @@ object lucia {
 	var cobra=0
 	method tuHabilidad() = habilidad
 	
-	method tuHabilidadSiCantasEnGrupo() {
-	habilidad = habilidad - 20 }
+	method tuHabilidadSiCantasEnGrupo() =habilidad - 20
 	
 	method interpretasBien(cancion) =cancion.contains("familia") //VER COMO ES PARA QUE HACEPTE MAYUSCULAS TAMBIEN
 	
@@ -63,7 +61,7 @@ object luisAlberto {
 }
 
 object fender{
-	method valorGuitarra (estado) = 10
+	method valorGuitarra () = 10
 }
 
 object gibson{
@@ -78,7 +76,7 @@ object gibson{
 	
 	
 }
-/* 
+ 
 
 object cisne {
 	var duracionCancion = 312
@@ -90,6 +88,7 @@ object laFamilia {
 	var duracionCancion = 264
 	const letra = "Quiero brindar por mi gente sencilla, por el amor brindo por la familia"
 }
+
 
 object lunaPark{
 	var capacidad = 9290
@@ -107,26 +106,15 @@ object laTrastienda {
 object presentacion {
 	
 	method presentacion1 () {
-		sePresentan = [luisAlberto, joquin, lucia]
+		const sePresentan = [luisAlberto, joaquin, lucia]
 		var lugar = lunaPark
 		var fechaPresentacion =20042017
 	}
 	method presentacion2(){
-		sePresentan = [luisAlberto, joquin, lucia]
+		const sePresentan = [luisAlberto, joaquin, lucia]
 		var lugar = laTrastienda
 		var fechaPresentacion = 15112017
 	}
 
 }
 
-
-
-
-
-
-
-
-
-
-
-*/
