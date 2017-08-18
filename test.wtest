@@ -33,3 +33,42 @@ test "6.Luis Alberto toca con la Guibson sana. Queremos saber su habilidad" {
 	assert.equals(luisAlberto.habilidad(gibson, sana), 100)
 
 }
+test "7.Alguien trata mal a la Gibson y ahora no está sana. Luis Alberto toca con la Gibson. Queremos saber su habilidad" {
+	
+	var rota
+	
+	assert.equals(luisAlberto.habilidad(gibson,rota),40)
+}
+test "8.Queremos saber si Joaquín interpreta bien la canción “La Familia”"{
+	
+	assert.that(joaquin.interpretasBien(laFamilia))
+	
+}
+test "9.Queremos saber si Joaquín interpreta bien la canción “Cisne”" {
+	
+	assert.that(joaquin.interpretasBien(Cisne))
+}
+
+test "10.Queremos saber si Lucía interpreta bien la canción “La Familia”" {
+	
+	assert.that(lucia.interpretasBien(laFamilia))
+	
+}
+
+test "11.Queremos saber si Lucía interpreta bien la canción “Cisne”" {
+	
+	assert.that(lucia.interpretasBien(cisne))
+}
+
+test "12.Queremos saber si Luis Alberto interpreta bien la canción “La Familia”" {
+	
+	assert.that(luisAlberto.interpretasBien(laFamilia))
+}
+
+test "13.Queremos saber si Luis Alberto interpreta bien la canción “Cisne”" {
+	
+	assert.that(luisAlberto.interpretasBien(cisne))
+}
+
+test "14.
+"
