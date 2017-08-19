@@ -7,7 +7,7 @@ object joaquin {
 	
 	method tuHabilidadSiCantasEnGrupo()= habilidad + 5 
 	
-	method interpretasBien(duracionCancion) = ( duracionCancion > 300 )  //ACA PIENSO QUE DEBERIA PASARSE LA CANCION Y NO LA DURACION
+	method interpretasBien(cancion) = ( cancion.duracionCancion() > 300 )  
 	
 	method cobrasSegunSiSosSolistaONo (duracionPresentacion, showSolista) { 
 		 if (showSolista)
@@ -26,7 +26,7 @@ object lucia {
 	
 	method tuHabilidadSiCantasEnGrupo() =habilidad - 20
 	
-	method interpretasBien(cancion) =cancion.contains("familia") //VER COMO ES PARA QUE HACEPTE MAYUSCULAS TAMBIEN
+	method interpretasBien(cancion) =cancion.letra().contains("familia") //VER COMO ES PARA QUE HACEPTE MAYUSCULAS TAMBIEN
 	
 	method cobrasSegunConcurrencia (duracionPresentacion, concurrencia) { 
 		
@@ -61,14 +61,14 @@ object luisAlberto {
 }
 
 object fender{
-	method valorGuitarra () = 10
+	method valorGuitarra (estado) = 10
 }
 
 object gibson{
 	
 	var valorGuitarra =15
 	method valorGuitarra (estado) {
-		if (estado.equals("rota"))
+		if (estado =="rota")
 		return 5
 		else
 		return 15
@@ -79,14 +79,14 @@ object gibson{
  
 
 object cisne {
-	var duracionCancion = 312
-	const letra = "Hoy el viento se abrió quedó vacío el aire una vez más y el manantial brotó y nadie está aquí y 
+	method duracionCancion ()= 312
+	method letra () = "Hoy el viento se abrió quedó vacío el aire una vez más y el manantial brotó y nadie está aquí y 
 	puedo ver que solo estallan las hojas al brillar"
 }
 
 object laFamilia {
-	var duracionCancion = 264
-	const letra = "Quiero brindar por mi gente sencilla, por el amor brindo por la familia"
+	method duracionCancion () = 264
+	method letra ()= "Quiero brindar por mi gente sencilla, por el amor brindo por la familia"
 }
 
 
