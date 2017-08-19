@@ -37,7 +37,7 @@ test "7.Alguien trata mal a la Gibson y ahora no está sana. Luis Alberto toca co
 	
 	var rota
 	
-	assert.equals(luisAlberto.habilidad(gibson,rota),40)
+	assert.equals(luisAlberto.habilidad(gibson,"rota"),40)
 }
 test "8.Queremos saber si Joaquín interpreta bien la canción “La Familia”"{
 	
@@ -74,12 +74,12 @@ test "13.Queremos saber si Luis Alberto interpreta bien la canción “Cisne”" {
 
 test "14.Queremos saber cuánto cobra Joaquín por la presentación del Luna Park"
  {
-		assert.that(false)
+		assert.equals(joaquin.cobras(presentacionLunaPark),50)
 }
 test "15.Modificar la presentación de la Trastienda para que solo actue Joaquín. Queremos saber cuánto cobra Juaquín por la presentación de la trastienda del 15/11/17 "
  {
- 	//presentacionTrastienda.sePresentan([joaquin])
-		assert.that(false)
+ 	presentacionTrastienda.sePresentan([joaquin])
+		assert.equals(joaquin.cobras(presentacionLunaPark),50)
 }
 test "16.Queremos saber la capacidad de La trastienda para el 05 de Agosto del 2017"
  {
@@ -107,7 +107,10 @@ test "21.Queremos saber cuánto cobra Luis Alberto por la presentación del Trasti
 }
 test "22.Queremos saber el costo de la presentación del Luna Park"
  {
-		assert.that(false)
+ 	//Ideas
+ 	//assert.equals(presentacionLunaPark.getsePresentan().sum({ persona =>persona.cobras(presentacionLunaPark)}))
+	//	assert.equals(presentacionLunaPark.getsePresentan().cobras(presentacionLunaPark).sum(),1550)
+	assert.that(false)
 }
 test "23.Queremos saber el costo de la presentación de La Trastienda el 15/11/2017"
  {

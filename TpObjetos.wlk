@@ -9,7 +9,7 @@ object joaquin {
 	method interpretasBien(cancion) = ( cancion.duracionCancion() > 300 )  
 	
 	method cobras (presentacion) { 
-		 if (presentacion.sePresentan().size()>1)//Mejorar - Que pàsa si es mayora 1 pero no es el el q esta en la lista
+		 if (presentacion.getsePresentan().size()>1)//Mejorar - Que pàsa si es mayora 1 pero no es el el q esta en la lista
 		return 50
 		else
 		return 100
@@ -103,13 +103,15 @@ object laTrastienda {
 	
 	
 	object presentacionLunaPark  {
-		const sePresentan = [luisAlberto, joaquin, lucia]
+		var sePresentan = [luisAlberto, joaquin, lucia]
+		method sePresentan(nuevasPersonas) {sePresentan = nuevasPersonas}
 		method getsePresentan() = sePresentan
 		method lugar ()= lunaPark
 		method fechaPresentacion () =20170420
 	}
 	object presentacionTrastienda{
-		const sePresentan = [luisAlberto, joaquin, lucia]
+		var sePresentan = [luisAlberto, joaquin, lucia]
+		method sePresentan(nuevasPersonas) {sePresentan = nuevasPersonas}
 		method getsePresentan() = sePresentan
 		method lugar ()= laTrastienda
 		method fechaPresentacion ()= 20171115
