@@ -107,12 +107,10 @@ test "21.Queremos saber cuánto cobra Luis Alberto por la presentación del Trasti
 }
 test "22.Queremos saber el costo de la presentación del Luna Park"
  {
- 	//Ideas
- 	//assert.equals(presentacionLunaPark.getsePresentan().sum({ persona =>persona.cobras(presentacionLunaPark)}))
-	//	assert.equals(presentacionLunaPark.getsePresentan().cobras(presentacionLunaPark).sum(),1550)
-	assert.that(false)
+ 	assert.equals(presentacionLunaPark.getsePresentan().sum({persona => persona.cobras(presentacionLunaPark)}),1550)
+	
 }
 test "23.Queremos saber el costo de la presentación de La Trastienda el 15/11/2017"
  {
-		assert.that(false)
+		assert.equals(presentacionLunaPark.getsePresentan().sum({persona => persona.cobras(presentacionTrastienda)}),1650)
 }
