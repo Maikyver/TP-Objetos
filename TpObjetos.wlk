@@ -50,7 +50,7 @@ object luisAlberto {
 			return 100
 	} 
 	
-	method interpretasBien() = true
+	method interpretasBien(cancion) = true
 	
 	method cobrasPorFecha (fechaNumeros) {
 		if(fechaNumeros < 01092017)

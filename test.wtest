@@ -46,7 +46,9 @@ test "8.Queremos saber si Joaquín interpreta bien la canción “La Familia”"{
 }
 test "9.Queremos saber si Joaquín interpreta bien la canción “Cisne”" {
 	
-	assert.that(joaquin.interpretasBien(Cisne))
+	var cisne
+	
+	assert.that(joaquin.interpretasBien(cisne))
 }
 
 test "10.Queremos saber si Lucía interpreta bien la canción “La Familia”" {
@@ -70,5 +72,43 @@ test "13.Queremos saber si Luis Alberto interpreta bien la canción “Cisne”" {
 	assert.that(luisAlberto.interpretasBien(cisne))
 }
 
-test "14.
-"
+test "14.Queremos saber cuánto cobra Joaquín por la presentación del Luna Park"
+ {
+		assert.that(false)
+}
+test "15.Modificar la presentación de la Trastienda para que solo actue Joaquín. Queremos saber cuánto cobra Juaquín por la presentación de la trastienda del 15/11/17 "
+ {
+		assert.that(false)
+}
+test "16.Queremos saber la capacidad de La trastienda para el 05 de Agosto del 2017"
+ {
+		assert.that(false)
+}
+test "17.Queremos saber la capacidad de La trastienda para el 08 de Agosto del 2017"
+ {
+		assert.that(false)
+}
+test "18.Queremos saber cuánto cobra Lucía por la presentación del Luna Park"
+ {
+		assert.that(false)
+}
+test "19.Queremos saber cuánto cobra Lucía por la presentación del Trastienda"
+ {
+		assert.that(false)
+}
+test "20.Queremos saber cuánto cobra Luis Alberto por la presentación del Luna Park"
+ {
+		assert.that(false)
+}
+test "21.Queremos saber cuánto cobra Luis Alberto por la presentación del Trastienda"
+ {
+		assert.that(false)
+}
+test "22.Queremos saber el costo de la presentación del Luna Park"
+ {
+		assert.that(false)
+}
+test "23.Queremos saber el costo de la presentación de La Trastienda el 15/11/2017"
+ {
+		assert.that(false)
+}
