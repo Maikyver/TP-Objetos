@@ -1,19 +1,18 @@
 object joaquin {
 	
 	const grupo = "pimpinela"
-	var habilidad = 20
-	var cobra=0   
+	var habilidad = 20  
 	method tuHabilidad() = habilidad
 	
 	method tuHabilidadSiCantasEnGrupo()= habilidad + 5 
 	
 	method interpretasBien(cancion) = ( cancion.duracionCancion() > 300 )  
 	
-	method cobrasSegunSiSosSolistaONo (duracionPresentacion, showSolista) { 
-		 if (showSolista)
-		cobra =100* duracionPresentacion
+	method cobras (presentacion) { 
+		 if (presentacion.sePresentan().size()>1)//Mejorar - Que pàsa si es mayora 1 pero no es el el q esta en la lista
+		return 50
 		else
-		cobra =50* duracionPresentacion
+		return 100
 		}
 	}
 
@@ -21,26 +20,26 @@ object lucia {
 
 	var habilidad = 70
 	const grupo = "pimpinela"
-	var cobra=0
+	
 	method tuHabilidad() = habilidad
 	
 	method tuHabilidadSiCantasEnGrupo() =habilidad - 20
 	
 	method interpretasBien(cancion) =cancion.letra().contains("familia") //VER COMO ES PARA QUE HACEPTE MAYUSCULAS TAMBIEN
 	
-	method cobrasSegunConcurrencia (duracionPresentacion, concurrencia) { 
+	method cobras (presentacion) { 
 		
-		 if (concurrencia>5000)
-		cobra =500
+		 if (presentacion.lugar().capacidad()>5000)
+		return 500
 		else
-		cobra =400
+		return 400
 		  
 	}
 }
  
 object luisAlberto {
 
-	var guitarras = [fender, gibson]  
+	//var guitarras = [fender, gibson]  
 
 	method habilidad (guitarra, estado) {
 		if (guitarra.valorGuitarra(estado) * 8<100) 
@@ -52,8 +51,8 @@ object luisAlberto {
 	
 	method interpretasBien(cancion) = true
 	
-	method cobrasPorFecha (fechaNumeros) {
-		if(fechaNumeros < 01092017)
+	method cobras (presentacion) {
+		if(presentacion.fechaPresentacion() < 20170901)
 			return 1000
 		else
 		return 1200
@@ -66,7 +65,7 @@ object fender{
 
 object gibson{
 	
-	var valorGuitarra =15
+	//var valorGuitarra =15
 	method valorGuitarra (estado) {
 		if (estado =="rota")
 		return 5
@@ -91,30 +90,31 @@ object laFamilia {
 
 
 object lunaPark{
-	var capacidad = 9290
+	method capacidad() = 9290
 }
 
 object laTrastienda {
 	var plantaBaja = 400
 	var primerPiso = 300
-	var capacidad = plantaBaja + primerPiso
+	method capacidad ()= plantaBaja + primerPiso
 
 	//VER COMO AGREGAR LO DE LOS SABADOS 
 }
 	
-
-object presentacion {
 	
-	method presentacion1 () {
+	object presentacionLunaPark  {
 		const sePresentan = [luisAlberto, joaquin, lucia]
-		var lugar = lunaPark
-		var fechaPresentacion =20042017
+		method getsePresentan() = sePresentan
+		method lugar ()= lunaPark
+		method fechaPresentacion () =20170420
 	}
-	method presentacion2(){
+	object presentacionTrastienda{
 		const sePresentan = [luisAlberto, joaquin, lucia]
-		var lugar = laTrastienda
-		var fechaPresentacion = 15112017
+		method getsePresentan() = sePresentan
+		method lugar ()= laTrastienda
+		method fechaPresentacion ()= 20171115
+		//method sePresentan (nuevasPersonas) = {sePresentan = nuevasPersonas}
 	}
 
-}
+
 

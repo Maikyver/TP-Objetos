@@ -78,6 +78,7 @@ test "14.Queremos saber cuánto cobra Joaquín por la presentación del Luna Park"
 }
 test "15.Modificar la presentación de la Trastienda para que solo actue Joaquín. Queremos saber cuánto cobra Juaquín por la presentación de la trastienda del 15/11/17 "
  {
+ 	//presentacionTrastienda.sePresentan([joaquin])
 		assert.that(false)
 }
 test "16.Queremos saber la capacidad de La trastienda para el 05 de Agosto del 2017"
@@ -90,19 +91,19 @@ test "17.Queremos saber la capacidad de La trastienda para el 08 de Agosto del 2
 }
 test "18.Queremos saber cuánto cobra Lucía por la presentación del Luna Park"
  {
-		assert.that(false)
+		assert.equals(lucia.cobras(presentacionLunaPark),500)
 }
 test "19.Queremos saber cuánto cobra Lucía por la presentación del Trastienda"
  {
-		assert.that(false)
+		assert.equals(lucia.cobras(presentacionTrastienda),400)
 }
 test "20.Queremos saber cuánto cobra Luis Alberto por la presentación del Luna Park"
  {
-		assert.that(false)
+		assert.equals(luisAlberto.cobras(presentacionLunaPark),1000)
 }
 test "21.Queremos saber cuánto cobra Luis Alberto por la presentación del Trastienda"
  {
-		assert.that(false)
+		assert.equals(luisAlberto.cobras(presentacionTrastienda),1200)
 }
 test "22.Queremos saber el costo de la presentación del Luna Park"
  {
