@@ -89,10 +89,15 @@ object gibson{
  
 */
 class Cancion{
-	var letra
+	var letra = ""
 	var duracion
-	 method letra(letraCancion) ={ letra = letraCancion}	
+	 method letra(letraCancion) = { letra = letraCancion }
+	 method letra() = letra	
 	 method duracionCancion (duracionCancion)= { duracion = duracionCancion}
+	 method duracionCancion ()= duracion 
+	 method contienePalabra(palabra){
+	 	self.letra().words().contains(palabra)
+	 }
 	
 }
 
