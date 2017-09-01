@@ -89,17 +89,47 @@ object gibson{
  
 */
 class Cancion{
-	var letra = ""
+	var tituloPrincipal
+	var letra 
 	var duracion
+	constructor (tituloPrincipalAlbum,letraCancion, duracionCancion)
+	{
+		letra = letraCancion
+		duracion = duracionCancion
+		tituloPrincipal =tituloPrincipalAlbum
+	}
 	method letra() = letra	
-	 method letra(letraCancion) = { letra = letraCancion }
-	 method duracionCancion (duracionCancion)= { duracion = duracionCancion}
-	 method duracionCancion ()= duracion 
-	 method contienePalabra(palabra){
-	 	self.letra().words().contains(palabra)
+	method duracionCancion ()= duracion 
+	method contienePalabra(palabra){
+	 	return self.letra().words().contains(palabra)
 	 }
+	 method sosCorta ()= self.duracionCancion()<90 
+	}
+class Album{
 	
+	const titulo
+	const canciones 
+	const fechaLanzamiento
+	const unidadesALaVenta
+	const unidadesVendidas
+	constructor (tituloA,cancionesA,fechaLanzamientoA,unidadesALaVentaA, unidadesVendidasA)
+	{
+		titulo =tituloA
+		canciones = cancionesA
+		fechaLanzamiento =fechaLanzamientoA
+		unidadesALaVenta =unidadesALaVentaA
+		unidadesVendidas =unidadesVendidasA
+	}
+	method titulo() =titulo
+	method canciones() =canciones
+	method fechaLanzamiento()=fechaLanzamiento
+	method unidadesALaVenta()=unidadesALaVenta
+	method unidadesVendidas()=unidadesVendidas
+	method duracion()=self.canciones().sum({cancion => cancion.duracionCancion()})
+	method cancionMasLarga()=self.canciones().max({cancion => cancion.letra().lenght()})
+	//method buenaVenta()= self.unidadesVendidas
 }
+
 
  
 

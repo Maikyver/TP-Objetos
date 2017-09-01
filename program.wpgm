@@ -1,28 +1,21 @@
 import TpObjetos.*
 program abc {
 
-	var cisne = new Cancion()
-	cisne.duracionCancion (312)
-	cisne.letra ( "Hoy el viento se abrió quedó vacío el aire una vez más y el manantial brotó y nadie está aquí y 
-	puedo ver que solo estallan las hojas al brillar")
-
-    var laFamilia = new Cancion()
-	laFamilia.duracionCancion (264)
-	laFamilia.letra ( "Quiero brindar por mi gente sencilla, por el amor brindo por la familia")
+	var cisne = new Cancion("tituloPrincipalAlbum", "Hoy el viento se abrió quedó vacío el aire una vez más y el manantial brotó y nadie está aquí y 
+	puedo ver que solo estallan las hojas al brillar",312)
+	
+    var laFamilia = new Cancion("tituloPrincipalAlbum","Quiero brindar por mi gente sencilla, por el amor brindo por la familia",264)
 	
 	const lunaPark = new Presentacion()
-	 	lunaPark.sePresentan([luisAlberto, joaquin, lucia])
+	 //	lunaPark.sePresentan([luisAlberto, joaquin, lucia])
 		lunaPark.lugar (lunaPark)//Fix
 		lunaPark.fechaPresentacion (20,04,2017)
 	
 	const laTrastienda = new Presentacion()
-	 	laTrastienda.sePresentan([luisAlberto, joaquin, lucia])
+	 //	laTrastienda.sePresentan([luisAlberto, joaquin, lucia])
 		laTrastienda.lugar (lunaPark)//Fix
 		laTrastienda.fechaPresentacion (15,11,2017)
 		
-	console.println(cisne.letra())
-	console.println(cisne.duracionCancion())
-	console.println(laFamilia.letra())
-	console.println(laFamilia.contienePalabra("amor"))
+	console.println(laFamilia.contienePalabra("amo"))
 
 }
