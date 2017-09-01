@@ -1,21 +1,32 @@
-object joaquin {
+/*class Musico {
 	
-	const grupo = "pimpinela"
-	var habilidad = 20  
-	method tuHabilidad() = habilidad
+	const tipoDeMusico = vocalistaPopular
+	var habilidad = 0
+	const albumes = []
+	method tuHabilidad()=tipoDeMusico.tuHabilidad(habilidad)
 	
-	method tuHabilidadSiCantasEnGrupo()= habilidad + 5 
+	method tuHabilidad(habilidadM) {
+		habilidad  = habilidadM
+	} 
+	method interpretasBien(cancion) =tipoDeMusico.interpretasBien(cancion)
 	
-	method interpretasBien(cancion) = ( cancion.duracionCancion() > 300 )  
 	
 	method cobras (presentacion) { 
-		 if (presentacion.getsePresentan().size()>1)//Mejorar - Que pàsa si es mayora 1 pero no es el el q esta en la lista
-		return 50
-		else
-		return 100
+		 if (presentacion.solista()) return 50 else return 100
 		}
 	}
+object vocalistaPopular{
+	method tuHabilidad(habilidad) = habilidad
+	method interpretasBien(cancion) = ( cancion.duracionCancion() > 300 )
+	  
 
+} 
+object musicoDeGrupo{
+	method tuHabilidad(habilidad) = habilidad + 5 
+	//method interpretasBien(cancion) = null
+}*/
+
+/* 
 object lucia {
 
 	var habilidad = 70
@@ -76,18 +87,16 @@ object gibson{
 	
 }
  
-
-object cisne {
-	method duracionCancion ()= 312
-	method letra () = "Hoy el viento se abrió quedó vacío el aire una vez más y el manantial brotó y nadie está aquí y 
-	puedo ver que solo estallan las hojas al brillar"
+*/
+class Cancion{
+	var letra
+	var duracion
+	 method letra(letraCancion) ={ letra = letraCancion}	
+	 method duracionCancion (duracionCancion)= { duracion = duracionCancion}
+	
 }
 
-object laFamilia {
-	method duracionCancion () = 264
-	method letra ()= "Quiero brindar por mi gente sencilla, por el amor brindo por la familia"
-}
-
+/* 
 
 object lunaPark{
 	method capacidad() = 9290
@@ -119,4 +128,4 @@ object laTrastienda {
 	}
 
 
-
+*/
