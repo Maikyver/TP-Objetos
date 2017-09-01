@@ -1,4 +1,7 @@
 import TpObjetos.*
+
+
+
 test "1.Joaquín canta en el grupo Pimpinela. Queremos conocer su habilidad" {
 
 	assert.equals(joaquin.tuHabilidadSiCantasEnGrupo(), 25)
