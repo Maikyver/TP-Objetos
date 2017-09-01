@@ -91,8 +91,8 @@ object gibson{
 class Cancion{
 	var letra = ""
 	var duracion
+	method letra() = letra	
 	 method letra(letraCancion) = { letra = letraCancion }
-	 method letra() = letra	
 	 method duracionCancion (duracionCancion)= { duracion = duracionCancion}
 	 method duracionCancion ()= duracion 
 	 method contienePalabra(palabra){
@@ -101,7 +101,7 @@ class Cancion{
 	
 }
 
-/* 
+ 
 
 object lunaPark{
 	method capacidad() = 9290
@@ -110,27 +110,24 @@ object lunaPark{
 object laTrastienda {
 	var plantaBaja = 400
 	var primerPiso = 300
-	method capacidad ()= plantaBaja + primerPiso
-
-	//VER COMO AGREGAR LO DE LOS SABADOS 
+	method capacidad ()={
+		const date = new Date()
+		var capacidad
+		if(date.dayOfWeek()!=6){
+			capacidad= plantaBaja + primerPiso 
+			}else{
+				capacidad = plantaBaja
+		}
+	} 
 }
 	
-	
-	object presentacionLunaPark  {
-		var sePresentan = [luisAlberto, joaquin, lucia]
+	class Presentacion{
+		
+		var sePresentan =[]
+		var lugar
 		method sePresentan(nuevasPersonas) {sePresentan = nuevasPersonas}
 		method getsePresentan() = sePresentan
-		method lugar ()= lunaPark
-		method fechaPresentacion () =20170420
-	}
-	object presentacionTrastienda{
-		var sePresentan = [luisAlberto, joaquin, lucia]
-		method sePresentan(nuevasPersonas) {sePresentan = nuevasPersonas}
-		method getsePresentan() = sePresentan
-		method lugar ()= laTrastienda
-		method fechaPresentacion ()= 20171115
-		//method sePresentan (nuevasPersonas) = {sePresentan = nuevasPersonas}
-	}
+		method lugar (lugarPresentacion) {lugar = lugarPresentacion}
+		method fechaPresentacion (dd,mm,aaaa) = new Date(dd,mm,aaaa)
+ 	}
 
-
-*/

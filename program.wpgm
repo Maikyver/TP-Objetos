@@ -10,6 +10,16 @@ program abc {
 	laFamilia.duracionCancion (264)
 	laFamilia.letra ( "Quiero brindar por mi gente sencilla, por el amor brindo por la familia")
 	
+	const lunaPark = new Presentacion()
+	 	lunaPark.sePresentan([luisAlberto, joaquin, lucia])
+		lunaPark.lugar (lunaPark)//Fix
+		lunaPark.fechaPresentacion (20,04,2017)
+	
+	const laTrastienda = new Presentacion()
+	 	laTrastienda.sePresentan([luisAlberto, joaquin, lucia])
+		laTrastienda.lugar (lunaPark)//Fix
+		laTrastienda.fechaPresentacion (15,11,2017)
+		
 	console.println(cisne.letra())
 	console.println(cisne.duracionCancion())
 	console.println(laFamilia.letra())
