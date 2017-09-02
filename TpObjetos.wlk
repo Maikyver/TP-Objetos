@@ -25,7 +25,7 @@ class Musico {
 
 	method cancionMasLarga() = self.albumesPublicados().filter({album => album.cancionMasLarga()})     //Tiene que ver con la longitud del string asociado a la cancion, dudo que sea con un lenght
 
-	method laPegaste() = self.albumesPublicados().all({album => album.unidadesALaVenta() / album.unidadesVendidas() >= 0.75})      //no estoy demasiado seguro, pero creo que va por este lado
+	method laPegaste() = self.albumesPublicados().all({album => album.buenaVenta()})      //no estoy demasiado seguro, pero creo que va por este lado
 }
 
 class VocalistaPopular {
@@ -120,7 +120,7 @@ class Album{
 	method duracion()=self.canciones().sum({cancion => cancion.duracionCancion()})
 	method cancionMasLarga()=self.canciones().max({cancion => cancion.letra().lenght()})
 	method cancionesConLaPalabra(palabra) = self.canciones().filter({cancion =>cancion.contienePalabra(palabra)})
-	//method buenaVenta()= self.unidadesVendidas
+	method buenaVenta()= self.unidadesALaVenta() / self.unidadesVendidas() >= 0.75
 }
 
 
