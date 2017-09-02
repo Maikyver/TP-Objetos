@@ -1,6 +1,110 @@
 import TpObjetos.*
 
+fixture{
+	
+	const joaquin
+	const lucia
+	const soledad
+	const kike
+	
+	joaquin = new Musico()
+	joaquin.tuHabilidad(20)
+	joaquin.interpretasBien( *DURACION CANCION >300* )
+	joaquin.cobras (*LO QUE COBRA*)
+	joaquin.albumesPublicados(albumLaFamilia)
+	
+	lucia = new Musico()
+	lucia.tuHabilidad(70)
+	lucia.intrepretasBien(*CONTIENE FAMILIA*)
+	lucia.cobras(*LO QUE COBRA*)
+	
+	soledad = new Musico()
+	soledad.tuHabilidad(55)
+	soledad.interpretasBien( CONTIENE AMOR)
+	soledad.albumesPublicados(albumLaSole)
+	
+	kike = new Musico()
+	kike.tuHabilidad(60)
+	
+	
+	*FALTARIA HACER ARREGLAR LO QUE FALTA Y HACER BIEN LO DE HABILIDAD DE ACUERDO A QUE TIPO DE CANTANTES SON*
+	
+	
+	const presentacionLunaPark 
+	const presentacionLaTrastienda
+	
+	presentacionLunaPark = new Presentacion()
+	presentacionLunaPark.sePresentan(luisAlberto, joaquin, lucia)
+	presentacionLunaPark.lugar (lunaPark)
+	presentacionLunaPark.fechaPresentacion (20,04,2017)
+	
+	presentacionLaTrastienda = new presentacion()
+	presentacionLaTrastienda.sePresentan(luisAlberto, joaquin, lucia)
+	presentacionLaTrastienda.lugar (laTrastienda)
+	presentacionLaTrastienda.fechaPresentacion (15,11,2017)
 
+	const albumLaFamilia
+	const albumLaSole
+	const albumParaLosArboles
+	const albumJustCrisantemo
+	
+	albumLaFamilia = new Album()
+	albumLaFamilia.canciones(laFamilia)
+	albumLaFamilia.fechaLanzamiento(17,06,1992) 
+	albumLaFamilia.unidadesALaVenta(100000)
+	albumLaFamilia.unidadesVendidas(89000)
+	
+	albumLaSole = new Album()
+	albumLaSole.canciones (eres, corazonAmericano)
+	albumLaSole.fechaLanzamiento(04,02,2005)
+	albumLaSole.unidadesALaVenta(200000)
+	albumLaSole.unidadesVendidas(130000)
+	
+	albumParaLosArboles = new Album()
+	albumParaLosArboles.canciones(cisne,almaDeDiamante)
+	albumParaLosArboles.fechaLanzamiento(31,03,2003)
+	albumParaLosArboles.unidadesALaVenta(50000)
+	albumParaLosArboles.unidadesVendidas(49000)
+	
+	albumJustCrisantemo = new Album()
+	albumJustCrisantemo.canciones(crisantemo)
+	albumJustCrisantemo.fechaLanzamiento(05,12,2007)
+	albumJustCrisantemo.unidadesALaVenta(28000)
+	albumJustCrisantemo.unidadesVendidas(27500)
+	
+	const laFamilia
+	const eres
+	const corazonAmericano
+	const cisne
+	const almaDeDiamante
+	const crisantemo
+	
+	laFamilia = new Cancion()
+	laFamilia.letra (“Quiero brindar por mi gente sencilla, por el amor brindo por la familia“)
+	laFamilia.duracionCancion(264)
+	
+	eres = new Cancion()
+	eres.letra(“Eres lo mejor que me pasó en la vida, no tengo duda, no habrá más nada después de ti. Eres lo que le dio brillo al día a día, y así será por siempre, no cambiará, hasta el final de mis días.”)
+	eres.duracionCancion(145)
+	
+	corazonAmericano = new Cancion()
+	corazonAmericano.letra(“Canta corazón, canta más alto, que tu pena al fin se va marchando, el nuevo milenio ha de encontrarnos, junto corazón, como soñamos.”)
+	corazonAmericano.duracionCancion(154)
+	
+	cisne = new Cancion()
+	cisne.letra(“Hoy el viento se abrió quedó vacío el aire una vez más y el manantial brotó y nadie está aquí y puedo ver que solo estallan las hojas al brillar”)
+	cisne.duracionCancion(312)
+	
+	almaDeDiamante = new Cancion()
+	almaDeDiamante.letra(216)
+	almaDeDiamante.duracionCancion(“Ven a mí con tu dulce luz alma de diamante. Y aunque el sol se nuble después sos alma de diamante. Cielo o piel silencio o verdad sos alma de diamante. Por eso ven así con la humanidad alma de diamante”)
+	
+	crisantemo = new Cancion()
+	crisantemo.letra(175)
+	crisantemo.duracionCancion(“Tócame junto a esta pared, yo quede por aquí... cuando no hubo más luz... quiero mirar a través de mi piel... Crisantemo, que se abrió... encuentra el camino hacia el cielo”)
+	
+	
+}
 
 test "1.Joaquín canta en el grupo Pimpinela. Queremos conocer su habilidad" {
 
