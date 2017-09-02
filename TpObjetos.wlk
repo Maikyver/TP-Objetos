@@ -17,7 +17,7 @@ class Musico {
 	
 	method albumesPublicados() = albumes
 	
-	method sosMinimalista() = self.albumesPublicados().all({cancion => cancion.duracionCancion() < 180})
+	method sosMinimalista() = self.albumesPublicados().all({cancion => cancion.sosCorta ()})
 
 	method cancionesContienen(palabra) = self.albumesPublicados().cancionesConLaPalabra(palabra)
 
@@ -95,7 +95,7 @@ class Cancion{
 	method contienePalabra(palabra){
 	 	return self.letra().words().contains(palabra)
 	 }
-	 method sosCorta ()= self.duracionCancion()<90 
+	 method sosCorta ()= self.duracionCancion()<180 
 	}
 class Album{
 	

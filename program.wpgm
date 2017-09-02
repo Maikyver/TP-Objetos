@@ -16,6 +16,6 @@ program abc {
 		laTrastienda.lugar (lunaPark)//Fix
 		laTrastienda.fechaPresentacion (15,11,2017)
 		
-	console.println(laFamilia.contienePalabra("amo"))
+	console.println(laFamilia.sosCorta ())
 
 }
