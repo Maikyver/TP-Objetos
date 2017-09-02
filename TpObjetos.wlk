@@ -37,12 +37,12 @@ class MusicoDeGrupo{
 	method interpretasBien(cancion) = null
 }
 
-/*
+
  
 object luisAlberto {
 
-	//var guitarras = [fender, gibson]  
-
+	var guitarras = [fender, gibson]  
+	
 	method habilidad (guitarra, estado) {
 		if (guitarra.valorGuitarra(estado) * 8<100) 
 		
@@ -62,23 +62,24 @@ object luisAlberto {
 }
 
 object fender{
-	method valorGuitarra (estado) = 10
+	method valorGuitarra () = 10
 }
 
 object gibson{
-	
-	//var valorGuitarra =15
-	method valorGuitarra (estado) {
-		if (estado =="rota")
+	 
+	 var estadoRota = true
+	method valorGuitarra () {
+		if (self.estadoRota())
 		return 5
 		else
 		return 15
 	}
-	
-	
+	method estadoRota()= estadoRota
+	method rompete()={ estadoRota = true }
+	method arreglate()={ estadoRota = false }
 }
  
-*/
+
 class Cancion{
 	var tituloPrincipal
 	var letra 
