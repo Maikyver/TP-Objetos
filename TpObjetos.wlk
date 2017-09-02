@@ -30,9 +30,7 @@ class Musico {
 
 class VocalistaPopular {
 	method tuHabilidad(habilidad) = habilidad
-	method interpretasBien(cancion) = ( cancion.duracionCancion() > 300 )
-	  
-
+	method interpretasBien(cancion,palabra) = (cancion.contienePalabra(palabra))  //no estoy demasiado seguro de esto  
 } 
 class MusicoDeGrupo{
 	method tuHabilidad(habilidad) = habilidad + 5 
