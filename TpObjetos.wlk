@@ -1,14 +1,28 @@
 class Musico {
 	
-	var tipoDeMusico = new VocalistaPopular()
+	var tipoDeMusico 
 	var habilidad = 0
-	const albumes = []
-	method tuHabilidad()=tipoDeMusico.tuHabilidad(habilidad)
+	var albumes = []
 	
+	constructor (tipoDeMusicoM,habilidadM,albumesM)
+	{
+		tipoDeMusico =tipoDeMusicoM
+		tipoDeMusico = habilidadM
+		albumes = albumesM
+	}
+	method tipoDeMusico() =tipoDeMusico
+	method tipoDeMusico(musico) {
+		tipoDeMusico  = musico
+	}
+	
+	method habilidad () =habilidad 
 	method tuHabilidad(habilidadM) {
 		habilidad  = habilidadM
-	} 
-	method interpretasBien(cancion) =tipoDeMusico.interpretasBien(cancion)
+	}
+	method tuHabilidad()=self.tipoDeMusico().tuHabilidad(self.habilidad())
+
+	
+	method interpretasBienLaCancion(cancion) =self.tipoDeMusico().interpretasBien(cancion)
 	
 	
 	method cobras (presentacion) { 
@@ -16,33 +30,46 @@ class Musico {
 		}
 	
 	method albumesPublicados() = albumes
-	
+	method albumesPublicados(albumesP) = {self.albumesPublicados().addAll(albumesP)}
 	method sosMinimalista() = self.albumesPublicados().all({cancion => cancion.sosCorta ()})
 
 	method cancionesContienen(palabra) = self.albumesPublicados().cancionesConLaPalabra(palabra)
 
 	method duracionObraCompleta() = self.albumesPublicados().sum({album => album.duracion()})
 
-	method cancionMasLarga() = self.albumesPublicados().filter({album => album.cancionMasLarga()})     //Tiene que ver con la longitud del string asociado a la cancion, dudo que sea con un lenght
+	method cancionMasLarga() = self.albumesPublicados().filter({album => album.cancionMasLarga()})     
 
-	method laPegaste() = self.albumesPublicados().all({album => album.buenaVenta()})      //no estoy demasiado seguro, pero creo que va por este lado
+	method laPegaste() = self.albumesPublicados().all({album => album.buenaVenta()})
 }
 
 class VocalistaPopular {
+	var interpretasBienPalabra 
+	method interpretasBien(palabra)=null
+	method interpretasBien() = 
+	{
+		interpretasBienPalabra  = palabra
+	} 
 	method tuHabilidad(habilidad) = habilidad
-	method interpretasBien(cancion,palabra) = (cancion.contienePalabra(palabra))  //no estoy demasiado seguro de esto  
+	
+	method interpretasBienLaCancion(cancion) = (cancion.contienePalabra(self.interpretasBien()))
 } 
 class MusicoDeGrupo{
+	var interpretasBienPalabra 
+	method interpretasBien()=null
+	method interpretasBien(palabra)=null
 	method tuHabilidad(habilidad) = habilidad + 5 
-	method interpretasBien(cancion) = null
+	method interpretasBienLaCancion(cancion) =null
 }
 
 
  
-object luisAlberto {
+/*object luisAlberto  {
 
 	var guitarras = [fender, gibson]  
-	
+	method algo(albumesP) {
+		self.albumesPublicados(albumesP)
+		
+	} 
 	method habilidad (guitarra, estado) {
 		if (guitarra.valorGuitarra(estado) * 8<100) 
 		
@@ -51,15 +78,15 @@ object luisAlberto {
 			return 100
 	} 
 	
-	method interpretasBien(cancion) = true
+	override method interpretasBienLaCancion(cancion) = true
 	
-	method cobras (presentacion) {
+	override method cobras (presentacion) {
 		if(presentacion.fechaPresentacion() < 20170901)
 			return 1000
 		else
 		return 1200
-	} 
-}
+	}
+}*/
 
 object fender{
 	method valorGuitarra () = 10

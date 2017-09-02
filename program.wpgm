@@ -1,21 +1,86 @@
 import TpObjetos.*
 program abc {
 
-	var cisne = new Cancion("tituloPrincipalAlbum", "Hoy el viento se abrió quedó vacío el aire una vez más y el manantial brotó y nadie está aquí y 
-	puedo ver que solo estallan las hojas al brillar",312)
 	
-    var laFamilia = new Cancion("tituloPrincipalAlbum","Quiero brindar por mi gente sencilla, por el amor brindo por la familia",264)
 	
-	const lunaPark = new Presentacion()
-	 //	lunaPark.sePresentan([luisAlberto, joaquin, lucia])
-		lunaPark.lugar (lunaPark)//Fix
-		lunaPark.fechaPresentacion (20,04,2017)
+	var joaquin
+	var lucia
+	var soledad
+	var kike
 	
-	const laTrastienda = new Presentacion()
-	 //	laTrastienda.sePresentan([luisAlberto, joaquin, lucia])
-		laTrastienda.lugar (lunaPark)//Fix
-		laTrastienda.fechaPresentacion (15,11,2017)
+	var presentacionLunaPark 
+	var presentacionLaTrastienda
+	
+	var albumLaFamilia 
+	var albumLaSole
+	var albumParaLosArboles
+	var albumJustCrisantemo
+	
+	var laFamilia
+	var eres
+	var corazonAmericano
+	var cisne
+	var almaDeDiamante
+	var crisantemo
+	
 		
-	console.println(laFamilia.sosCorta ())
+	joaquin = new Musico(new MusicoDeGrupo(),20,[albumLaFamilia])
+	
+	lucia = new Musico(new VocalistaPopular(),70,[])
+	lucia.habilidad(70)
+	lucia.intrepretasBien("familia")
+
+	
+	soledad = new Musico(new VocalistaPopular(),55,[albumLaSole])
+	soledad.interpretasBien( "amor")
+	
+	kike = new Musico(new MusicoDeGrupo(),60,[])
+	
+	
+	//*FALTARIA HACER ARREGLAR LO QUE FALTA Y HACER BIEN LO DE HABILIDAD DE ACUERDO A QUE TIPO DE CANTANTES SON*
+	
+	
+ 	presentacionLunaPark = new Presentacion()
+	//presentacionLunaPark.sePresentan(luisAlberto, joaquin, lucia)
+	//presentacionLunaPark.lugar (lunaPark)
+	presentacionLunaPark.fechaPresentacion (20,04,2017)
+	
+	presentacionLaTrastienda = new Presentacion()
+	//presentacionLaTrastienda.sePresentan(luisAlberto, joaquin, lucia)
+	//presentacionLaTrastienda.lugar (laTrastienda)
+	presentacionLaTrastienda.fechaPresentacion (15,11,2017)
+	
+	albumLaFamilia = new Album("La Familia",[laFamilia],[17,06,1992],100000,8900)
+
+	 
+	albumLaSole = new Album("LaSole",[eres, corazonAmericano],[04,02,2005],200000,130000)
+	/*albumLaSole.canciones (eres, corazonAmericano)
+	albumLaSole.fechaLanzamiento(04,02,2005)
+	albumLaSole.unidadesALaVenta(200000)
+	albumLaSole.unidadesVendidas(130000)
+	*/
+	albumParaLosArboles = new Album("Para los Arboles",[cisne,almaDeDiamante],[31,03,2003],50000,49000)
+	/*albumParaLosArboles.canciones(cisne,almaDeDiamante)
+	albumParaLosArboles.fechaLanzamiento(31,03,2003)
+	albumParaLosArboles.unidadesALaVenta(50000)
+	albumParaLosArboles.unidadesVendidas(49000)
+	*/
+	albumJustCrisantemo = new Album("Just Crisantemo",[crisantemo],[05,12,2007],28000,27500)
+	/*albumJustCrisantemo.canciones(crisantemo)
+	albumJustCrisantemo.fechaLanzamiento(05,12,2007)
+	albumJustCrisantemo.unidadesALaVenta(28000)
+	albumJustCrisantemo.unidadesVendidas(27500)
+	
+*/
+	
+	laFamilia = new Cancion("La Familia" , "Quiero brindar por mi gente sencilla, por el amor brindo por la familia",264)
+	eres = new Cancion("Eres", "Eres lo mejor que me pasó en la vida, no tengo duda, no habrá más nada después de ti. Eres lo que le dio brillo al día a día, y así será por siempre, no cambiará, hasta el final de mis días.",145)
+	corazonAmericano = new Cancion("Corazón Americano","Canta corazón, canta más alto, que tu pena al fin se va marchando, el nuevo milenio ha de encontrarnos, junto corazón, como soñamos.",154)
+	cisne = new Cancion("Cisne","Hoy el viento se abrió quedó vacío el aire una vez más y el manantial brotó y nadie está aquí y puedo ver que solo estallan las hojas al brillar",312)
+	almaDeDiamante = new Cancion("Alma de Diamante","Ven a mí con tu dulce luz alma de diamante. Y aunque el sol se nuble después sos alma de diamante. Cielo o piel silencio o verdad sos alma de diamante. Por eso ven así con la humanidad alma de diamante",216)	
+	crisantemo = new Cancion("Crisantemo","Tócame junto a esta pared, yo quede por aquí... cuando no hubo más luz... quiero mirar a través de mi piel... Crisantemo, que se abrió... encuentra el camino hacia el cielo",175)
+	
+		
+	console.println(joaquin.albumesPublicados())
 
 }
