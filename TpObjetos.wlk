@@ -15,24 +15,19 @@
 		 if (presentacion.solista()) return 50 else return 100
 		}
 	}
+
 	method albumesPublicados(Musico) = albumes
-	
 	method sosMinimalista(Musico) = albumes.all(cancion.duracionCancion() < 180)
-
 	method cancionesContienen(palabra) = albumes.filter(cancion.contienePalabra(palabra))
-
 	method duracionObraCompleta(Musico) = albumes.sum(cancion.duracionCancion())
-
 	method cancionMasLarga(Musico) =     //Tiene que ver con la longitud del string asociado a la cancion, dudo que sea con un lenght
-
 	method laPegaste(Musico) = albumes.all(album.unidadesALaVenta/album.unidadesVendidas >= 0.75)      //no estoy demasiado seguro, pero creo que va por este lado
 
 object vocalistaPopular{
 	method tuHabilidad(habilidad) = habilidad
-	method interpretasBien(cancion) = ( cancion.duracionCancion() > 300 )
-	  
-
+	method interpretasBien(cancion,palabra) = (cancion.contienePalabra(palabra))  //no estoy demasiado seguro de esto  
 } 
+
 object musicoDeGrupo{
 	method tuHabilidad(habilidad) = habilidad + 5 
 	//method interpretasBien(cancion) = null
