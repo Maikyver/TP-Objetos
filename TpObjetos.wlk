@@ -1,6 +1,6 @@
-/*class Musico {
+class Musico {
 	
-	const tipoDeMusico = vocalistaPopular
+	var tipoDeMusico = new VocalistaPopular()
 	var habilidad = 0
 	const albumes = []
 	method tuHabilidad()=tipoDeMusico.tuHabilidad(habilidad)
@@ -14,51 +14,32 @@
 	method cobras (presentacion) { 
 		 if (presentacion.solista()) return 50 else return 100
 		}
-	}
-	method albumesPublicados(Musico) = albumes
 	
-	method sosMinimalista(Musico) = albumes.all(cancion.duracionCancion() < 180)
+	method albumesPublicados() = albumes
+	
+	method sosMinimalista() = self.albumesPublicados().all({cancion => cancion.duracionCancion() < 180})
 
-	method cancionesContienen(palabra) = albumes.filter(cancion.contienePalabra(palabra))
+	method cancionesContienen(palabra) = self.albumesPublicados().cancionesConLaPalabra(palabra)
 
-	method duracionObraCompleta(Musico) = albumes.sum(cancion.duracionCancion())
+	method duracionObraCompleta() = self.albumesPublicados().sum({album => album.duracion()})
 
-	method cancionMasLarga(Musico) =     //Tiene que ver con la longitud del string asociado a la cancion, dudo que sea con un lenght
+	method cancionMasLarga() = self.albumesPublicados().filter({album => album.cancionMasLarga()})     //Tiene que ver con la longitud del string asociado a la cancion, dudo que sea con un lenght
 
-	method laPegaste(Musico) = albumes.all(album.unidadesALaVenta/album.unidadesVendidas >= 0.75)      //no estoy demasiado seguro, pero creo que va por este lado
+	method laPegaste() = self.albumesPublicados().all({album => album.unidadesALaVenta() / album.unidadesVendidas() >= 0.75})      //no estoy demasiado seguro, pero creo que va por este lado
+}
 
-object vocalistaPopular{
+class VocalistaPopular {
 	method tuHabilidad(habilidad) = habilidad
 	method interpretasBien(cancion) = ( cancion.duracionCancion() > 300 )
 	  
 
 } 
-object musicoDeGrupo{
+class MusicoDeGrupo{
 	method tuHabilidad(habilidad) = habilidad + 5 
-	//method interpretasBien(cancion) = null
-}*/
-
-/* 
-object lucia {
-
-	var habilidad = 70
-	const grupo = "pimpinela"
-	
-	method tuHabilidad() = habilidad
-	
-	method tuHabilidadSiCantasEnGrupo() =habilidad - 20
-	
-	method interpretasBien(cancion) =cancion.letra().contains("familia") //VER COMO ES PARA QUE HACEPTE MAYUSCULAS TAMBIEN
-	
-	method cobras (presentacion) { 
-		
-		 if (presentacion.lugar().capacidad()>5000)
-		return 500
-		else
-		return 400
-		  
-	}
+	method interpretasBien(cancion) = null
 }
+
+/*
  
 object luisAlberto {
 
@@ -139,6 +120,7 @@ class Album{
 	method unidadesVendidas()=unidadesVendidas
 	method duracion()=self.canciones().sum({cancion => cancion.duracionCancion()})
 	method cancionMasLarga()=self.canciones().max({cancion => cancion.letra().lenght()})
+	method cancionesConLaPalabra(palabra) = self.canciones().filter({cancion =>cancion.contienePalabra(palabra)})
 	//method buenaVenta()= self.unidadesVendidas
 }
 
