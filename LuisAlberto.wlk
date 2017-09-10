@@ -1,15 +1,11 @@
  import Musico.*
 class LuisAlberto inherits Musico  {
 
-	var guitarras = [fender, gibson]  
-	method algo(albumesP) {
-		self.albumesPublicados(albumesP)
+	
+	method habilidad (guitarra) {
+		if (guitarra.valorGuitarra() * 8<100) 
 		
-	} 
-	method habilidad (guitarra, estado) {
-		if (guitarra.valorGuitarra(estado) * 8<100) 
-		
-			return guitarra.valorGuitarra(estado) * 8
+			return guitarra.valorGuitarra() * 8
 		else
 			return 100
 	} 

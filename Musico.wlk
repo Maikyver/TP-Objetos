@@ -31,7 +31,7 @@ class Musico {
 	
 	method albumesPublicados() = albumes
 	method albumesPublicados(albumesP) =self.albumesPublicados().addAll(albumesP)
-	method sosMinimalista() = self.albumesPublicados().all({cancion => cancion.sosCorta ()})
+	method sosMinimalista() = self.albumesPublicados().all({album => album.cacionesSonCortas()})
 
 	method cancionesContienen(palabra) = self.albumesPublicados().cancionesConLaPalabra(palabra)
 

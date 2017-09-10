@@ -23,4 +23,5 @@ class Album{
 	method cancionMasLarga()=self.canciones().max({cancion => cancion.letra().lenght()})
 	method cancionesConLaPalabra(palabra) = self.canciones().filter({cancion =>cancion.contienePalabra(palabra)})
 	method buenaVenta()= self.unidadesALaVenta() / self.unidadesVendidas() >= 0.75
+	method cacionesSonCortas() = self.canciones().all({cancion => cancion.sosCorta ()})
 }
