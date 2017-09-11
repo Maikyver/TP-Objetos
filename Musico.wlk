@@ -51,7 +51,6 @@ class VocalistaPopular {
 	method interpretasBienLaCancion(cancion) = cancion.contienePalabra(self.interpretasBien())
 } 
 class MusicoDeGrupo{
-	var interpretasBienPalabra 
 	method interpretasBien()=null
 	method interpretasBien(palabra)=null
 	method tuHabilidad(habilidad) = habilidad + 5 
