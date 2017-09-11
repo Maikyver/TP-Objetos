@@ -1,5 +1,8 @@
-import TpObjetos.*
-
+import Musico.*
+import Presentacion.*
+import Cancion.*
+import LuisAlberto.*
+import Album.*
 
 describe "Tests" {
 	
@@ -184,71 +187,8 @@ test "22.Queremos saber el costo de la presentación del Luna Park"
 test "23.Queremos saber el costo de la presentación de La Trastienda el 15/11/2017"
  {
 		assert.equals(presentacionLunaPark.getsePresentan().sum({persona => persona.cobras(presentacionTrastienda)}),1650)
-}*/
-test "1.La Canciòn 'Crisantemo'  es corta"
- {
-		assert.that(crisantemo.sosCorta())
 }
-test "2.La Canciòn 'Alma de diamante'  es corta"
- {
-		assert.that(almaDeDiamante.sosCorta())
-}
-test "3.Es Soledad minimalista"
- {
-		assert.that(soledad.sosMinimalista())
-}
-test "4.Es Luis Alberto minimalista"
- {
-		assert.that(luisAlberto.sosMinimalista())
-		assert.that(false)
-}
-test "5.Es Joaquìn minimalista"
- {
-		assert.that(joaquin.sosMinimalista())
-}
-test "6.Es Joaquìn minimalista"
- {
-		assert.that(joaquin.sosMinimalista())
-}
-test "7.Es Joaquìn minimalista"
- {
-		assert.that(joaquin.sosMinimalista())
-}
-test "8.Es Joaquìn minimalista"
- {
-		assert.that(joaquin.sosMinimalista())
-}
-test "9.Es Joaquìn minimalista"
- {
-		assert.that(joaquin.sosMinimalista())
-}
-test "10.Es Joaquìn minimalista"
- {
-		assert.that(joaquin.sosMinimalista())
-}
-test "11.Es Joaquìn minimalista"
- {
-		assert.that(joaquin.sosMinimalista())
-}
-test "12.Es Joaquìn minimalista"
- {
-		assert.that(joaquin.sosMinimalista())
-}
-test "13.Es Joaquìn minimalista"
- {
-		assert.that(joaquin.sosMinimalista())
-}
-test "14.Es Joaquìn minimalista"
- {
-		assert.that(joaquin.sosMinimalista())
-}
-test "15.Es Joaquìn minimalista"
- {
-		assert.that(joaquin.sosMinimalista())
-}
-test "16.Es Joaquìn minimalista"
- {
-		assert.that(joaquin.sosMinimalista())
-}
-}
+
+
+*/
 
