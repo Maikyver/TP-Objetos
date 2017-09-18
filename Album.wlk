@@ -1,6 +1,8 @@
 
 class Album{
 	
+	var a=200000
+	var b=130000
 	const titulo
 	const canciones 
 	const fechaLanzamiento
@@ -20,8 +22,9 @@ class Album{
 	method unidadesALaVenta()=unidadesALaVenta
 	method unidadesVendidas()=unidadesVendidas
 	method duracion()=self.canciones().sum({cancion => cancion.duracionCancion()})
-	method cancionMasLarga()=self.canciones().max({cancion => cancion.letra().lenght()})
+	method cancionMasLarga()=self.canciones().max({cancion => cancion.letra().words().size()})
 	method cancionesConLaPalabra(palabra) = self.canciones().filter({cancion =>cancion.contienePalabra(palabra)})
-	method buenaVenta()= self.unidadesALaVenta() / self.unidadesVendidas() >= 0.75
+	method buenaVenta(){ return((self.unidadesVendidas()*100) / self.unidadesALaVenta()) >= 75}
 	method cacionesSonCortas() = self.canciones().all({cancion => cancion.sosCorta ()})
+	method abc(){ return((b *100) / a) >= 75}
 }

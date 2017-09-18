@@ -1,7 +1,6 @@
 import Musico.*
 import Presentacion.*
 import Cancion.*
-import LuisAlberto.*
 import Album.*
 
 describe "Tests" {
@@ -10,7 +9,7 @@ describe "Tests" {
 	const lucia
 	const soledad
 	const kike
-	const luisAlberto
+	const luisalberto
 	
 	const presentacionLunaPark 
 	const presentacionLaTrastienda
@@ -42,7 +41,7 @@ describe "Tests" {
 	
 	
 	
-	albumLaFamilia = new Album("La Familia",[laFamilia],[17,06,1992],100000,8900)
+	albumLaFamilia = new Album("La Familia",[laFamilia],[17,06,1992],100000,89000)
 	 
 	albumLaSole = new Album("LaSole",[eres, corazonAmericano],[04,02,2005],200000,130000)
 
@@ -52,18 +51,18 @@ describe "Tests" {
 	
 	
 	
-	joaquin = new Musico(new MusicoDeGrupo(),20,[albumLaFamilia])
+	joaquin = new Musico(musicoDeGrupo,20,[albumLaFamilia])
 	
-	lucia = new Musico(new VocalistaPopular(),70,[])
+	lucia = new Musico(vocalistaPopular,70,[])
 	//lucia.intrepretasBien("familia")
 	
-	soledad = new Musico(new VocalistaPopular(),55,[albumLaSole])
+	soledad = new Musico(vocalistaPopular,55,[albumLaSole])
 	//soledad.interpretasBien( "amor")
 
-	kike = new Musico(new MusicoDeGrupo(),60,[])
+	kike = new Musico(musicoDeGrupo,60,[])
 	
-	luisAlberto = new LuisAlberto(new VocalistaPopular(),0,[albumParaLosArboles,albumJustCrisantemo])
-	luisAlberto.habilidad(fender)
+	luisalberto = new Musico( luisAlberto,0,[albumParaLosArboles,albumJustCrisantemo])
+	
 	
 	
 	
@@ -94,7 +93,7 @@ test "3.Soledad es minimalista"
 }
 test "4.Luis Alberto no es minimalista"
  {
-		assert.notThat(luisAlberto.sosMinimalista())
+		assert.notThat(luisalberto.sosMinimalista())
 }
 test "5.Joaquin es minimalista"
  {
@@ -102,13 +101,13 @@ test "5.Joaquin es minimalista"
 }
 test "6.Crisantemo y alma de diamante contienen la palabra cielo"
 {
-		assert.notThat(crisantemo.contienePalabra("cielo") and almaDeDiamante.contienePalabra("cielo"))
+		assert.that(crisantemo.contienePalabra("cielo") and almaDeDiamante.contienePalabra("cielo"))
 }
 /*test "7.Alguna cancion de luis alberto contiene la palabra pujante"
 {
-		assert.notThat(luisAlberto.any(luisAlberto.cancionesContienen("pujante")))
-} 
-*/
+		assert.notThat(luisalberto.albumesPublicados().any( {album => album.cancionesConLaPalabra("pujante")}))
+} */
+
 test "8.La duracion de la obra de Kike dura 0 segundos"
 {
 		assert.equals(kike.duracionObraCompleta(),0)
@@ -119,28 +118,28 @@ test "9.La duracion de la obra de Soledad dura 299 segundos"
 }
 test "10.La duracion de la obra de Luis Alberto dura 703 segundos"
 {
-		assert.equals(luisAlberto.duracionObraCompleta(),703)
+		assert.equals(luisalberto.duracionObraCompleta(),703)
 }
-/*test "11.La cancion mas larga del album para los arboles es alma de diamante"
+test "11.La cancion mas larga del album para los arboles es alma de diamante"
 {
-		assert.that(albumParaLosArboles.cancionMasLarga(almaDeDiamante))
+		assert.equals(albumParaLosArboles.cancionMasLarga(),almaDeDiamante)
 }
 test "12.La cancion mas larga del album la sole es eres"
 {
-		assert.that(albumLaSole.cancionMasLarga(eres))
+		assert.equals(albumLaSole.cancionMasLarga(), eres)
 }
 test "13.La cancion mas larga del album especial la familia es la familia"
 {
-		assert.that(albumLaFamilia.cancionMasLarga(laFamilia))
+		assert.equals(albumLaFamilia.cancionMasLarga(),laFamilia)
 }
-*/
+
 test "14.Luis Alberto la pegó"
 {
-		assert.that(luisAlberto.laPegaste())
+		assert.that(luisalberto.laPegaste())
 }
 test "15.Soledad no la pegó"
 {
-		assert.that(soledad.laPegaste()) 
+		assert.notThat(soledad.laPegaste()) 
 //*no funciona como deberia, por alguna razon soledad la pega
 }
 test "16.joaquin la pegó"

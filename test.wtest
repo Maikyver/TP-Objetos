@@ -1,8 +1,7 @@
 import Musico.*
 import Presentacion.*
-import Cancion.*
-import LuisAlberto.*
 import Album.*
+import Cancion.*
 
 describe "Tests" {
 	
@@ -26,18 +25,16 @@ describe "Tests" {
 	const almaDeDiamante
 	const crisantemo
 	fixture{
-		
-	joaquin = new Musico(new MusicoDeGrupo(),20,[albumLaFamilia])
+joaquin = new Musico(musicoDeGrupo,20,[albumLaFamilia])
 	
-	lucia = new Musico(new VocalistaPopular(),70,[])
-	lucia.habilidad(70)
-	lucia.intrepretasBien("familia")
+	lucia = new Musico(vocalistaPopular,70,[])
+	//lucia.intrepretasBien("familia")
+	
+	soledad = new Musico(vocalistaPopular,55,[albumLaSole])
+	//soledad.interpretasBien( "amor")
 
+	kike = new Musico(musicoDeGrupo,60,[])
 	
-	soledad = new Musico(new VocalistaPopular(),55,[albumLaSole])
-	soledad.interpretasBien( "amor")
-	
-	kike = new Musico(new MusicoDeGrupo(),60,[])
 	
 	
 	//*FALTARIA HACER ARREGLAR LO QUE FALTA Y HACER BIEN LO DE HABILIDAD DE ACUERDO A QUE TIPO DE CANTANTES SON*
@@ -71,6 +68,11 @@ describe "Tests" {
 	crisantemo = new Cancion("Crisantemo","Tócame junto a esta pared, yo quede por aquí... cuando no hubo más luz... quiero mirar a través de mi piel... Crisantemo, que se abrió... encuentra el camino hacia el cielo",175)
 	
 	
+}
+test "sdf" {
+
+	assert.that(true)
+
 }
 /* 
 test "1.Joaquín canta en el grupo Pimpinela. Queremos conocer su habilidad" {
@@ -191,4 +193,6 @@ test "23.Queremos saber el costo de la presentación de La Trastienda el 15/11/20
 
 
 */
+
+}
 
