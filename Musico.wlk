@@ -7,7 +7,7 @@ class Musico {
 	constructor (tipoDeMusicoM,habilidadM,albumesM)
 	{
 		tipoDeMusico =tipoDeMusicoM
-		tipoDeMusico = habilidadM
+		habilidad = habilidadM
 		albumes = albumesM
 	}
 	method tipoDeMusico() =tipoDeMusico
@@ -22,8 +22,12 @@ class Musico {
 	method tuHabilidad()=self.tipoDeMusico().tuHabilidad(self.habilidad())
 
 	
-	method interpretasBienLaCancion(cancion) =self.tipoDeMusico().interpretasBien(cancion)
-	
+	method interpretasBien(cancion) {
+	return	
+		self.albumesPublicados().size()>=3||
+		self.habilidad()>60 ||
+		self.tipoDeMusico().interpretasBien(cancion)
+	}
 	
 	method cobras (presentacion) { 
 		 if (presentacion.solista()) return 50 else return 100
@@ -43,18 +47,16 @@ class Musico {
 }
 
 object vocalistaPopular {
-	var interpretasBienPalabra 
-	method interpretasBien()=interpretasBienPalabra 
-	method interpretasBien(palabra)  {interpretasBienPalabra  = palabra} 
+	var palabra 
+	method palabra()=palabra 
+	method palabra(unaPalabra)  {palabra  = unaPalabra} 
 	method tuHabilidad(habilidad) = habilidad
 	
-	method interpretasBienLaCancion(cancion) = cancion.contienePalabra(self.interpretasBien())
+	method interpretasBien(cancion) = cancion.contienePalabra(self.palabra())
 } 
 object musicoDeGrupo{
-	method interpretasBien()=null
-	method interpretasBien(palabra)=null
 	method tuHabilidad(habilidad) = habilidad + 5 
-	method interpretasBienLaCancion(cancion) =null
+	method interpretasBien(cancion) { return cancion.duracionCancion()>300}
 }
 
 object luisAlberto {
