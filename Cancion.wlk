@@ -14,4 +14,12 @@ class Cancion{
 	 	return self.letra().toLowerCase().words().contains(palabra)
 	 }
 	 method sosCorta ()= self.duracionCancion()<180 
+	 
+	 method duracionTriple() = self.duracionCancion()*3
+	 method letraRemixada() = "mueve tu cuelpo baby" + self.letra() + "yeah oh yeah"
+	 
+	 method remixeate(){
+	 	return self.duracionTriple() and self.letraRemixada()
+	 }
+	 
 	}
