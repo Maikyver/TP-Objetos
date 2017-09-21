@@ -105,6 +105,7 @@ test "6.Crisantemo y alma de diamante contienen la palabra cielo"
 }
 /*test "7.Alguna cancion de luis alberto contiene la palabra pujante"
 {
+* 
 		assert.notThat(luisalberto.albumesPublicados().any( {album => album.cancionesConLaPalabra("pujante")}))
 } */
 
