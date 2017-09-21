@@ -1,4 +1,4 @@
-
+import Cancion.*
 class Album{
 
 	const titulo
@@ -25,7 +25,8 @@ class Album{
 	method buenaVenta(){ return((self.unidadesVendidas()*100) / self.unidadesALaVenta()) >= 75}
 	method cacionesSonCortas() = self.canciones().all({cancion => cancion.sosCorta ()})
 	
-	method mashupeate(){
+	method mashupeateCon(){
+		
 		
 	}
 }
