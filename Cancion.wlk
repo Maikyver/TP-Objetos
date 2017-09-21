@@ -8,20 +8,26 @@ class Cancion{
 		duracion = duracionCancion
 		tituloPrincipal =tituloPrincipalAlbum
 	}
-	method letra() = letra
 	method titulo() = tituloPrincipal	
-	method duracionCancion ()= duracion 
+	method letra() = letra
+	method letra(unaLetra) {letra= unaLetra}
+	method duracionCancion ()= duracion
+	method duracionCancion(unaCancion) {duracion= unaCancion} 
 	method contienePalabra(palabra){
 	 	return self.letra().toLowerCase().words().contains(palabra)
 	 }
 	 method sosCorta ()= self.duracionCancion()<180 
 	 
-	 method duracionTriple() = self.duracionCancion()*3
-	 method letraRemixada() = "mueve tu cuelpo baby" + self.letra() + "yeah oh yeah"
+	  method duracionTriple() { self.duracionCancion(self.duracionCancion()*3)}
+	 method letraRemixada() { self.letra("mueve tu cuelpo baby " + self.letra() + " yeah oh yeah")}
 	 
 	 method remixeate(){
-	 	return self.duracionTriple() and self.letraRemixada()
+	 	const cancion =new Cancion(self.titulo() , self.letra(),self.duracionCancion())
+	 	 cancion.duracionTriple() 
+	 	  cancion.letraRemixada()
+	 	  return cancion
 	 }
+
 	 method comparaTuDuracionCon(otraCancion){
 	 	return if (self.duracionCancion() > otraCancion.duracionCancion()){
 	 		return self.duracionCancion()

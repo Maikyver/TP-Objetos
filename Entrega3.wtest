@@ -3,6 +3,10 @@ import Presentacion.*
 import Cancion.*
 import Album.*
 
+class Remix {
+
+}
+
 describe "Tests" {
 	
 	
@@ -27,7 +31,7 @@ describe "Tests" {
 	const almaDeDiamante
 	const crisantemo
 	const cancionDeAliciaEnElPais
-	
+	const remixLaFamilia
 	fixture{
 	
 	laFamilia = new Cancion("La Familia" , "Quiero brindar por mi gente sencilla, por el amor brindo por la familia",264)
@@ -44,6 +48,8 @@ describe "Tests" {
 	
 	cancionDeAliciaEnElPais = new Cancion("Canción de Alicia en el país","Quién sabe Alicia, este país no estuvo hecho porque sí. Te vas a ir, vas a salir pero te quedas, ¿dónde más vas a ir? Y es que aquí, sabes el trabalenguas, trabalenguas, el asesino te asesina, y es mucho para ti. Se acabó ese juego que te hacía feliz.",510)
 	
+	remixLaFamilia = laFamilia.remixeate()//new Cancion("La Familia" , "Quiero brindar por mi gente sencilla, por el amor brindo por la familia",264)
+	//remixLaFamilia.remixeate()
 	
 	albumLaFamilia = new Album("La Familia",[laFamilia],[17,06,1992],100000,89000)
 	 
@@ -66,7 +72,6 @@ describe "Tests" {
 	kike = new Musico(musicoDeGrupo,60,[])
 	
 	luisalberto = new Musico( luisAlberto,0,[albumParaLosArboles,albumJustCrisantemo])
-	
 	
 	
 	
@@ -114,6 +119,16 @@ test "6.Luis Alberto canta bien la canción 'La Familia'" {
 test "7.Luis Alberto canta bien la canción 'Cisne'" {
 
 	assert.that(luisalberto.interpretasBien(cisne))
+
+}
+test "4.La duración del remix 'La Familia' es de 792" {
+
+	assert.equals(remixLaFamilia.duracionCancion(),792)
+
+}
+test "5.La letra del remix 'La Familia' es 'mueve tu cuelpo baby Quiero brindar por mi gente sencilla, por el amor brindo por la familia yeah oh yeah'" {
+
+	assert.equals(remixLaFamilia.letra(),"mueve tu cuelpo baby Quiero brindar por mi gente sencilla, por el amor brindo por la familia yeah oh yeah")
 
 }
 }
