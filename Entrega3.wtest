@@ -58,10 +58,10 @@ describe "Tests" {
 	joaquin = new Musico(musicoDeGrupo,20,[albumLaFamilia])
 	
 	lucia = new Musico(vocalistaPopular,70,[])
-	//lucia.intrepretasBien("familia")
+	lucia.palabraInterpretaBien("familia")
 	
 	soledad = new Musico(vocalistaPopular,55,[albumLaSole])
-	//soledad.interpretasBien( "amor")
+	soledad.palabraInterpretaBien( "amor")
 
 	kike = new Musico(musicoDeGrupo,60,[])
 	
@@ -84,6 +84,36 @@ describe "Tests" {
 test "1.Joaquín NO canta bien la canción 'La Familia'(su habilidad es 25 por ser de grupo, solo tiene un album y la cancion dura menos de 300(264) " {
 
 	assert.notThat(joaquin.interpretasBien(laFamilia))
+
+}
+test "2.Joaquín canta bien la cancion 'Cisne'" {
+
+	assert.that(joaquin.interpretasBien(cisne))
+
+}
+test "3.Lucía canta bien la cancion 'La Familia' como solista" {
+ 	lucia.tipoDeMusico(vocalistaPopular)
+	assert.that(lucia.interpretasBien(laFamilia))
+
+}
+test "4.Lucía canta bien la cancion 'Cisne'como solista" {
+ 	lucia.tipoDeMusico(vocalistaPopular)
+	assert.that(lucia.interpretasBien(cisne))
+
+}
+test "5.Lucía canta bien la cancion 'Cisne'como cantante de grupo (La cancion dura mas de 300s como es de grupo, la canta bien)" {
+ 	lucia.tipoDeMusico(musicoDeGrupo)
+	assert.that(lucia.interpretasBien(cisne))
+
+}
+test "6.Luis Alberto canta bien la canción 'La Familia'" {
+
+	assert.that(luisalberto.interpretasBien(laFamilia))
+
+}
+test "7.Luis Alberto canta bien la canción 'Cisne'" {
+
+	assert.that(luisalberto.interpretasBien(cisne))
 
 }
 }

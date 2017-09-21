@@ -44,6 +44,7 @@ class Musico {
 	method cancionMasLarga() = self.albumesPublicados().filter({album => album.cancionMasLarga()})     
 
 	method laPegaste() = self.albumesPublicados().all({album => album.buenaVenta()})
+	method palabraInterpretaBien(unaPalabra){self.tipoDeMusico().palabra(unaPalabra)}
 }
 
 object vocalistaPopular {
@@ -70,7 +71,7 @@ object luisAlberto {
 			return 100
 	} 
 	
-	method interpretasBienLaCancion(cancion) = true
+	method interpretasBien(cancion) = true
 	
 	method cobras (presentacion) {
 		if(presentacion.fechaPresentacion() < 20170901)

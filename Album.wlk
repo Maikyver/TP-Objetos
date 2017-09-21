@@ -1,8 +1,6 @@
 
 class Album{
-	
-	var a=200000
-	var b=130000
+
 	const titulo
 	const canciones 
 	const fechaLanzamiento
@@ -26,5 +24,4 @@ class Album{
 	method cancionesConLaPalabra(palabra) = self.canciones().filter({cancion =>cancion.contienePalabra(palabra)})
 	method buenaVenta(){ return((self.unidadesVendidas()*100) / self.unidadesALaVenta()) >= 75}
 	method cacionesSonCortas() = self.canciones().all({cancion => cancion.sosCorta ()})
-	method abc(){ return((b *100) / a) >= 75}
 }
