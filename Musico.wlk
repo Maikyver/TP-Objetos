@@ -50,20 +50,20 @@ class Musico {
 	
 	method esHabilidoso(){
 		if (self.habilidad()<70){
-			throwException "el musico no puede participar si posee menos de 70 puntos de habilidad"
+			throw new Exception("el musico no puede participar si posee menos de 70 puntos de habilidad")
 		}
+		return true
 	}
 	
 	method publicoUnAlbum(){
 		if (self.albumesPublicados().size()<1){
-			throwException "el musico debe haber publicado al menos un album de su autoria"
+			throw new Exception ("el musico debe haber publicado al menos un album de su autoria")
 		}
+		return true
 	}
 	
-	method puedePresentarse() {
-		return self.esHabilidoso() and self.publicoUnAlbum() and self.interpretasBien(cancion)
+	method puedePresentarse() = self.esHabilidoso() and self.publicoUnAlbum() and self.interpretasBien(new Cancion("cancion de alicia en el pais","Quién sabe Alicia, este país no estuvo hecho porque sí. Te vas a ir, vas a salir pero te quedas, ¿dónde más vas a ir? Y es que aquí, sabes el trabalenguas, trabalenguas, el asesino te asesina, y es mucho para ti. Se acabó ese juego que te hacía feliz.",510))
 	}
-}
 
 object vocalistaPopular {
 	var palabra 
