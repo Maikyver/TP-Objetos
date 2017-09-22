@@ -1,3 +1,4 @@
+import Cancion.*
 class Musico {
 	
 	var tipoDeMusico 
@@ -45,6 +46,23 @@ class Musico {
 
 	method laPegaste() = self.albumesPublicados().all({album => album.buenaVenta()})
 	method palabraInterpretaBien(unaPalabra){self.tipoDeMusico().palabra(unaPalabra)}
+	
+	
+	method esHabilidoso(){
+		if (self.habilidad()<70){
+			throwException "el musico no puede participar si posee menos de 70 puntos de habilidad"
+		}
+	}
+	
+	method publicoUnAlbum(){
+		if (self.albumesPublicados().size()<1){
+			throwException "el musico debe haber publicado al menos un album de su autoria"
+		}
+	}
+	
+	method puedePresentarse() {
+		return self.esHabilidoso() and self.publicoUnAlbum() and self.interpretasBien(cancion)
+	}
 }
 
 object vocalistaPopular {

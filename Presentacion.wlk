@@ -28,8 +28,7 @@ object laTrastienda {
 	}
 object pdpalooza inherits Presentacion{
 	override method sePresentan(nuevasPersonas){
-		//esto lo puedo hacer con all
-		
+		sePresentan = nuevasPersonas.forEach(nuevasPersonas.puedePresentarse())
 	}
 } 
 
