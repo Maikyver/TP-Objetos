@@ -32,6 +32,7 @@ describe "Tests" {
 	const crisantemo
 	const cancionDeAliciaEnElPais
 	const remixLaFamilia
+	const mashupCrisantemoYAlmaDeDiamante
 	fixture{
 	
 	laFamilia = new Cancion("La Familia" , "Quiero brindar por mi gente sencilla, por el amor brindo por la familia",264)
@@ -50,6 +51,9 @@ describe "Tests" {
 	
 	remixLaFamilia = laFamilia.remixeate()//new Cancion("La Familia" , "Quiero brindar por mi gente sencilla, por el amor brindo por la familia",264)
 	//remixLaFamilia.remixeate()
+	
+	mashupCrisantemoYAlmaDeDiamante =crisantemo.mashupeateCon([almaDeDiamante])
+	
 	
 	albumLaFamilia = new Album("La Familia",[laFamilia],[17,06,1992],100000,89000)
 	 
@@ -131,4 +135,10 @@ test "5.La letra del remix 'La Familia' es 'mueve tu cuelpo baby Quiero brindar 
 	assert.equals(remixLaFamilia.letra(),"mueve tu cuelpo baby Quiero brindar por mi gente sencilla, por el amor brindo por la familia yeah oh yeah")
 
 }
+test "6.La duración del mashup 'CrisantemoYAlmaDeDiamante' es de 216" {
+
+	assert.equals(mashupCrisantemoYAlmaDeDiamante.duracionCancion(),216)
+
+}
+
 }

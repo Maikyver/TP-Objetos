@@ -16,10 +16,10 @@ class Cancion{
 	method contienePalabra(palabra){
 	 	return self.letra().toLowerCase().words().contains(palabra)
 	 }
+	 
+	 
 	 method sosCorta ()= self.duracionCancion()<180 
 	 
-	  method duracionTriple() { self.duracionCancion(self.duracionCancion()*3)}
-	 method letraRemixada() { self.letra("mueve tu cuelpo baby " + self.letra() + " yeah oh yeah")}
 	 
 	 method remixeate(){
 	 	const cancion =new Cancion(self.titulo() , self.letra(),self.duracionCancion())
@@ -27,29 +27,20 @@ class Cancion{
 	 	  cancion.letraRemixada()
 	 	  return cancion
 	 }
+	 method duracionTriple() { self.duracionCancion(self.duracionCancion()*3)}
+	 method letraRemixada() { self.letra("mueve tu cuelpo baby " + self.letra() + " yeah oh yeah")}
+	 
+	 
+	 
+	 method mashupeateCon(unasCanciones){
+	 	const unacancion =new Cancion(self.titulo() , self.letra(),self.duracionCancion())
+	 	unasCanciones.forEach({cancion =>unacancion.letra(unacancion.letra() + cancion.letra())})
+	 	unasCanciones.forEach({cancion =>unacancion.duracionCancion(unacancion.comparaTuDuracionCon(cancion))})
+			return unacancion
+	}
 
-	 method comparaTuDuracionCon(otraCancion){
-	 	return if (self.duracionCancion() > otraCancion.duracionCancion()){
-	 		return self.duracionCancion()
-	 		}
-	 		else {return otraCancion.duracionCancion()
-	 			
-	 		}
-	 	}
-	  method comparaTuLetraCon(otraCancion){
-	 	return if (self.letra().size() > otraCancion.letra().size()){
-	 		return self.letra()
-	 		}
-	 		else {return otraCancion.letra()
-	 			
-	 		}
-	 	}
-	  method comparaTuTituloCon(otraCancion){
-	 	return if (self.titulo().size() > otraCancion.titulo().size()){
-	 		return self.titulo()
-	 		}
-	 		else {return otraCancion.titulo()
-	 			
-	 		}
-	 	}
+
+	 method comparaTuDuracionCon(otraCancion) =self.duracionCancion().max(otraCancion.duracionCancion())
+	  method comparaTuLetraCon(otraCancion)=self.letra().size().max( otraCancion.letra().size())
+	  method comparaTuTituloCon(otraCancion)= self.titulo().size().max(otraCancion.titulo().size())
 	 }
