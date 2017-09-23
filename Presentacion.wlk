@@ -7,6 +7,10 @@ import Musico.*
 		method getsePresentan() = sePresentan
 		method lugar (lugarPresentacion) {lugar = lugarPresentacion}
 		method fechaPresentacion (dd,mm,aaaa) = new Date(dd,mm,aaaa)
+		method agregaMusico(unMusico){
+		self.getsePresentan().add(unMusico)
+	}
+		
  	}
 
 object lunaPark{
@@ -28,7 +32,9 @@ object laTrastienda {
 	}
 object pdpalooza inherits Presentacion{
 	override method sePresentan(nuevasPersonas){
-		sePresentan = nuevasPersonas.forEach(nuevasPersonas.puedePresentarse())
+		nuevasPersonas.forEach({persona => persona.puedePresentarse()
+			self.agregaMusico(persona)
+		} )
 	}
 } 
 

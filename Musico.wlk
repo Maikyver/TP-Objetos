@@ -49,7 +49,7 @@ class Musico {
 	
 	
 	method esHabilidoso(){
-		if (self.habilidad()<70){
+		if (self.tuHabilidad()<70){
 			throw new Exception("el musico no puede participar si posee menos de 70 puntos de habilidad")
 		}
 		return true
@@ -80,8 +80,10 @@ object musicoDeGrupo{
 
 object luisAlberto {
 
-	
-	method tuHabilidad (guitarra) {
+	var guitarra= fender
+	method guitarra()=guitarra 
+	method guitarra(unaguitarra)  {guitarra  = unaguitarra} 
+	method tuHabilidad (habilidad) {
 		if ((guitarra.valorGuitarra() * 8)<100) 
 		
 			return guitarra.valorGuitarra() * 8
@@ -105,7 +107,7 @@ object fender{
 
 object gibson{
 	 
-	 var estadoRota = true
+	 var estadoRota = false
 	method valorGuitarra () {
 		if (self.estadoRota())
 		return 5

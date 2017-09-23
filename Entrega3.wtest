@@ -140,5 +140,16 @@ test "6.La duración del mashup 'CrisantemoYAlmaDeDiamante' es de 216" {
 	assert.equals(mashupCrisantemoYAlmaDeDiamante.duracionCancion(),216)
 
 }
+test "7.La letra del mashup 'CrisantemoYAlmaDeDiamante' es 'Ven a mí con tu dulce luz alma de diamante. Y aunque el sol se nuble después sos alma de diamante. Cielo o piel silencio o verdad sos alma de diamante. Por eso ven así con la humanidad alma de diamante Tócame junto a esta pared, yo quede por aquí... cuando no hubo más luz... quiero mirar a través de mi piel... Crisantemo, que se abrió... encuentra el camino hacia el cielo'" {
+
+	assert.equals(mashupCrisantemoYAlmaDeDiamante.letra(),"Ven a mí con tu dulce luz alma de diamante. Y aunque el sol se nuble después sos alma de diamante. Cielo o piel silencio o verdad sos alma de diamante. Por eso ven así con la humanidad alma de diamante Tócame junto a esta pared, yo quede por aquí... cuando no hubo más luz... quiero mirar a través de mi piel... Crisantemo, que se abrió... encuentra el camino hacia el cielo")
+
+}
+test "8.Luis Alberto se puede agregar al recital PDpalooza" {
+
+	pdpalooza.sePresentan([luisalberto])
+	assert.that(true)
+
+}
 
 }

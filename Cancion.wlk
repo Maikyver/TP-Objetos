@@ -34,7 +34,7 @@ class Cancion{
 	 
 	 method mashupeateCon(unasCanciones){
 	 	const unacancion =new Cancion(self.titulo() , self.letra(),self.duracionCancion())
-	 	unasCanciones.forEach({cancion =>unacancion.letra(unacancion.letra() + cancion.letra())})
+	 	unasCanciones.forEach({cancion =>unacancion.letra(cancion.letra() +" "+ unacancion.letra() )})
 	 	unasCanciones.forEach({cancion =>unacancion.duracionCancion(unacancion.comparaTuDuracionCon(cancion))})
 			return unacancion
 	}
