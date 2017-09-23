@@ -49,8 +49,7 @@ describe "Tests" {
 	
 	cancionDeAliciaEnElPais = new Cancion("Canción de Alicia en el país","Quién sabe Alicia, este país no estuvo hecho porque sí. Te vas a ir, vas a salir pero te quedas, ¿dónde más vas a ir? Y es que aquí, sabes el trabalenguas, trabalenguas, el asesino te asesina, y es mucho para ti. Se acabó ese juego que te hacía feliz.",510)
 	
-	remixLaFamilia = laFamilia.remixeate()//new Cancion("La Familia" , "Quiero brindar por mi gente sencilla, por el amor brindo por la familia",264)
-	//remixLaFamilia.remixeate()
+	remixLaFamilia = laFamilia.remixeate()
 	
 	mashupCrisantemoYAlmaDeDiamante =crisantemo.mashupeateCon([almaDeDiamante])
 	
@@ -71,7 +70,7 @@ describe "Tests" {
 	lucia.palabraInterpretaBien("familia")
 	
 	soledad = new Musico(vocalistaPopular,55,[albumLaSole])
-	soledad.palabraInterpretaBien( "amor")
+	soledad.palabraInterpretaBien("amor")
 
 	kike = new Musico(musicoDeGrupo,60,[])
 	
@@ -151,5 +150,22 @@ test "8.Luis Alberto se puede agregar al recital PDpalooza" {
 	assert.that(true)
 
 }
+test "9. Joaquín como solista NO se puede agregar al recital PDpalooza" {
+ 	joaquin.tipoDeMusico(vocalistaPopular)
+	pdpalooza.sePresentan([joaquin])
+	assert.that(true)
 
+}
+test "10. Lucia como solista NO se puede agregar al recital PDpalooza" {
+ 	lucia.tipoDeMusico(vocalistaPopular)
+	pdpalooza.sePresentan([lucia])
+	assert.that(true)
+
+}
+test "11. Soledad con habilidad de 80 se puede agregar al recital PDpalooza" {
+ 	soledad.tuHabilidad(80)
+	pdpalooza.sePresentan([soledad])
+	assert.that(true)
+
+}
 }

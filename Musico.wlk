@@ -62,7 +62,15 @@ class Musico {
 		return true
 	}
 	
-	method puedePresentarse() = self.esHabilidoso() and self.publicoUnAlbum() and self.interpretasBien(new Cancion("cancion de alicia en el pais","Quién sabe Alicia, este país no estuvo hecho porque sí. Te vas a ir, vas a salir pero te quedas, ¿dónde más vas a ir? Y es que aquí, sabes el trabalenguas, trabalenguas, el asesino te asesina, y es mucho para ti. Se acabó ese juego que te hacía feliz.",510))
+	method puedePresentarse(){ 
+	 self.esHabilidoso() 
+	 self.publicoUnAlbum()
+	  const cancion = new Cancion("cancion de alicia en el pais","Quién sabe Alicia, este país no estuvo hecho porque sí. Te vas a ir, vas a salir pero te quedas, ¿dónde más vas a ir? Y es que aquí, sabes el trabalenguas, trabalenguas, el asesino te asesina, y es mucho para ti. Se acabó ese juego que te hacía feliz.",510)
+	
+	 if (self.tipoDeMusico().interpretasBien(cancion).negate())
+	 	throw new Exception("Debe poder cantar 'Canción de Alicia en el Paìs")
+	 
+	 	}
 	}
 
 object vocalistaPopular {
