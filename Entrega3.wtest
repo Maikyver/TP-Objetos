@@ -164,6 +164,7 @@ test "10. Lucia como solista NO se puede agregar al recital PDpalooza" {
 }
 test "11. Soledad con habilidad de 80 se puede agregar al recital PDpalooza" {
  	soledad.tuHabilidad(80)
+	
 	pdpalooza.sePresentan([soledad])
 	assert.that(true)
 
