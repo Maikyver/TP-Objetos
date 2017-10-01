@@ -8,6 +8,7 @@ class Cancion{
 		duracion = duracionCancion
 		tituloPrincipal =tituloPrincipalAlbum
 	}
+	method tuTamanioSegunLetra()= self.letra().size() 
 	method titulo() = tituloPrincipal	
 	method letra() = letra
 	method letra(unaLetra) {letra= unaLetra}
@@ -38,9 +39,4 @@ class Cancion{
 	 	unasCanciones.forEach({cancion =>unacancion.duracionCancion(unacancion.comparaTuDuracionCon(cancion))})
 			return unacancion
 	}
-
-
-	 method comparaTuDuracionCon(otraCancion) =self.duracionCancion().max(otraCancion.duracionCancion())
-	  method comparaTuLetraCon(otraCancion)=self.letra().size().max( otraCancion.letra().size())
-	  method comparaTuTituloCon(otraCancion)= self.titulo().size().max(otraCancion.titulo().size())
 	 }

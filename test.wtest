@@ -24,39 +24,23 @@ describe "Tests" {
 	const cisne
 	const almaDeDiamante
 	const crisantemo
+	
 	fixture{
-joaquin = new Musico(musicoDeGrupo,20,[albumLaFamilia])
-	
+		
+	joaquin = new Musico(musicoDeGrupo,20,[albumLaFamilia])
 	lucia = new Musico(vocalistaPopular,70,[])
-	//lucia.intrepretasBien("familia")
-	
 	soledad = new Musico(vocalistaPopular,55,[albumLaSole])
-	//soledad.interpretasBien( "amor")
-
 	kike = new Musico(musicoDeGrupo,60,[])
 	
-	
-	
-	//*FALTARIA HACER ARREGLAR LO QUE FALTA Y HACER BIEN LO DE HABILIDAD DE ACUERDO A QUE TIPO DE CANTANTES SON*
-	
-	
  	presentacionLunaPark = new Presentacion()
-	//presentacionLunaPark.sePresentan(luisAlberto, joaquin, lucia)
-	//presentacionLunaPark.lugar (lunaPark)
 	presentacionLunaPark.fechaPresentacion (20,04,2017)
 	
 	presentacionLaTrastienda = new Presentacion()
-	//presentacionLaTrastienda.sePresentan(luisAlberto, joaquin, lucia)
-	//presentacionLaTrastienda.lugar (laTrastienda)
 	presentacionLaTrastienda.fechaPresentacion (15,11,2017)
 	
 	albumLaFamilia = new Album("La Familia",[laFamilia],[17,06,1992],100000,8900)
-
-	 
 	albumLaSole = new Album("LaSole",[eres, corazonAmericano],[04,02,2005],200000,130000)
-
 	albumParaLosArboles = new Album("Para los Arboles",[cisne,almaDeDiamante],[31,03,2003],50000,49000)
-
 	albumJustCrisantemo = new Album("Just Crisantemo",[crisantemo],[05,12,2007],28000,27500)
 
 	
@@ -75,41 +59,41 @@ test "sdf" {
 
 }
 /* 
-test "1.Joaquín canta en el grupo Pimpinela. Queremos conocer su habilidad" {
+test "1.La habilidad de Joaquin en grupo es 25" {
 
 	assert.equals(joaquin.tuHabilidadSiCantasEnGrupo(), 25)
 
 }
-test "2.Joaquín canta en el grupo Pimpinela, y decide lanzar su carrera solista. Queremos conocer su habilidad" {
+test "2.La habilidad de Joaquin como solista es 20" {
 
 	assert.equals(joaquin.tuHabilidad(), 20)
 
 }
-test "3.Lucia canta en el grupo Pimpinela. Queremos conocer su habilidad" {
+test "3.La habilidad de Lucia en grupo es 50" {
 
 	assert.equals(lucia.tuHabilidadSiCantasEnGrupo(), 50)
 
 }
-test "4.Lucia canta en el grupo Pimpinela, y decide lanzar su carrera solista. Queremos conocer su habilidad" {
+test "4.La habilidad de Lucia como solista es 70" {
 
 	assert.equals(lucia.tuHabilidad(), 70)
 
 }
-test "5.Luis Alberto toca con la Fender. Queremos saber su habilidad" {
+test "5.La habilidad de Luis Alberto tocando con la fender sana es 80" {
 
-	var sana//porque....
+	var sana
 
 	assert.equals(luisAlberto.habilidad(fender, sana), 80)
 
 }
-test "6.Luis Alberto toca con la Guibson sana. Queremos saber su habilidad" {
+test "6.La habilidad de Luis Alberto tocando con la gibson sana es 100" {
 
-	var sana//porque....
+	var sana
 
 	assert.equals(luisAlberto.habilidad(gibson, sana), 100)
 
 }
-test "7.Alguien trata mal a la Gibson y ahora no está sana. Luis Alberto toca con la Gibson. Queremos saber su habilidad" {
+test "7.La habilidad de Luis Alberto tocando con la fender rota es 40" {
 	
 	var rota
 	
@@ -150,36 +134,36 @@ test "13.Queremos saber si Luis Alberto interpreta bien la canción “Cisne”" {
 
 test "14.Queremos saber cuánto cobra Joaquín por la presentación del Luna Park"
  {
-		assert.equals(joaquin.cobras(presentacionLunaPark),50)
+	assert.equals(joaquin.cobras(presentacionLunaPark),50)
 }
 test "15.Modificar la presentación de la Trastienda para que solo actue Joaquín. Queremos saber cuánto cobra Juaquín por la presentación de la trastienda del 15/11/17 "
  {
  	presentacionTrastienda.sePresentan([joaquin])
-		assert.equals(joaquin.cobras(presentacionLunaPark),50)
+	assert.equals(joaquin.cobras(presentacionLunaPark),50)
 }
 test "16.Queremos saber la capacidad de La trastienda para el 05 de Agosto del 2017"
  {
-		assert.that(false)
+	assert.that(false)
 }
 test "17.Queremos saber la capacidad de La trastienda para el 08 de Agosto del 2017"
  {
-		assert.that(false)
+	assert.that(false)
 }
 test "18.Queremos saber cuánto cobra Lucía por la presentación del Luna Park"
  {
-		assert.equals(lucia.cobras(presentacionLunaPark),500)
+	assert.equals(lucia.cobras(presentacionLunaPark),500)
 }
 test "19.Queremos saber cuánto cobra Lucía por la presentación del Trastienda"
  {
-		assert.equals(lucia.cobras(presentacionTrastienda),400)
+	assert.equals(lucia.cobras(presentacionTrastienda),400)
 }
 test "20.Queremos saber cuánto cobra Luis Alberto por la presentación del Luna Park"
  {
-		assert.equals(luisAlberto.cobras(presentacionLunaPark),1000)
+	assert.equals(luisAlberto.cobras(presentacionLunaPark),1000)
 }
 test "21.Queremos saber cuánto cobra Luis Alberto por la presentación del Trastienda"
  {
-		assert.equals(luisAlberto.cobras(presentacionTrastienda),1200)
+	assert.equals(luisAlberto.cobras(presentacionTrastienda),1200)
 }
 test "22.Queremos saber el costo de la presentación del Luna Park"
  {
@@ -188,7 +172,7 @@ test "22.Queremos saber el costo de la presentación del Luna Park"
 }
 test "23.Queremos saber el costo de la presentación de La Trastienda el 15/11/2017"
  {
-		assert.equals(presentacionLunaPark.getsePresentan().sum({persona => persona.cobras(presentacionTrastienda)}),1650)
+	assert.equals(presentacionLunaPark.getsePresentan().sum({persona => persona.cobras(presentacionTrastienda)}),1650)
 }
 
 

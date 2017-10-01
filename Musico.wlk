@@ -86,7 +86,7 @@ object musicoDeGrupo{
 	method interpretasBien(cancion) { return cancion.duracionCancion()>300}
 }
 
-object luisAlberto {
+object musicoComoLuisAlberto {
 
 	var guitarra= fender
 	method guitarra()=guitarra 
