@@ -31,7 +31,7 @@ class Musico {
 	}
 	
 	method cobras (presentacion) { 
-		 if (presentacion.solista()) return 50 else return 100
+		 self.tipoDeMusico().cobras(self)
 		}
 	
 	method albumesPublicados() = albumes
