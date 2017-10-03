@@ -1,25 +1,24 @@
 class Cancion{
-	var tituloPrincipal
-	var letra 
-	var duracion
-	constructor (tituloPrincipalAlbum,letraCancion, duracionCancion)
+	const titulo
+	const letra 
+	const duracion
+	constructor (tituloAlbum,letraCancion, duracionCancion)
 	{
 		letra = letraCancion
 		duracion = duracionCancion
-		tituloPrincipal =tituloPrincipalAlbum
+		titulo =tituloAlbum
 	}
-	method tuTamanioSegunLetra()= self.letra().size() 
-	method titulo() = tituloPrincipal	
+	method titulo() = titulo
+	method tuTamanioDeTitulo()= self.titulo().size()	
 	method letra() = letra
-	method letra(unaLetra) {letra= unaLetra}
+	method tuTamanioDeLetra()= self.letra().size() 
 	method duracionCancion ()= duracion
-	method duracionCancion(unaCancion) {duracion= unaCancion} 
 	method contienePalabra(palabra){
 	 	return self.letra().toLowerCase().words().contains(palabra)
 	 }
 	 
 	 method sosCorta ()= self.duracionCancion()<180 
-
+	method extencionLetra()= self.letra().words().size()
 	 method mashupeateCon(unasCanciones){
 	 	const unacancion =new Cancion(self.titulo() , self.letra(),self.duracionCancion())
 	 	unasCanciones.forEach({cancion =>unacancion.letra(cancion.letra() +" "+ unacancion.letra() )})

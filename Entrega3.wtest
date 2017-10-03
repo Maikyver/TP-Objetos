@@ -1,11 +1,11 @@
 import Musico.*
 import Presentacion.*
+import PresentacionConRestricciones.*
 import Cancion.*
 import Album.*
+import remix.*
+import Mashup.*
 
-class Remix {
-
-}
 
 describe "Tests" {	
 	
@@ -41,8 +41,8 @@ describe "Tests" {
 	almaDeDiamante = new Cancion("Alma de Diamante","Ven a mí con tu dulce luz alma de diamante. Y aunque el sol se nuble después sos alma de diamante. Cielo o piel silencio o verdad sos alma de diamante. Por eso ven así con la humanidad alma de diamante",216)		
 	crisantemo = new Cancion("Crisantemo","Tócame junto a esta pared, yo quede por aquí... cuando no hubo más luz... quiero mirar a través de mi piel... Crisantemo, que se abrió... encuentra el camino hacia el cielo",175)	
 	cancionDeAliciaEnElPais = new Cancion("Canción de Alicia en el país","Quién sabe Alicia, este país no estuvo hecho porque sí. Te vas a ir, vas a salir pero te quedas, ¿dónde más vas a ir? Y es que aquí, sabes el trabalenguas, trabalenguas, el asesino te asesina, y es mucho para ti. Se acabó ese juego que te hacía feliz.",510)	
-	remixLaFamilia = laFamilia.remixeate()	
-	mashupCrisantemoYAlmaDeDiamante =crisantemo.mashupeateCon([almaDeDiamante])
+	remixLaFamilia= new Remix (laFamilia)
+	mashupCrisantemoYAlmaDeDiamante = new Mashup([almaDeDiamante,crisantemo])
 	
 	
 	albumLaFamilia = new Album("La Familia",[laFamilia],[17,06,1992],100000,89000)	 
@@ -51,13 +51,11 @@ describe "Tests" {
 	albumJustCrisantemo = new Album("Just Crisantemo",[crisantemo],[05,12,2007],28000,27500)
 		
 	
-	joaquin = new Musico(musicoDeGrupo,20,[albumLaFamilia])
-	lucia = new Musico(vocalistaPopular,70,[])
-	lucia.palabraInterpretaBien("familia")
-	soledad = new Musico(vocalistaPopular,55,[albumLaSole])
-	soledad.palabraInterpretaBien("amor")
-	kike = new Musico(musicoDeGrupo,60,[])	
-	luisalberto = new Musico( luisAlberto,0,[albumParaLosArboles,albumJustCrisantemo])
+	joaquin = new Musico( new MusicoDeGrupo(9),20,[albumLaFamilia])
+	lucia = new Musico(new VocalistaPopular("familia"),70,[])
+	soledad = new Musico(new VocalistaPopular("amor"),55,[albumLaSole])
+	kike = new Musico(new MusicoDeGrupo(7),60,[])	
+	luisalberto = new Musico( new MusicoComoLuisAlberto(),0,[albumParaLosArboles,albumJustCrisantemo])
 	
 	
  	presentacionLunaPark = new Presentacion()
@@ -77,17 +75,17 @@ test "2.Joaquín canta bien la cancion 'Cisne'" {
 
 }
 test "3.Lucía canta bien la cancion 'La Familia' como solista" {
- 	lucia.tipoDeMusico(vocalistaPopular)
+ 	lucia.tipoDeMusico(new VocalistaPopular("familia"))
 	assert.that(lucia.interpretasBien(laFamilia))
 
 }
 test "4.Lucía canta bien la cancion 'Cisne'como solista" {
- 	lucia.tipoDeMusico(vocalistaPopular)
+ 	lucia.tipoDeMusico(new VocalistaPopular("familia"))
 	assert.that(lucia.interpretasBien(cisne))
 
 }
 test "5.Lucía canta bien la cancion 'Cisne'como cantante de grupo (La cancion dura mas de 300s como es de grupo, la canta bien)" {
- 	lucia.tipoDeMusico(musicoDeGrupo)
+ 	lucia.tipoDeMusico(new VocalistaPopular("familia"))
 	assert.that(lucia.interpretasBien(cisne))
 
 }
@@ -121,29 +119,37 @@ test "7.La letra del mashup 'CrisantemoYAlmaDeDiamante' es 'Ven a mí con tu dulc
 	assert.equals(mashupCrisantemoYAlmaDeDiamante.letra(),"Ven a mí con tu dulce luz alma de diamante. Y aunque el sol se nuble después sos alma de diamante. Cielo o piel silencio o verdad sos alma de diamante. Por eso ven así con la humanidad alma de diamante Tócame junto a esta pared, yo quede por aquí... cuando no hubo más luz... quiero mirar a través de mi piel... Crisantemo, que se abrió... encuentra el camino hacia el cielo")
 
 }
-test "8.Luis Alberto se puede agregar al recital PDpalooza" {
-
+test "8.Luis Alberto se puede agregar al recital PDpalooza(esta bien)" {
+	const bloque = {
 	pdpalooza.sePresentan([luisalberto])
-	assert.that(true)
+	
+	}
+	assert.throwsException(bloque)
 
 }
 test "9. Joaquín como solista NO se puede agregar al recital PDpalooza" {
- 	joaquin.tipoDeMusico(vocalistaPopular)
-	pdpalooza.sePresentan([joaquin])
-	assert.that(true)
+ 	const bloque = {
+ 	joaquin.tipoDeMusico(new VocalistaPopular("familia"))
+	pdpalooza.sePresentan([joaquin])}
+	assert.throwsException(bloque)
 
 }
 test "10. Lucia como solista NO se puede agregar al recital PDpalooza" {
- 	lucia.tipoDeMusico(vocalistaPopular)
+ 	const bloque = {
+ 	lucia.tipoDeMusico(new VocalistaPopular("familia"))
 	pdpalooza.sePresentan([lucia])
-	assert.that(true)
+	
+	}
+	assert.throwsException(bloque)
 
 }
-test "11. Soledad con habilidad de 80 se puede agregar al recital PDpalooza" {
- 	soledad.tuHabilidad(80)
-	
-	pdpalooza.sePresentan([soledad])
-	assert.that(true)
+test "11. Soledad con habilidad de 80 se puede agregar al recital PDpalooza(No se puede agragr porq no interpreta bien la cancion por no tener la palabra amor)" {
+ 	
+	const bloque = {
+		soledad.tuHabilidad(80)
+		pdpalooza.sePresentan([soledad])
+	}
+	assert.throwsException(bloque)
 
 }
 }

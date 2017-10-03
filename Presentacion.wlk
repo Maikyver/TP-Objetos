@@ -18,25 +18,19 @@ object lunaPark{
 }
 
 object laTrastienda {
-	var plantaBaja = 400
-	var primerPiso = 300
+	method plantaBaja() = 400
+	method primerPiso() = 300
 	method capacidad (){
 		const date = new Date()
 		var capacidad
 		if(date.dayOfWeek()!=6){
-			capacidad= plantaBaja + primerPiso 
+			capacidad= self.plantaBaja() + self.primerPiso() 
 			}else{
-				capacidad = plantaBaja
+				capacidad = self.plantaBaja()
 		}
 	}
 	}
-object pdpalooza inherits Presentacion{
-	override method sePresentan(nuevasPersonas){
-		nuevasPersonas.forEach({persona => persona.puedePresentarse()
-			self.agregaMusico(persona)
-		} )
-	}
-} 
+
 
 	
 

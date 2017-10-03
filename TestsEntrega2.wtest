@@ -1,7 +1,7 @@
 import Musico.*
 import Presentacion.*
 import Cancion.*
-import Album.*
+import Album.*import Criterios.*
 
 describe "Tests" {
 	
@@ -41,11 +41,11 @@ describe "Tests" {
 	albumJustCrisantemo = new Album("Just Crisantemo",[crisantemo],[05,12,2007],28000,27500)
 	
 	
-	joaquin = new Musico(musicoDeGrupo,20,[albumLaFamilia])
-	lucia = new Musico(vocalistaPopular,70,[])
-	soledad = new Musico(vocalistaPopular,55,[albumLaSole])
-	kike = new Musico(musicoDeGrupo,60,[])
-	luisalberto = new Musico( luisAlberto,0,[albumParaLosArboles,albumJustCrisantemo])
+	joaquin = new Musico( new MusicoDeGrupo(9),20,[albumLaFamilia])
+	lucia = new Musico(new VocalistaPopular("familia"),70,[])
+	soledad = new Musico(new VocalistaPopular("amor"),55,[albumLaSole])
+	kike = new Musico(new MusicoDeGrupo(7),60,[])	
+	luisalberto = new Musico( new MusicoComoLuisAlberto(),0,[albumParaLosArboles,albumJustCrisantemo])
 	
 	
  	presentacionLunaPark = new Presentacion()
@@ -82,8 +82,7 @@ test "6.Crisantemo y alma de diamante contienen la palabra cielo"
 }
 /*test "7.Alguna cancion de luis alberto contiene la palabra pujante"
 {
-* 
-		assert.notThat(luisalberto.albumesPublicados().any( {album => album.cancionesConLaPalabra("pujante")}))
+		assert.that(luisalberto.albumesPublicados().max({album => album.cancionesConLaPalabra("pujante")}))
 } */
 
 test "8.La duracion de la obra de Kike dura 0 segundos"
@@ -100,15 +99,15 @@ test "10.La duracion de la obra de Luis Alberto dura 703 segundos"
 }
 test "11.La cancion mas larga del album para los arboles es alma de diamante"
 {
-		assert.equals(albumParaLosArboles.cancionMasLarga(),almaDeDiamante)
+		assert.equals(albumParaLosArboles.cancionMasLarga(tamanioPorLetra),almaDeDiamante)
 }
 test "12.La cancion mas larga del album la sole es eres"
 {
-		assert.equals(albumLaSole.cancionMasLarga(), eres)
+		assert.equals(albumLaSole.cancionMasLarga(tamanioPorLetra), eres)
 }
 test "13.La cancion mas larga del album especial la familia es la familia"
 {
-		assert.equals(albumLaFamilia.cancionMasLarga(),laFamilia)
+		assert.equals(albumLaFamilia.cancionMasLarga(tamanioPorLetra),laFamilia)
 }
 
 test "14.Luis Alberto la pegó"
