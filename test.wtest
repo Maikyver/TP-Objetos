@@ -27,8 +27,8 @@ describe "Tests" {
 	fixture{
 		
 	
-	joaquin = new Musico( new MusicoDeGrupo(5),20,[albumLaFamilia])
-	lucia = new Musico(new VocalistaPopular("familia"),70,[])
+	joaquin = new Musico( new Larguero(5,300),20,[albumLaFamilia])
+	lucia = new Musico(new Palabrero("familia"),70,[])
 	luisalberto = new Musico( new MusicoComoLuisAlberto(),0,[albumParaLosArboles,albumJustCrisantemo])
 	
 	
@@ -58,12 +58,12 @@ test "1.La habilidad de Joaquin en grupo es 25" {
 }
 test "2.La habilidad de Joaquin como solista es 20" {
 
- joaquin.tipoDeMusico(new VocalistaPopular("lala"))
+ joaquin.tipoDeMusico(new Palabrero("lala"))
 	assert.equals(joaquin.tuHabilidad(), 20)
 
 }
 test "3.La habilidad de Lucia en grupo es 50" {
-	lucia.tipoDeMusico(new MusicoDeGrupo(-20))
+	lucia.tipoDeMusico(new Larguero(-20,300))
 
 	assert.equals(lucia.tuHabilidad(), 50)
 

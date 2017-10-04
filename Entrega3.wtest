@@ -51,10 +51,10 @@ describe "Tests" {
 	albumJustCrisantemo = new Album("Just Crisantemo",[crisantemo],[05,12,2007],28000,27500)
 		
 	
-	joaquin = new Musico( new MusicoDeGrupo(9),20,[albumLaFamilia])
-	lucia = new Musico(new VocalistaPopular("familia"),70,[])
-	soledad = new Musico(new VocalistaPopular("amor"),55,[albumLaSole])
-	kike = new Musico(new MusicoDeGrupo(7),60,[])	
+	joaquin = new Musico( new Larguero(9,300),20,[albumLaFamilia])
+	lucia = new Musico(new Palabrero("familia"),70,[])
+	soledad = new Musico(new Palabrero("amor"),55,[albumLaSole])
+	kike = new Musico(new Larguero(7,300),60,[])	
 	luisalberto = new Musico( new MusicoComoLuisAlberto(),0,[albumParaLosArboles,albumJustCrisantemo])
 	
 	
@@ -75,17 +75,17 @@ test "2.Joaquín canta bien la cancion 'Cisne'" {
 
 }
 test "3.Lucía canta bien la cancion 'La Familia' como solista" {
- 	lucia.tipoDeMusico(new VocalistaPopular("familia"))
+ 	lucia.tipoDeMusico(new Palabrero("familia"))
 	assert.that(lucia.interpretasBien(laFamilia))
 
 }
 test "4.Lucía canta bien la cancion 'Cisne'como solista" {
- 	lucia.tipoDeMusico(new VocalistaPopular("familia"))
+ 	lucia.tipoDeMusico(new Palabrero("familia"))
 	assert.that(lucia.interpretasBien(cisne))
 
 }
 test "5.Lucía canta bien la cancion 'Cisne'como cantante de grupo (La cancion dura mas de 300s como es de grupo, la canta bien)" {
- 	lucia.tipoDeMusico(new VocalistaPopular("familia"))
+ 	lucia.tipoDeMusico(new Palabrero("familia"))
 	assert.that(lucia.interpretasBien(cisne))
 
 }
@@ -129,14 +129,14 @@ test "8.Luis Alberto se puede agregar al recital PDpalooza(esta bien)" {
 }
 test "9. Joaquín como solista NO se puede agregar al recital PDpalooza" {
  	const bloque = {
- 	joaquin.tipoDeMusico(new VocalistaPopular("familia"))
+ 	joaquin.tipoDeMusico(new Palabrero("familia"))
 	pdpalooza.sePresentan([joaquin])}
 	assert.throwsException(bloque)
 
 }
 test "10. Lucia como solista NO se puede agregar al recital PDpalooza" {
  	const bloque = {
- 	lucia.tipoDeMusico(new VocalistaPopular("familia"))
+ 	lucia.tipoDeMusico(new Palabrero("familia"))
 	pdpalooza.sePresentan([lucia])
 	
 	}

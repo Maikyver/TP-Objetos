@@ -27,8 +27,11 @@ class Musico {
 	return	
 		self.albumesPublicados().size()>=3||
 		self.habilidad()>60 ||
+		self.esDeTuAutoria(cancion)||
 		self.tipoDeMusico().interpretasBien(cancion)
 	}
+	
+	method esDeTuAutoria(cancion)= self.albumesPublicados().forEach({album => album.canciones(cancion)})
 	
 	method cobras (presentacion) { 
 		 self.tipoDeMusico().cobras(self)
@@ -54,7 +57,7 @@ class Musico {
 	
 	}
 	
-class VocalistaPopular {
+class Palabrero {
 	var palabra 
 	constructor(unaPalabra)
 	{
@@ -67,15 +70,21 @@ class VocalistaPopular {
 	
 	method interpretasBien(cancion) = cancion.contienePalabra(self.palabra())
 } 
-class MusicoDeGrupo{
-	 const puntosHabilidad 
-	constructor(unosPuntosHabilidad)
+class Larguero{
+	 const puntosHabilidad
+	 const duracion 
+	constructor(unosPuntosHabilidad,unaDuracion)
 	{
 		puntosHabilidad=unosPuntosHabilidad
+		duracion = unaDuracion
 	}
 	method puntosHabilidad()=puntosHabilidad 
 	method tuHabilidad(habilidad) = habilidad +  self.puntosHabilidad()
-	method interpretasBien(cancion) { return cancion.duracionCancion()>300}
+	method interpretasBien(cancion) { return cancion.duracionCancion()>duracion}
+}
+
+class Imparero inherits Larguero{
+	override method interpretasBien(cancion){return cancion.duracionCancion().odd()}	
 }
 
 class MusicoComoLuisAlberto {
