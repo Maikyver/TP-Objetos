@@ -1,4 +1,5 @@
 import Musico.*
+import Banda.*
 	class Presentacion{
 		
 		var sePresentan =[]
@@ -9,10 +10,11 @@ import Musico.*
 		method fechaPresentacion (dd,mm,aaaa) = new Date(dd,mm,aaaa)
 		method agregaMusico(unMusico){
 		self.getsePresentan().add(unMusico)
-	}
-		
- 	}
-
+		}
+		method magia() = self.getsePresentan().sum({musico => musico.habilidad()})
+		}
+	
+	
 object lunaPark{
 	method capacidad() = 9290
 }

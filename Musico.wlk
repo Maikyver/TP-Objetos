@@ -3,6 +3,7 @@ import Presentacion.*
 
 class Musico {
 	
+	var cancionesAInterpretar = []
 	var tipoDeMusico 
 	var habilidad = 0
 	var albumes = []
@@ -25,6 +26,8 @@ class Musico {
 		habilidad  = habilidadM
 	}
 	method tuHabilidad()=self.tipoDeMusico().tuHabilidad(self.habilidad())
+	
+	method cancionesAInterpretar(canciones) = cancionesAInterpretar.addall(canciones)
 
 	/*
 	method tipoDeCobro()= tipoDeCobro
@@ -50,20 +53,15 @@ class Musico {
 	method albumesPublicados() = albumes
 	method albumesPublicados(albumesP) =self.albumesPublicados().addAll(albumesP)
 	method sosMinimalista() = self.albumesPublicados().all({album => album.cacionesSonCortas()})
-
 	method cancionesContienen(palabra) = self.albumesPublicados().cancionesConLaPalabra(palabra)
-
 	method duracionObraCompleta() = self.albumesPublicados().sum({album => album.duracion()})
-
 	method cancionMasLarga() = self.albumesPublicados().filter({album => album.cancionMasLarga()})     
-
 	method laPegaste() = self.albumesPublicados().all({album => album.buenaVenta()})
 	method palabra(unaPalabra){self.tipoDeMusico().cambiarPalabra(unaPalabra)}
-	
-	
 	method esHabilidoso()= self.tuHabilidad()>70
-	
 	method publicoUnAlbum()=self.albumesPublicados().size()>=1
+	method cualesInterpretasBien(canciones){self.cancionesAInterpretar(canciones).filter({cancion => cancion.interpretasBien()})
+		return cancionesAInterpretar}
 	
 	}
 	
