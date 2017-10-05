@@ -1,15 +1,19 @@
 import Cancion.*
+import Presentacion.*
+
 class Musico {
 	
 	var tipoDeMusico 
 	var habilidad = 0
 	var albumes = []
+	//var tipoDeCobro
 	
-	constructor (unTipoDeMusico,unaHabilidad,unosAlbumes)
-	{
+	constructor (unTipoDeMusico,unaHabilidad,unosAlbumes//,unTipoDeCobro)
+	){
 		tipoDeMusico =unTipoDeMusico
 		habilidad = unaHabilidad
 		albumes = unosAlbumes
+		//tipoDeCobro = unTipoDeCobro
 	}
 	method tipoDeMusico() =tipoDeMusico
 	method tipoDeMusico(musico) {
@@ -22,6 +26,12 @@ class Musico {
 	}
 	method tuHabilidad()=self.tipoDeMusico().tuHabilidad(self.habilidad())
 
+	/*
+	method tipoDeCobro()= tipoDeCobro
+	method tipoDeCobro(musico){
+		tipoDeCobro = musico
+	}
+	*/
 	
 	method interpretasBien(cancion) {
 	return	
@@ -86,6 +96,12 @@ class Larguero{
 class Imparero inherits Larguero{
 	override method interpretasBien(cancion){return cancion.duracionCancion().odd()}	
 }
+
+//class CobroSegunCantidadArtistas{}
+
+//class CobroSegunCapacidad{}
+
+//class CobroSegunInflacion{}
 
 class MusicoComoLuisAlberto {
 
