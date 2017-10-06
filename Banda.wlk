@@ -13,7 +13,7 @@ class Banda {
 	
 	method tusIntegrantes()= integrantes
 	method tuRepresentante()= representante
-	method habilidadBanda() = self.tusIntegrantes().sum({musico => musico.habilidad()}) + self.habilidadBanda() * 0.1
+	method habilidad() = self.tusIntegrantes().sum({musico => musico.habilidad()}) + self.habilidad() * 0.1
 	method bandaCobra() = self.tusIntegrantes().sum({musico => musico.cobras()}) + self.tuRepresentante().cobras()
 	method puedenInterpretar(cancion) = self.tusIntegrantes().forEach({musico => musico.interpretasBien(cancion)})
 }
