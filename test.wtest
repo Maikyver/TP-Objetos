@@ -27,16 +27,13 @@ describe "Tests" {
 	fixture{
 		
 	
-	joaquin = new Musico( new Larguero(5,300),20,[albumLaFamilia])
-	lucia = new Musico(new Palabrero("familia"),70,[])
-	luisalberto = new Musico( new MusicoComoLuisAlberto(),0,[albumParaLosArboles,albumJustCrisantemo])
+	joaquin = new Musico( new Larguero(9,300),20,[albumLaFamilia],new CobroSegunCantidadArtistas(100))
+	lucia = new Musico(new Palabrero("familia"),70,[],new CobroSegunCapacidad(500,5000))
+	//luisalberto = new Musico( new MusicoComoLuisAlberto(),0,[albumParaLosArboles,albumJustCrisantemo],new CobroSegunCantidadArtistas(100))
 	
 	
- 	presentacionLunaPark = new Presentacion()
-	presentacionLunaPark.fechaPresentacion (20,04,2017)
-	
-	presentacionLaTrastienda = new Presentacion()
-	presentacionLaTrastienda.fechaPresentacion (15,11,2017)
+ 	presentacionLunaPark = new Presentacion(lunaPark, new Date(20,04,2017))
+	presentacionLaTrastienda = new Presentacion(laTrastienda, new Date(15,11,2017))
 	
 	albumLaFamilia = new Album("La Familia",[laFamilia],[17,06,1992],100000,8900)
 	albumParaLosArboles = new Album("Para los Arboles",[cisne,almaDeDiamante],[31,03,2003],50000,49000)

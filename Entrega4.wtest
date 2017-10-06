@@ -15,6 +15,9 @@ describe "Tests" {
 	const kike
 	//const luisalberto
 	
+	const pimpisole
+	const elEternoRetorno
+	
 	const presentacionLunaPark 
 	const presentacionLaTrastienda
 	const presentacionprimDAmix 
@@ -59,13 +62,15 @@ describe "Tests" {
 	kike = new Musico(new Imparero(),60,[],new CobroSegunInflacion(400,new Date(08,01,2018),0.5))	
 	//luisalberto = new Musico( new MusicoComoLuisAlberto(),0,[albumParaLosArboles,albumJustCrisantemo],new CobroSegunCantidadArtistas(100))
 	
+	pimpisole = new Banda("Pimpisole",[soledad,joaquin,lucia],new Representante("Cachorro",1982))
+	elEternoRetorno = new Banda("El eterno retorno",[kike,luisalberto],new Representante("Felix",500))
 	
  	presentacionLunaPark = new Presentacion(lunaPark, new Date(20,04,2017))
 	presentacionLaTrastienda = new Presentacion(laTrastienda, new Date(15,11,2017))
 	presentacionprimDAmix = new Presentacion(primDAmix, new Date(30,06,2017))
-	//FALTA GREGARLE LAS BANDAS A LAS PRESENTACIONES
-	presentacionprimDAmix.sePresentan([joaquin,soledad])
+	presentacionprimDAmix.sePresentan([joaquin,soledad,elEternoRetorno])
 	presentacionlaCueva = new Presentacion(laCueva, new Date(05,01,2018))
+	presentacionlaCueva.sePresentan([pimpisole])
 
 	
 }
@@ -83,7 +88,7 @@ test "2.Joaquín siendo imparero NO canta bien la cancion 'Cisne'" {
 	assert.notThat(joaquin.interpretasBien(cisne))
 
 }
-test "3.Kike sindo palabrero (de), del conjunto de canciones [“Corazón americano”, “Eres”, “La familia”, “Cisne”, “Alma de diamante”, “Canción de Alicia en el país” y “Crisantemo”] canta bien [“Corazón americano”, “Eres”, “Alma de diamante” y “Crisantemo”]" {
+test "3.Kike seindo palabrero (de), del conjunto de canciones [“Corazón americano”, “Eres”, “La familia”, “Cisne”, “Alma de diamante”, “Canción de Alicia en el país” y “Crisantemo”] canta bien [“Corazón americano”, “Eres”, “Alma de diamante” y “Crisantemo”]" {
 	const canciones =[corazonAmericano,eres,laFamilia,cisne,almaDeDiamante,cancionDeAliciaEnElPais,crisantemo]
 
 	kike.tipoDeMusico(new Palabrero("de"))
@@ -124,14 +129,32 @@ test "9.Joaquin cobra  en Prix D´Ami" {
 
 }
 test "10.Joaquin cobra por capacidad en Prix D´Ami" {
-	joaquin.tipoDeCobro(new CobroSegunCapacidad(2500,1300))
+	joaquin.tipoDeCobro(new CobroSegunCapacidad(2500,13000))
 	assert.equals(joaquin.cobras(presentacionprimDAmix),2400)
 
 }
 test "11.Joaquin cobra por capacidad en La Cueva" {
-	joaquin.tipoDeCobro(new CobroSegunCapacidad(2500,1300))
+	joaquin.tipoDeCobro(new CobroSegunCapacidad(2500,13000))
 	assert.equals(joaquin.cobras(presentacionlaCueva),2500)
-
+}
+test "12.El grupo El eterno retorno cobra 5500 pesos por su presentacion en Prix D´Ami"{
+	assert.equals(elEternoRetorno.bandaCobra(),5500)
+}
+test "13.El productor del show de La Cueva debe pagar 5532 pesos"{
+	assert.equals(presentacionlaCueva.sePresentan().forEach({musico => musico.cobras()}),5532)
+}
+test "14.La habilidad del grupo El eterno retorno es de 154"{
+	assert.equals(elEternoRetorno.habilidad(),154)
+	
+}
+test "15.La magia del show en Prix D´Ami es de 234"{
+	assert.equals(presentacionprimDAmix.magia(),234)
+}
+test "16.La banda Pimpisole no puede interpretar bien la cancion Cisne"{
+	assert.notThat(pimpisole.puedenInterpretar(cisne))
+}
+test "17.La banda El eterno retorno puede interpretar bien la cancion Crisantemo"{
+	assert.that(elEternoRetorno.puedenInterpretar(crisantemo))
 }
 /* 
 test "Excepciones" {
