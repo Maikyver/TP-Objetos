@@ -39,12 +39,12 @@ class Musico {
 	method interpretasBien(cancion) {
 	return	
 		self.albumesPublicados().size()>=3||
-		self.habilidad()>60 ||
+		self.tuHabilidad()>60 ||
 		self.esDeTuAutoria(cancion)||
 		self.tipoDeMusico().interpretasBien(cancion)
 	}
 	
-	method esDeTuAutoria(cancion)= self.albumesPublicados().forEach({album => album.canciones(cancion)})
+	method esDeTuAutoria(cancion)= self.albumesPublicados().any({album => album.contenesCancion(cancion)})
 	
 	method cobras (presentacion) { 
 		 self.tipoDeMusico().cobras(self)
@@ -87,7 +87,7 @@ class Larguero{
 		duracion = unaDuracion
 	}
 	method puntosHabilidad()=puntosHabilidad 
-	method tuHabilidad(habilidad) = habilidad +  self.puntosHabilidad()
+	method tuHabilidad(habilidad) {return habilidad +  self.puntosHabilidad()}
 	method interpretasBien(cancion) { return cancion.duracionCancion()>duracion}
 }
 

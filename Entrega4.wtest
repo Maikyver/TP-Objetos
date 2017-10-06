@@ -64,86 +64,52 @@ describe "Tests" {
 	presentacionLaTrastienda.fechaPresentacion (15,11,2017)
 	
 }
-test "1.Joaquín canta bien la canción 'La Familia'" {
+test "1.Joaquín siendo imparero canta bien la canción 'La Familia'" {
 
+	joaquin.tipoDeMusico(new Imparero())
 	assert.that(joaquin.interpretasBien(laFamilia))
 
-} 
-test "2.Joaquín canta bien la cancion 'Cisne'" {
 
-	assert.that(joaquin.interpretasBien(cisne))
 
 }
-test "3.Lucía canta bien la cancion 'La Familia' como solista" {
- 	lucia.tipoDeMusico(new Palabrero("familia"))
-	assert.that(lucia.interpretasBien(laFamilia))
+test "2.Joaquín siendo imparero NO canta bien la cancion 'Cisne'" {
+
+	joaquin.tipoDeMusico(new Imparero())
+	assert.notThat(joaquin.interpretasBien(cisne))
 
 }
-test "4.Lucía canta bien la cancion 'Cisne'como solista" {
- 	lucia.tipoDeMusico(new Palabrero("familia"))
-	assert.that(lucia.interpretasBien(cisne))
+test "3.Kike sindo palabrero (de), del conjunto de canciones [“Corazón americano”, “Eres”, “La familia”, “Cisne”, “Alma de diamante”, “Canción de Alicia en el país” y “Crisantemo”] canta bien [“Corazón americano”, “Eres”, “Alma de diamante” y “Crisantemo”]" {
+	const canciones =[corazonAmericano,eres,laFamilia,cisne,almaDeDiamante,cancionDeAliciaEnElPais,crisantemo]
+	const cancionesVerifica =[]
+	kike.tipoDeMusico(new Palabrero("de"))
+	canciones.forEach({cancion=> if(kike.interpretasBien(cancion)) cancionesVerifica.add(cancion)})
+	assert.equals(cancionesVerifica,[corazonAmericano,eres,almaDeDiamante,crisantemo])
 
 }
-test "5.Lucía canta bien la cancion 'Cisne'como cantante de grupo (La cancion dura mas de 300s como es de grupo, la canta bien)" {
- 	lucia.tipoDeMusico(new Palabrero("familia"))
-	assert.that(lucia.interpretasBien(cisne))
+test "4.Joaquin del conjunto de canciones [“Corazón americano”, “Eres”, “La familia”, “Cisne”, “Alma de diamante”, “Canción de Alicia en el país” y “Crisantemo”] canta bien [“La Familia” , “Cisne” y “Canción de Alicia en el país”]" {
+	const canciones =[corazonAmericano,eres,laFamilia,cisne,almaDeDiamante,cancionDeAliciaEnElPais,crisantemo]
+	const cancionesVerifica =[]
+	canciones.forEach({cancion=> if(joaquin.interpretasBien(cancion)) cancionesVerifica.add(cancion)})
+	assert.equals(cancionesVerifica,[laFamilia,cisne,cancionDeAliciaEnElPais])
 
 }
-test "6.Luis Alberto canta bien la canción 'La Familia'" {
-
-	assert.that(luisalberto.interpretasBien(laFamilia))
+test "5.Joaquin siendo palabrero (xilofón), del conjunto de canciones [“Corazón americano”, “Eres”, “La familia”, “Cisne”, “Alma de diamante”, “Canción de Alicia en el país” y “Crisantemo”] canta bien solo “La Familia” " {
+	const canciones =[corazonAmericano,eres,laFamilia,cisne,almaDeDiamante,cancionDeAliciaEnElPais,crisantemo]
+	const cancionesVerifica =[]
+	joaquin.tipoDeMusico(new Palabrero("xilofón"))
+	canciones.forEach({cancion=> if(joaquin.interpretasBien(cancion)) cancionesVerifica.add(cancion)})
+	assert.equals(cancionesVerifica,[laFamilia])
+}
+test "6.Lucia del conjunto de canciones [“Corazón americano”, “Eres”, “La familia”, “Cisne”, “Alma de diamante”, “Canción de Alicia en el país” y “Crisantemo”] canta bien todas" {
+	const canciones =[corazonAmericano,eres,laFamilia,cisne,almaDeDiamante,cancionDeAliciaEnElPais,crisantemo]
+	const cancionesVerifica =[]
+	lucia.tipoDeMusico(new Imparero())
+	canciones.forEach({cancion=> if(lucia.interpretasBien(cancion)) cancionesVerifica.add(cancion)})
+	assert.equals(cancionesVerifica,canciones)
 
 }
-test "7.Luis Alberto canta bien la canción 'Cisne'" {
-
-	assert.that(luisalberto.interpretasBien(cisne))
-
-}
-test "4.La duración del remix 'La Familia' es de 792" {
-
-	assert.equals(remixLaFamilia.duracionCancion(),792)
-
-}
-test "5.La letra del remix 'La Familia' es 'mueve tu cuelpo baby Quiero brindar por mi gente sencilla, por el amor brindo por la familia yeah oh yeah'" {
-
-	assert.equals(remixLaFamilia.letra(),"mueve tu cuelpo baby Quiero brindar por mi gente sencilla, por el amor brindo por la familia yeah oh yeah")
-
-}
-test "6.La duración del mashup 'CrisantemoYAlmaDeDiamante' es de 216" {
-
-	assert.equals(mashupCrisantemoYAlmaDeDiamante.duracionCancion(),216)
-
-}
-test "7.La letra del mashup 'CrisantemoYAlmaDeDiamante' es 'Ven a mí con tu dulce luz alma de diamante. Y aunque el sol se nuble después sos alma de diamante. Cielo o piel silencio o verdad sos alma de diamante. Por eso ven así con la humanidad alma de diamante Tócame junto a esta pared, yo quede por aquí... cuando no hubo más luz... quiero mirar a través de mi piel... Crisantemo, que se abrió... encuentra el camino hacia el cielo'" {
-
-	assert.equals(mashupCrisantemoYAlmaDeDiamante.letra(),"Ven a mí con tu dulce luz alma de diamante. Y aunque el sol se nuble después sos alma de diamante. Cielo o piel silencio o verdad sos alma de diamante. Por eso ven así con la humanidad alma de diamante Tócame junto a esta pared, yo quede por aquí... cuando no hubo más luz... quiero mirar a través de mi piel... Crisantemo, que se abrió... encuentra el camino hacia el cielo")
-
-}
-test "8.Luis Alberto se puede agregar al recital PDpalooza(esta bien)" {
-	const bloque = {
-	pdpalooza.sePresentan([luisalberto])
-	
-	}
-	assert.throwsException(bloque)
-
-}
-test "9. Joaquín como solista NO se puede agregar al recital PDpalooza" {
- 	const bloque = {
- 	joaquin.tipoDeMusico(new Palabrero("familia"))
-	pdpalooza.sePresentan([joaquin])}
-	assert.throwsException(bloque)
-
-}
-test "10. Lucia como solista NO se puede agregar al recital PDpalooza" {
- 	const bloque = {
- 	lucia.tipoDeMusico(new Palabrero("familia"))
-	pdpalooza.sePresentan([lucia])
-	
-	}
-	assert.throwsException(bloque)
-
-}
-test "11. Soledad con habilidad de 80 se puede agregar al recital PDpalooza" {
+/* 
+test "Excepciones" {
  	
 	const bloque = {
 		soledad.tuHabilidad(80)
@@ -151,5 +117,5 @@ test "11. Soledad con habilidad de 80 se puede agregar al recital PDpalooza" {
 	}
 	assert.throwsException(bloque)
 
-}
+}*/
 }
