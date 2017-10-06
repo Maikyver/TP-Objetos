@@ -4,35 +4,45 @@ import Banda.*
 		
 		var sePresentan =[]
 		var lugar
-		method sePresentan(nuevasPersonas) {sePresentan = nuevasPersonas}
-		method getsePresentan() = sePresentan
-		method lugar (lugarPresentacion) {lugar = lugarPresentacion}
-		method fechaPresentacion (dd,mm,aaaa) = new Date(dd,mm,aaaa)
-		method agregaMusico(unMusico){
-		self.getsePresentan().add(unMusico)
+		var fecha
+		constructor (unLugar,unaFecha){
+			lugar=unLugar
+			fecha=unaFecha
 		}
-		method magia() = self.getsePresentan().sum({musico => musico.habilidad()})
+		
+		method sePresentan(nuevasPersonas) {self.sePresentan().addAll(nuevasPersonas)}
+		method sePresentan() = sePresentan
+		method fecha(nuevaFecha){fecha= nuevaFecha}
+		method fecha()=fecha
+		method lugar(nuevoLugar){lugar= nuevoLugar}
+		method lugar()=lugar
+		method agregaMusico(unMusico){self.sePresentan().add(unMusico)}
+		method magia() = self.sePresentan().sum({musico => musico.habilidad()})
 		}
 	
 	
 object lunaPark{
+	method capacidad(fecha) = self.capacidad()
 	method capacidad() = 9290
 }
 
-object laTrastienda {
+object laTrastienda{
 	method plantaBaja() = 400
 	method primerPiso() = 300
-	method capacidad (){
-		const date = new Date()
-		var capacidad
-		if(date.dayOfWeek()!=6){
-			capacidad= self.plantaBaja() + self.primerPiso() 
-			}else{
-				capacidad = self.plantaBaja()
+	method capacidad (fecha){
+		if(fecha.dayOfWeek()!=6) 
+			return self.plantaBaja() + self.primerPiso() 
+		else return self.plantaBaja()
 		}
 	}
-	}
-
+	
+object primDAmix{
+	method capacidad(fecha) = self.capacidad()
+	method capacidad() = 150
+}object laCueva{
+	method capacidad(fecha) = self.capacidad()
+	method capacidad() = 14000
+}
 
 	
 

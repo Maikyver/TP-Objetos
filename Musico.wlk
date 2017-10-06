@@ -2,19 +2,18 @@ import Cancion.*
 import Presentacion.*
 
 class Musico {
-	
-	var cancionesAInterpretar = []
+
 	var tipoDeMusico 
 	var habilidad = 0
 	var albumes = []
-	//var tipoDeCobro
+	var tipoDeCobro
 	
-	constructor (unTipoDeMusico,unaHabilidad,unosAlbumes//,unTipoDeCobro)
-	){
+	constructor (unTipoDeMusico,unaHabilidad,unosAlbumes,unTipoDeCobro)
+	{
 		tipoDeMusico =unTipoDeMusico
 		habilidad = unaHabilidad
 		albumes = unosAlbumes
-		//tipoDeCobro = unTipoDeCobro
+		tipoDeCobro = unTipoDeCobro
 	}
 	method tipoDeMusico() =tipoDeMusico
 	method tipoDeMusico(musico) {
@@ -26,15 +25,12 @@ class Musico {
 		habilidad  = habilidadM
 	}
 	method tuHabilidad()=self.tipoDeMusico().tuHabilidad(self.habilidad())
-	
-	method cancionesAInterpretar(canciones) = cancionesAInterpretar.addall(canciones)
 
-	/*
+
 	method tipoDeCobro()= tipoDeCobro
 	method tipoDeCobro(musico){
 		tipoDeCobro = musico
 	}
-	*/
 	
 	method interpretasBien(cancion) {
 	return	
@@ -47,7 +43,7 @@ class Musico {
 	method esDeTuAutoria(cancion)= self.albumesPublicados().any({album => album.contenesCancion(cancion)})
 	
 	method cobras (presentacion) { 
-		 self.tipoDeMusico().cobras(self)
+		 return self.tipoDeCobro().cobras(presentacion)
 		}
 	
 	method albumesPublicados() = albumes
@@ -60,9 +56,8 @@ class Musico {
 	method palabra(unaPalabra){self.tipoDeMusico().cambiarPalabra(unaPalabra)}
 	method esHabilidoso()= self.tuHabilidad()>70
 	method publicoUnAlbum()=self.albumesPublicados().size()>=1
-	method cualesInterpretasBien(canciones){self.cancionesAInterpretar(canciones).filter({cancion => cancion.interpretasBien()})
-		return cancionesAInterpretar}
-	
+	method cualesInterpretasBien(canciones)=canciones.filter({cancion => self.interpretasBien(cancion)})
+
 	}
 	
 class Palabrero {
@@ -95,11 +90,51 @@ class Imparero inherits Larguero{
 	override method interpretasBien(cancion){return cancion.duracionCancion().odd()}	
 }
 
-//class CobroSegunCantidadArtistas{}
+class CobroSegunCantidadArtistas{
+	var cobroSolo
+	constructor(unCobroSolo)
+	{
+		cobroSolo=unCobroSolo
+	}
+	method cobro()=cobroSolo
+	method cobro(nuevoCobroSolo){cobroSolo = nuevoCobroSolo}
+	method cobras(presentacion){if (presentacion.sePresentan().equals([self])) return self.cobro() else return self.cobro()/2}
+	
+}
 
-//class CobroSegunCapacidad{}
+class CobroSegunCapacidad{
+	var cobro
+	var cantPersonas
+	constructor(unCobro,unaCantPersonas)
+	{
+		cobro=unCobro
+		cantPersonas=unaCantPersonas
+	}
+	method cobro()=cobro
+	method cobro(nuevoCobro){cobro = nuevoCobro}
+	method cantPersonas()=cantPersonas
+	method cantPersonas(unaCantPersonas){cantPersonas = unaCantPersonas}
+	method cobras(presentacion){if (presentacion.lugar().capacidad()>self.cantPersonas()) return self.cobro() else return self.cobro()-100}
+}
 
-//class CobroSegunInflacion{}
+class CobroSegunInflacion{
+	var cobro
+	var fecha
+	var porcentajeAdicional
+	constructor(unCobro,unaFecha,unPorcentajeAdicional)
+	{
+		cobro=unCobro
+		fecha=unaFecha
+		porcentajeAdicional =unPorcentajeAdicional
+	}
+	method cobro()=cobro
+	method cobro(nuevoCobro){cobro = nuevoCobro}
+	method fecha()=fecha
+	method fecha(unaFecha){fecha = unaFecha}
+	method porcentajeAdicional()=porcentajeAdicional
+	method porcentajeAdicional(unPorcentajeAdicional){porcentajeAdicional = unPorcentajeAdicional}
+	method cobras(presentacion){if (presentacion.fecha()>self.fecha()) return self.cobro()*(1+self.porcentajeAdicional()) else return self.cobro()}
+}
 
 class MusicoComoLuisAlberto {
 
@@ -117,7 +152,7 @@ class MusicoComoLuisAlberto {
 	method interpretasBien(cancion) = true
 	
 	method cobras (presentacion) {
-		if(presentacion.fechaPresentacion() < 20170901)
+		if(presentacion.fecha() < 20170901)
 			return 1000
 		else
 		return 1200

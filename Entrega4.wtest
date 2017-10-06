@@ -13,10 +13,12 @@ describe "Tests" {
 	const lucia
 	const soledad
 	const kike
-	const luisalberto
+	//const luisalberto
 	
 	const presentacionLunaPark 
 	const presentacionLaTrastienda
+	const presentacionprimDAmix 
+	const presentacionlaCueva
 	
 	const albumLaFamilia 
 	const albumLaSole
@@ -51,17 +53,20 @@ describe "Tests" {
 	albumJustCrisantemo = new Album("Just Crisantemo",[crisantemo],[05,12,2007],28000,27500)
 		
 	
-	joaquin = new Musico( new Larguero(9,300),20,[albumLaFamilia])
-	lucia = new Musico(new Palabrero("familia"),70,[])
-	soledad = new Musico(new Palabrero("amor"),55,[albumLaSole])
-	kike = new Musico(new Larguero(7,300),60,[])	
-	luisalberto = new Musico( new MusicoComoLuisAlberto(),0,[albumParaLosArboles,albumJustCrisantemo])
+	joaquin = new Musico( new Larguero(9,300),20,[albumLaFamilia],new CobroSegunCantidadArtistas(100))
+	lucia = new Musico(new Palabrero("familia"),70,[],new CobroSegunCapacidad(500,5000))
+	soledad = new Musico(new Palabrero("amor"),55,[albumLaSole],new CobroSegunCantidadArtistas(6000))
+	kike = new Musico(new Imparero(),60,[],new CobroSegunInflacion(400,new Date(08,01,2018),0.5))	
+	//luisalberto = new Musico( new MusicoComoLuisAlberto(),0,[albumParaLosArboles,albumJustCrisantemo],new CobroSegunCantidadArtistas(100))
 	
 	
- 	presentacionLunaPark = new Presentacion()
-	presentacionLunaPark.fechaPresentacion (20,04,2017)
-	presentacionLaTrastienda = new Presentacion()
-	presentacionLaTrastienda.fechaPresentacion (15,11,2017)
+ 	presentacionLunaPark = new Presentacion(lunaPark, new Date(20,04,2017))
+	presentacionLaTrastienda = new Presentacion(laTrastienda, new Date(15,11,2017))
+	presentacionprimDAmix = new Presentacion(primDAmix, new Date(30,06,2017))
+	//FALTA GREGARLE LAS BANDAS A LAS PRESENTACIONES
+	presentacionprimDAmix.sePresentan([joaquin,soledad])
+	presentacionlaCueva = new Presentacion(laCueva, new Date(05,01,2018))
+
 	
 }
 test "1.Joaquín siendo imparero canta bien la canción 'La Familia'" {
@@ -80,32 +85,52 @@ test "2.Joaquín siendo imparero NO canta bien la cancion 'Cisne'" {
 }
 test "3.Kike sindo palabrero (de), del conjunto de canciones [“Corazón americano”, “Eres”, “La familia”, “Cisne”, “Alma de diamante”, “Canción de Alicia en el país” y “Crisantemo”] canta bien [“Corazón americano”, “Eres”, “Alma de diamante” y “Crisantemo”]" {
 	const canciones =[corazonAmericano,eres,laFamilia,cisne,almaDeDiamante,cancionDeAliciaEnElPais,crisantemo]
-	const cancionesVerifica =[]
+
 	kike.tipoDeMusico(new Palabrero("de"))
-	canciones.forEach({cancion=> if(kike.interpretasBien(cancion)) cancionesVerifica.add(cancion)})
-	assert.equals(cancionesVerifica,[corazonAmericano,eres,almaDeDiamante,crisantemo])
+	assert.equals(kike.cualesInterpretasBien(canciones),[corazonAmericano,eres,almaDeDiamante,crisantemo])
 
 }
 test "4.Joaquin del conjunto de canciones [“Corazón americano”, “Eres”, “La familia”, “Cisne”, “Alma de diamante”, “Canción de Alicia en el país” y “Crisantemo”] canta bien [“La Familia” , “Cisne” y “Canción de Alicia en el país”]" {
 	const canciones =[corazonAmericano,eres,laFamilia,cisne,almaDeDiamante,cancionDeAliciaEnElPais,crisantemo]
-	const cancionesVerifica =[]
-	canciones.forEach({cancion=> if(joaquin.interpretasBien(cancion)) cancionesVerifica.add(cancion)})
-	assert.equals(cancionesVerifica,[laFamilia,cisne,cancionDeAliciaEnElPais])
 
+	assert.equals(joaquin.cualesInterpretasBien(canciones),[laFamilia,cisne,cancionDeAliciaEnElPais])
 }
 test "5.Joaquin siendo palabrero (xilofón), del conjunto de canciones [“Corazón americano”, “Eres”, “La familia”, “Cisne”, “Alma de diamante”, “Canción de Alicia en el país” y “Crisantemo”] canta bien solo “La Familia” " {
 	const canciones =[corazonAmericano,eres,laFamilia,cisne,almaDeDiamante,cancionDeAliciaEnElPais,crisantemo]
-	const cancionesVerifica =[]
+
 	joaquin.tipoDeMusico(new Palabrero("xilofón"))
-	canciones.forEach({cancion=> if(joaquin.interpretasBien(cancion)) cancionesVerifica.add(cancion)})
-	assert.equals(cancionesVerifica,[laFamilia])
+	assert.equals(joaquin.cualesInterpretasBien(canciones),[laFamilia])
 }
 test "6.Lucia del conjunto de canciones [“Corazón americano”, “Eres”, “La familia”, “Cisne”, “Alma de diamante”, “Canción de Alicia en el país” y “Crisantemo”] canta bien todas" {
 	const canciones =[corazonAmericano,eres,laFamilia,cisne,almaDeDiamante,cancionDeAliciaEnElPais,crisantemo]
-	const cancionesVerifica =[]
 	lucia.tipoDeMusico(new Imparero())
-	canciones.forEach({cancion=> if(lucia.interpretasBien(cancion)) cancionesVerifica.add(cancion)})
-	assert.equals(cancionesVerifica,canciones)
+	
+	assert.equals(lucia.cualesInterpretasBien(canciones),canciones)
+
+}
+test "7.Joaquin cobra por expctativa inflenciaria en Prix D´Ami" {
+	joaquin.tipoDeCobro(new CobroSegunInflacion(1000,new Date(01,02,2017),0.2))
+	assert.equals(joaquin.cobras(presentacionprimDAmix),1200)
+
+}
+test "8.Joaquin cobra por expctativa inflenciaria en Prix D´Ami" {
+	joaquin.tipoDeCobro(new CobroSegunInflacion(1000,new Date(01,02,2017),0.2))
+	presentacionprimDAmix.fecha(new Date(24,01,2017))
+	assert.equals(joaquin.cobras(presentacionprimDAmix),1000)
+
+}
+test "9.Joaquin cobra  en Prix D´Ami" {
+	assert.equals(joaquin.cobras(presentacionprimDAmix),50)
+
+}
+test "10.Joaquin cobra por capacidad en Prix D´Ami" {
+	joaquin.tipoDeCobro(new CobroSegunCapacidad(2500,1300))
+	assert.equals(joaquin.cobras(presentacionprimDAmix),2400)
+
+}
+test "11.Joaquin cobra por capacidad en La Cueva" {
+	joaquin.tipoDeCobro(new CobroSegunCapacidad(2500,1300))
+	assert.equals(joaquin.cobras(presentacionlaCueva),2500)
 
 }
 /* 
