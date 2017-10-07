@@ -29,7 +29,7 @@ describe "Tests" {
 	
 	joaquin = new Musico( new Larguero(9,300),20,[albumLaFamilia],new CobroSegunCantidadArtistas(100))
 	lucia = new Musico(new Palabrero("familia"),70,[],new CobroSegunCapacidad(500,5000))
-	//luisalberto = new Musico( new MusicoComoLuisAlberto(),0,[albumParaLosArboles,albumJustCrisantemo],new CobroSegunCantidadArtistas(100))
+	luisalberto = new Musico( new MusicoComoLuisAlberto(),0,[albumParaLosArboles,albumJustCrisantemo],new CobroSegunCantidadArtistas(100))
 	
 	
  	presentacionLunaPark = new Presentacion(lunaPark, new Date(20,04,2017))
