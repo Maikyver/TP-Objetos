@@ -74,7 +74,7 @@ class Palabrero {
 	method interpretasBien(cancion) = cancion.contienePalabra(self.palabra())
 } 
 class Larguero{
-	 const puntosHabilidad
+	 const puntosHabilidad 
 	 const duracion 
 	constructor(unosPuntosHabilidad,unaDuracion)
 	{
@@ -87,6 +87,7 @@ class Larguero{
 }
 
 class Imparero inherits Larguero{
+	override method tuHabilidad(habilidad) = habilidad
 	override method interpretasBien(cancion){return cancion.duracionCancion().odd()}	
 }
 
@@ -152,7 +153,8 @@ class MusicoComoLuisAlberto {
 	method interpretasBien(cancion) = true
 	
 	method cobras (presentacion) {
-		if(presentacion.fecha() < 20170901)
+		const fecha = new Date(01,09,2017)
+		if(presentacion.fecha() < fecha)
 			return 1000
 		else
 		return 1200

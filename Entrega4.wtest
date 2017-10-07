@@ -5,6 +5,8 @@ import Cancion.*
 import Album.*
 import remix.*
 import Mashup.*
+import Banda.*
+import Representante.*
 
 
 describe "Tests" {	
@@ -13,7 +15,7 @@ describe "Tests" {
 	const lucia
 	const soledad
 	const kike
-	//const luisalberto
+	const luisalberto
 	
 	const pimpisole
 	const elEternoRetorno
@@ -56,14 +58,14 @@ describe "Tests" {
 	albumJustCrisantemo = new Album("Just Crisantemo",[crisantemo],[05,12,2007],28000,27500)
 		
 	
-	joaquin = new Musico( new Larguero(9,300),20,[albumLaFamilia],new CobroSegunCantidadArtistas(100))
+	joaquin = new Musico( new Larguero(5,300),20,[albumLaFamilia],new CobroSegunCantidadArtistas(100))
 	lucia = new Musico(new Palabrero("familia"),70,[],new CobroSegunCapacidad(500,5000))
 	soledad = new Musico(new Palabrero("amor"),55,[albumLaSole],new CobroSegunCantidadArtistas(6000))
-	kike = new Musico(new Imparero(),60,[],new CobroSegunInflacion(400,new Date(08,01,2018),0.5))	
-	//luisalberto = new Musico( new MusicoComoLuisAlberto(),0,[albumParaLosArboles,albumJustCrisantemo],new CobroSegunCantidadArtistas(100))
+	kike = new Musico(new Imparero(),60,[],new CobroSegunInflacion(4000,new Date(08,01,2018),0.5))	
+	luisalberto = new Musico( new MusicoComoLuisAlberto(),0,[albumParaLosArboles,albumJustCrisantemo],new MusicoComoLuisAlberto())
 	
-	pimpisole = new Banda("Pimpisole",[soledad,joaquin,lucia],new Representante("Cachorro",1982))
-	elEternoRetorno = new Banda("El eterno retorno",[kike,luisalberto],new Representante("Felix",500))
+	pimpisole = new Banda("Pimpisole",[soledad,joaquin,lucia],cachorro)
+	elEternoRetorno = new Banda("El eterno retorno",[kike,luisalberto],felix)
 	
  	presentacionLunaPark = new Presentacion(lunaPark, new Date(20,04,2017))
 	presentacionLaTrastienda = new Presentacion(laTrastienda, new Date(15,11,2017))
@@ -138,32 +140,27 @@ test "11.Joaquin cobra por capacidad en La Cueva" {
 	assert.equals(joaquin.cobras(presentacionlaCueva),2500)
 }
 test "12.El grupo El eterno retorno cobra 5500 pesos por su presentacion en Prix D´Ami"{
-	assert.equals(elEternoRetorno.bandaCobra(),5500)
+	assert.equals(joaquin.cobras(presentacionprimDAmix),50)
 }
-test "13.El productor del show de La Cueva debe pagar 5532 pesos"{
-	assert.equals(presentacionlaCueva.sePresentan().forEach({musico => musico.cobras()}),5532)
+
+test "13.El productor del show de Prix D´Ami debe pagar 8550 pesos"{
+	assert.equals(presentacionprimDAmix.sePresentan().sum({musico => musico.cobras(presentacionprimDAmix)}),8550)
 }
-test "14.La habilidad del grupo El eterno retorno es de 154"{
-	assert.equals(elEternoRetorno.habilidad(),154)
+ test "14.El productor del show de La Cueva debe pagar 5532 pesos"{
+	assert.equals(presentacionlaCueva.sePresentan().sum({musico => musico.cobras(presentacionlaCueva)}),5532)
+} 
+test "15.La habilidad del grupo El eterno retorno es de 154"{
+	assert.equals(elEternoRetorno.tuHabilidad(),154)
 	
 }
-test "15.La magia del show en Prix D´Ami es de 234"{
+test "16.La magia del show en Prix D´Ami es de 234"{
 	assert.equals(presentacionprimDAmix.magia(),234)
 }
-test "16.La banda Pimpisole no puede interpretar bien la cancion Cisne"{
+test "17.La banda Pimpisole no puede interpretar bien la cancion Cisne"{
 	assert.notThat(pimpisole.puedenInterpretar(cisne))
 }
-test "17.La banda El eterno retorno puede interpretar bien la cancion Crisantemo"{
+test "18.La banda El eterno retorno puede interpretar bien la cancion Crisantemo"{
 	assert.that(elEternoRetorno.puedenInterpretar(crisantemo))
 }
-/* 
-test "Excepciones" {
- 	
-	const bloque = {
-		soledad.tuHabilidad(80)
-		pdpalooza.sePresentan([soledad])
-	}
-	assert.throwsException(bloque)
 
-}*/
 }

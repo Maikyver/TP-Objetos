@@ -55,7 +55,7 @@ describe "Tests" {
 	lucia = new Musico(new Palabrero("familia"),70,[],new CobroSegunCapacidad(500,5000))
 	soledad = new Musico(new Palabrero("amor"),55,[albumLaSole],new CobroSegunCantidadArtistas(6000))
 	kike = new Musico(new Imparero(),60,[],new CobroSegunInflacion(400,new Date(08,01,2018),0.5))	
-	//luisalberto = new Musico( new MusicoComoLuisAlberto(),0,[albumParaLosArboles,albumJustCrisantemo],new CobroSegunCantidadArtistas(100))
+	luisalberto = new Musico( new MusicoComoLuisAlberto(),0,[albumParaLosArboles,albumJustCrisantemo],new CobroSegunCantidadArtistas(100))
 	
 	
 	

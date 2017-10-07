@@ -17,7 +17,7 @@ import Banda.*
 		method lugar(nuevoLugar){lugar= nuevoLugar}
 		method lugar()=lugar
 		method agregaMusico(unMusico){self.sePresentan().add(unMusico)}
-		method magia() = self.sePresentan().sum({musico => musico.habilidad()})
+		method magia() = self.sePresentan().sum({musico => musico.tuHabilidad()})
 		}
 	
 	

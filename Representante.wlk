@@ -1,14 +1,6 @@
-class Representante {
-
-var cobra
-var nombre
-
-	constructor(unNombre,unImporte){
-		nombre = unNombre
-		cobra = unImporte
-	}
-
-method cobras() = cobra
-method nombre() = nombre
-
+object cachorro{
+	method cobras(bandaCobra)=1982
+}
+object felix{
+	method cobras(bandaCobra)=bandaCobra*0.1
 }
