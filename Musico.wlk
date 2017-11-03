@@ -1,15 +1,41 @@
 import Cancion.*
 import Presentacion.*
 
-class Musico {
 
-	var tipoDeMusico 
-	var habilidad = 0
+class MusicoBasico{
+	
+	
+	method cobras (presentacion)
+	method tuHabilidad() 
+	method interpretasBien(cancion)
+	method albumesPublicados()
+	method albumesPublicados(albumesP) =self.albumesPublicados().addAll(albumesP)
+	method sosMinimalista() = self.albumesPublicados().all({album => album.cacionesSonCortas()})
+	method cancionesContienen(palabra) {
+		const cancionesQueCumplen = #{}
+		self.albumesPublicados().forEach({album=>cancionesQueCumplen.add(album.cancionesConLaPalabra(palabra))})
+		return cancionesQueCumplen
+	}
+	method duracionObraCompleta() = self.albumesPublicados().sum({album => album.duracion()})
+	method cancionMasLarga() = self.albumesPublicados().filter({album => album.cancionMasLarga()})  
+	method laPegaste() = self.albumesPublicados().all({album => album.buenaVenta()})
+	method esHabilidoso()= self.tuHabilidad()>70
+	method publicoUnAlbum()=self.albumesPublicados().size()>=1
+	method cualesInterpretasBien(canciones)=canciones.filter({cancion => self.interpretasBien(cancion)})
+	method esDeTuAutoria(cancion)= self.albumesPublicados().any({album => album.contenesCancion(cancion)})
+	
+}
+class Musico inherits MusicoBasico{
+
+	var habilidad
+	var tipoDeMusico
+	var tipoDeArtista 
 	var albumes = []
 	var tipoDeCobro
 	
-	constructor (unTipoDeMusico,unaHabilidad,unosAlbumes,unTipoDeCobro)
+	constructor (unTipoDeArtista,unTipoDeMusico,unaHabilidad,unosAlbumes,unTipoDeCobro)
 	{
+		tipoDeArtista =unTipoDeArtista
 		tipoDeMusico =unTipoDeMusico
 		habilidad = unaHabilidad
 		albumes = unosAlbumes
@@ -19,12 +45,16 @@ class Musico {
 	method tipoDeMusico(musico) {
 		tipoDeMusico  = musico
 	}
+	method tipoDeArtista() =tipoDeArtista
+	method tipoDeArtista(artista) {
+		tipoDeArtista  = artista
+	}
 	
 	method habilidad () =habilidad 
-	method tuHabilidad(habilidadM) {
+	 method tuHabilidad(habilidadM) {
 		habilidad  = habilidadM
 	}
-	method tuHabilidad()=self.tipoDeMusico().tuHabilidad(self.habilidad())
+	override method tuHabilidad()=self.tipoDeArtista().tuHabilidad(self.habilidad())
 
 
 	method tipoDeCobro()= tipoDeCobro
@@ -32,7 +62,7 @@ class Musico {
 		tipoDeCobro = musico
 	}
 	
-	method interpretasBien(cancion) {
+	override method interpretasBien(cancion) {
 	return	
 		self.albumesPublicados().size()>=3||
 		self.tuHabilidad()>60 ||
@@ -40,24 +70,15 @@ class Musico {
 		self.tipoDeMusico().interpretasBien(cancion)
 	}
 	
-	method esDeTuAutoria(cancion)= self.albumesPublicados().any({album => album.contenesCancion(cancion)})
 	
-	method cobras (presentacion) { 
-		 return self.tipoDeCobro().cobras(presentacion)
+	
+	override method cobras (presentacion) { 
+		 return self.tipoDeCobro().cobras(presentacion,self)
 		}
 	
-	method albumesPublicados() = albumes
-	method albumesPublicados(albumesP) =self.albumesPublicados().addAll(albumesP)
-	method sosMinimalista() = self.albumesPublicados().all({album => album.cacionesSonCortas()})
-	method cancionesContienen(palabra) = self.albumesPublicados().cancionesConLaPalabra(palabra)
-	method duracionObraCompleta() = self.albumesPublicados().sum({album => album.duracion()})
-	method cancionMasLarga() = self.albumesPublicados().filter({album => album.cancionMasLarga()})     
-	method laPegaste() = self.albumesPublicados().all({album => album.buenaVenta()})
+	override method albumesPublicados()= albumes
 	method palabra(unaPalabra){self.tipoDeMusico().cambiarPalabra(unaPalabra)}
-	method esHabilidoso()= self.tuHabilidad()>70
-	method publicoUnAlbum()=self.albumesPublicados().size()>=1
-	method cualesInterpretasBien(canciones)=canciones.filter({cancion => self.interpretasBien(cancion)})
-
+	
 	}
 	
 class Palabrero {
@@ -82,46 +103,57 @@ class Larguero{
 		duracion = unaDuracion
 	}
 	method puntosHabilidad()=puntosHabilidad 
-	method tuHabilidad(habilidad) {return habilidad +  self.puntosHabilidad()}
-	method interpretasBien(cancion) { return cancion.duracionCancion()>duracion}
+	method tuHabilidad(habilidad)= habilidad +  self.puntosHabilidad()
+	method interpretasBien(cancion)= cancion.duracionCancion()>duracion
 }
 
 class Imparero inherits Larguero{
 	override method tuHabilidad(habilidad) = habilidad
-	override method interpretasBien(cancion){return cancion.duracionCancion().odd()}	
+	override method interpretasBien(cancion)=cancion.duracionCancion().odd()
 }
 
+class VocalistaPopular {
+  method tuHabilidad(habilidad) = habilidad
+} 
+ 
+class MusicoDeGrupo{
+   const puntosHabilidad 
+  constructor(unosPuntosHabilidad)
+  {
+    puntosHabilidad=unosPuntosHabilidad 
+  } 
+  method puntosHabilidad()=puntosHabilidad  
+  method tuHabilidad(habilidad) = habilidad +  self.puntosHabilidad()
+}
+ 
 class CobroSegunCantidadArtistas{
-	var cobroSolo
+	const cobroSolo
 	constructor(unCobroSolo)
 	{
 		cobroSolo=unCobroSolo
 	}
 	method cobro()=cobroSolo
-	method cobro(nuevoCobroSolo){cobroSolo = nuevoCobroSolo}
-	method cobras(presentacion){if (presentacion.sePresentan().equals([self])) return self.cobro() else return self.cobro()/2}
+	method cobras(presentacion,musico)=if (presentacion.unicoArtista(musico))  self.cobro() else  self.cobro()/2
 	
 }
 
 class CobroSegunCapacidad{
-	var cobro
-	var cantPersonas
+	const cobro
+	const cantPersonas
 	constructor(unCobro,unaCantPersonas)
 	{
 		cobro=unCobro
 		cantPersonas=unaCantPersonas
 	}
 	method cobro()=cobro
-	method cobro(nuevoCobro){cobro = nuevoCobro}
 	method cantPersonas()=cantPersonas
-	method cantPersonas(unaCantPersonas){cantPersonas = unaCantPersonas}
-	method cobras(presentacion){if (presentacion.lugar().capacidad()>self.cantPersonas()) return self.cobro() else return self.cobro()-100}
+	method cobras(presentacion,musico)=if (presentacion.capacidadPresentacion()>self.cantPersonas())  self.cobro() else  self.cobro()-100
 }
 
 class CobroSegunInflacion{
-	var cobro
-	var fecha
-	var porcentajeAdicional
+	const cobro
+	const fecha
+	const porcentajeAdicional
 	constructor(unCobro,unaFecha,unPorcentajeAdicional)
 	{
 		cobro=unCobro
@@ -129,36 +161,22 @@ class CobroSegunInflacion{
 		porcentajeAdicional =unPorcentajeAdicional
 	}
 	method cobro()=cobro
-	method cobro(nuevoCobro){cobro = nuevoCobro}
 	method fecha()=fecha
-	method fecha(unaFecha){fecha = unaFecha}
 	method porcentajeAdicional()=porcentajeAdicional
-	method porcentajeAdicional(unPorcentajeAdicional){porcentajeAdicional = unPorcentajeAdicional}
-	method cobras(presentacion){if (presentacion.fecha()>self.fecha()) return self.cobro()*(1+self.porcentajeAdicional()) else return self.cobro()}
+	method cobras(presentacion,musico)= if (presentacion.fecha()>self.fecha()) return self.cobro()*(1+self.porcentajeAdicional()) else return self.cobro()
 }
 
-class MusicoComoLuisAlberto {
+object luisAlberto inherits MusicoBasico{
 
-	var guitarra= fender
+	var guitarra = fender
+	var albumes=#{}
+	
 	method guitarra()=guitarra 
 	method guitarra(unaguitarra)  {guitarra  = unaguitarra} 
-	method tuHabilidad (habilidad) {
-		if ((self.guitarra().valorGuitarra() * 8)<100) 
-		
-			return (self.guitarra().valorGuitarra() * 8)
-		else
-			return 100
-	} 
-	
-	method interpretasBien(cancion) = true
-	
-	method cobras (presentacion) {
-		const fecha = new Date(01,09,2017)
-		if(presentacion.fecha() < fecha)
-			return 1000
-		else
-		return 1200
-	}
+	override method tuHabilidad ()= if ((self.guitarra().valorGuitarra() * 8)<100)  (self.guitarra().valorGuitarra() * 8) else 100
+	override method interpretasBien(cancion) = true
+	override method albumesPublicados()=albumes
+	override method cobras (presentacion)=if(presentacion.fecha() < new Date(01,09,2017))  1000 else  1200
 }
 
 object fender{
@@ -168,12 +186,8 @@ object fender{
 object gibson{
 	 
 	 var estadoRota = false
-	method valorGuitarra () {
-		if (self.estadoRota())
-		return 5
-		else
-		return 15
-	}
+	method valorGuitarra () =if (self.estadoRota())  5 else  15
+	
 	method estadoRota()= estadoRota
 	method rompete(){ estadoRota = true }
 	method arreglate(){ estadoRota = false }

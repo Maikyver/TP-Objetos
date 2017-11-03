@@ -9,7 +9,6 @@ describe "Tests" {
 	const lucia
 	const soledad
 	const kike
-	const luisalberto
 	
 	const presentacionLunaPark 
 	const presentacionLaTrastienda
@@ -41,12 +40,11 @@ describe "Tests" {
 	albumJustCrisantemo = new Album("Just Crisantemo",[crisantemo],[05,12,2007],28000,27500)
 	
 	
-	joaquin = new Musico( new Larguero(9,300),20,[albumLaFamilia],new CobroSegunCantidadArtistas(100))
-	lucia = new Musico(new Palabrero("familia"),70,[],new CobroSegunCapacidad(500,5000))
-	soledad = new Musico(new Palabrero("amor"),55,[albumLaSole],new CobroSegunCantidadArtistas(6000))
-	kike = new Musico(new Imparero(),60,[],new CobroSegunInflacion(400,new Date(08,01,2018),0.5))	
-	luisalberto = new Musico( new MusicoComoLuisAlberto(),0,[albumParaLosArboles,albumJustCrisantemo],new CobroSegunCantidadArtistas(100))
-	
+	joaquin = new Musico(new MusicoDeGrupo(5), new Larguero(9,300),20,[albumLaFamilia],new CobroSegunCantidadArtistas(100))
+	lucia = new Musico(new VocalistaPopular(),new Palabrero("familia"),70,[],new CobroSegunCapacidad(500,5000))
+	soledad = new Musico(new VocalistaPopular(),new Palabrero("amor"),55,[albumLaSole],new CobroSegunCantidadArtistas(6000))
+	kike = new Musico(new MusicoDeGrupo(20),new Imparero(),60,[],new CobroSegunInflacion(400,new Date(08,01,2018),0.5))	
+	luisAlberto.albumesPublicados([albumParaLosArboles,albumJustCrisantemo])
 	
  	presentacionLunaPark = new Presentacion(lunaPark, new Date(20,04,2017))
 	presentacionLaTrastienda = new Presentacion(laTrastienda, new Date(15,11,2017))
@@ -68,7 +66,7 @@ test "3.Soledad es minimalista"
 }
 test "4.Luis Alberto no es minimalista"
  {
-		assert.notThat(luisalberto.sosMinimalista())
+		assert.notThat(luisAlberto.sosMinimalista())
 }
 test "5.Joaquin es minimalista"
  {
@@ -76,12 +74,12 @@ test "5.Joaquin es minimalista"
 }
 test "6.Crisantemo y alma de diamante contienen la palabra cielo"
 {
-		assert.that(crisantemo.contienePalabra("cielo") and almaDeDiamante.contienePalabra("cielo"))
+		assert.equals(luisAlberto.cancionesContienen("cielo"),#{[crisantemo], [almaDeDiamante]})
 }
-/*test "7.Alguna cancion de luis alberto contiene la palabra pujante"
+test "7.Ninguna cancion de luis alberto contiene la palabra pujante"
 {
-		assert.that(luisalberto.albumesPublicados().max({album => album.cancionesConLaPalabra("pujante")}))
-} */
+		assert.equals(luisAlberto.cancionesContienen("pujante"),#{[]})
+} 
 
 test "8.La duracion de la obra de Kike dura 0 segundos"
 {
@@ -93,7 +91,7 @@ test "9.La duracion de la obra de Soledad dura 299 segundos"
 }
 test "10.La duracion de la obra de Luis Alberto dura 703 segundos"
 {
-		assert.equals(luisalberto.duracionObraCompleta(),703)
+		assert.equals(luisAlberto.duracionObraCompleta(),703)
 }
 test "11.La cancion mas larga del album para los arboles es alma de diamante"
 {
@@ -110,7 +108,7 @@ test "13.La cancion mas larga del album especial la familia es la familia"
 
 test "14.Luis Alberto la pegó"
 {
-		assert.that(luisalberto.laPegaste())
+		assert.that(luisAlberto.laPegaste())
 }
 test "15.Soledad no la pegó"
 {

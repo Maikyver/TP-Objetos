@@ -3,21 +3,22 @@ import Representante.*
 import Cancion.*
 
 class Banda {
-	var integrantes = []
+	var musicos = #{}
 	var representante
 	var nombre
 	
 	constructor(unNombre,unosMusicos,unRepresentante){
-		integrantes = unosMusicos
+		musicos = unosMusicos
 		representante = unRepresentante
 		nombre = unNombre
 	}
 	
-	method tusIntegrantes()= integrantes
+	method tusMusicos()= musicos
 	method tuRepresentante()= representante
+	method tusIntegrantes()= self.tusMusicos()+ [self.tuRepresentante()]
 	method tuNombre()= nombre
-	method tuHabilidad() = self.tusIntegrantes().sum({musico => musico.tuHabilidad()})  * 1.1
-	method bandaCobra(presentacion)=self.tusIntegrantes().sum({musico => musico.cobras(presentacion)})
-	method cobras(presentacion) = self.bandaCobra(presentacion) + self.tuRepresentante().cobras(self.bandaCobra(presentacion))
-	method puedenInterpretar(cancion) = self.tusIntegrantes().all({musico => musico.interpretasBien(cancion)})
+	method tuHabilidad() = self.tusMusicos().sum({musico => musico.tuHabilidad()})  * self.plusPorQuimica()
+	method plusPorQuimica()= 1.1
+	method cobras(presentacion) = self.tusIntegrantes().sum({integrante=> integrante.cobras(presentacion)})
+	method puedenInterpretar(cancion) = self.tusMusicos().all({musico => musico.interpretasBien(cancion)})
 }

@@ -13,10 +13,10 @@ describe "Tests" {
 	const lucia
 	const soledad
 	const kike
-	const luisalberto
 	
 	const presentacionLunaPark 
 	const presentacionLaTrastienda
+	const presentacionPDePalooza
 	
 	const albumLaFamilia 
 	const albumLaSole
@@ -51,16 +51,16 @@ describe "Tests" {
 	albumJustCrisantemo = new Album("Just Crisantemo",[crisantemo],[05,12,2007],28000,27500)
 		
 	
-	joaquin = new Musico( new Larguero(9,300),20,[albumLaFamilia],new CobroSegunCantidadArtistas(100))
-	lucia = new Musico(new Palabrero("familia"),70,[],new CobroSegunCapacidad(500,5000))
-	soledad = new Musico(new Palabrero("amor"),55,[albumLaSole],new CobroSegunCantidadArtistas(6000))
-	kike = new Musico(new Imparero(),60,[],new CobroSegunInflacion(400,new Date(08,01,2018),0.5))	
-	luisalberto = new Musico( new MusicoComoLuisAlberto(),0,[albumParaLosArboles,albumJustCrisantemo],new CobroSegunCantidadArtistas(100))
-	
+	joaquin = new Musico(new MusicoDeGrupo(5), new Larguero(9,300),20,[albumLaFamilia],new CobroSegunCantidadArtistas(100))
+	lucia = new Musico(new VocalistaPopular(),new Palabrero("familia"),70,[],new CobroSegunCapacidad(500,5000))
+	soledad = new Musico(new VocalistaPopular(),new Palabrero("amor"),55,[albumLaSole],new CobroSegunCantidadArtistas(6000))
+	kike = new Musico(new MusicoDeGrupo(20),new Imparero(),60,[],new CobroSegunInflacion(400,new Date(08,01,2018),0.5))	
+	luisAlberto.albumesPublicados([albumParaLosArboles,albumJustCrisantemo])	
 	
 	
  	presentacionLunaPark = new Presentacion(lunaPark, new Date(20,04,2017))
 	presentacionLaTrastienda = new Presentacion(laTrastienda, new Date(15,11,2017))
+	presentacionPDePalooza = new PresentacionConRestricciones([new PocaHabilidad(),new InterpertaBienCancion(cancionDeAliciaEnElPais),new TenerUnAlbum()],lunaPark, new Date(20,04,2017))
 	
 }
 test "1.Joaquín canta bien la canción 'La Familia'" {
@@ -90,12 +90,12 @@ test "5.Lucía canta bien la cancion 'Cisne'como cantante de grupo (La cancion du
 }
 test "6.Luis Alberto canta bien la canción 'La Familia'" {
 
-	assert.that(luisalberto.interpretasBien(laFamilia))
+	assert.that(luisAlberto.interpretasBien(laFamilia))
 
 }
 test "7.Luis Alberto canta bien la canción 'Cisne'" {
 
-	assert.that(luisalberto.interpretasBien(cisne))
+	assert.that(luisAlberto.interpretasBien(cisne))
 
 }
 test "4.La duración del remix 'La Familia' es de 792" {
@@ -119,24 +119,23 @@ test "7.La letra del mashup 'CrisantemoYAlmaDeDiamante' es 'Ven a mí con tu dulc
 
 }
 test "8.Luis Alberto se puede agregar al recital PDpalooza(esta bien)" {
-	const bloque = {
-	pdpalooza.sePresentan([luisalberto])
 	
-	}
-	assert.throwsException(bloque)
+	presentacionPDePalooza.sePresentan([luisAlberto])
+	
+	assert.that(presentacionPDePalooza.sePresentan().contains(luisAlberto))
 
 }
 test "9. Joaquín como solista NO se puede agregar al recital PDpalooza" {
  	const bloque = {
  	joaquin.tipoDeMusico(new Palabrero("familia"))
-	pdpalooza.sePresentan([joaquin])}
+	presentacionPDePalooza.sePresentan([joaquin])}
 	assert.throwsException(bloque)
 
 }
 test "10. Lucia como solista NO se puede agregar al recital PDpalooza" {
  	const bloque = {
  	lucia.tipoDeMusico(new Palabrero("familia"))
-	pdpalooza.sePresentan([lucia])
+	presentacionPDePalooza.sePresentan([lucia])
 	
 	}
 	assert.throwsException(bloque)
@@ -144,11 +143,10 @@ test "10. Lucia como solista NO se puede agregar al recital PDpalooza" {
 }
 test "11. Soledad con habilidad de 80 se puede agregar al recital PDpalooza" {
  	
-	const bloque = {
+	
 		soledad.tuHabilidad(80)
-		pdpalooza.sePresentan([soledad])
-	}
-	assert.throwsException(bloque)
+		presentacionPDePalooza.sePresentan([soledad])
+	assert.that(presentacionPDePalooza.sePresentan().contains(soledad))
 
 }
 }
