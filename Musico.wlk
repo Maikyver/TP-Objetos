@@ -90,25 +90,20 @@ class Palabrero {
 	method palabra()=palabra 
 	method palabra(unaPalabra)  {palabra  = unaPalabra} 
 	method cambiarPalabra(unaPalabra) {self.palabra(unaPalabra) }
-	method tuHabilidad(habilidad) = habilidad
-	
 	method interpretasBien(cancion) = cancion.contienePalabra(self.palabra())
 } 
 class Larguero{
-	 const puntosHabilidad 
+
 	 const duracion 
-	constructor(unosPuntosHabilidad,unaDuracion)
+	constructor(unaDuracion)
 	{
-		puntosHabilidad=unosPuntosHabilidad
+		
 		duracion = unaDuracion
 	}
-	method puntosHabilidad()=puntosHabilidad 
-	method tuHabilidad(habilidad)= habilidad +  self.puntosHabilidad()
 	method interpretasBien(cancion)= cancion.duracionCancion()>duracion
 }
 
 class Imparero inherits Larguero{
-	override method tuHabilidad(habilidad) = habilidad
 	override method interpretasBien(cancion)=cancion.duracionCancion().odd()
 }
 
@@ -132,8 +127,8 @@ class CobroSegunCantidadArtistas{
 	{
 		cobroSolo=unCobroSolo
 	}
-	method cobro()=cobroSolo
-	method cobras(presentacion,musico)=if (presentacion.unicoArtista(musico))  self.cobro() else  self.cobro()/2
+	method cobroSolo()=cobroSolo
+	method cobras(presentacion,musico)=if (presentacion.unicoArtista(musico))  self.cobroSolo() else  self.cobroSolo()/2
 	
 }
 

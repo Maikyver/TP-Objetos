@@ -61,7 +61,7 @@ describe "Tests" {
 	albumJustCrisantemo = new Album("Just Crisantemo",[crisantemo],[05,12,2007],28000,27500)
 		
 	
-	joaquin = new Musico(new MusicoDeGrupo(5), new Larguero(9,300),20,[albumLaFamilia],new CobroSegunCantidadArtistas(100))
+	joaquin = new Musico(new MusicoDeGrupo(5), new Larguero(300),20,[albumLaFamilia],new CobroSegunCantidadArtistas(100))
 	lucia = new Musico(new VocalistaPopular(),new Palabrero("familia"),70,[],new CobroSegunCapacidad(500,5000))
 	soledad = new Musico(new VocalistaPopular(),new Palabrero("amor"),55,[albumLaSole],new CobroSegunCantidadArtistas(6000))
 	kike = new Musico(new VocalistaPopular(),new Imparero(),60,[],new CobroSegunInflacion(4000,new Date(08,01,2018),0.5))	
@@ -76,7 +76,7 @@ describe "Tests" {
 	
  	presentacionLunaPark = new Presentacion(lunaPark, new Date(20,04,2017))
 	presentacionLaTrastienda = new Presentacion(laTrastienda, new Date(15,11,2017))
-	presentacionprixDAmi = new Presentacion(primDAmix, new Date(30,06,2017))
+	presentacionprixDAmi = new Presentacion(prixDAmi, new Date(30,06,2017))
 	presentacionprixDAmi.sePresentan([joaquin,soledad,elEternoRetorno])
 	presentacionlaCueva = new Presentacion(laCueva, new Date(05,01,2018))
 	presentacionlaCueva.sePresentan([pimpisole])

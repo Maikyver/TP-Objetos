@@ -40,7 +40,7 @@ describe "Tests" {
 	albumParaLosArboles = new Album("Para los Arboles",[cisne,almaDeDiamante],[31,03,2003],50000,49000)
 	albumJustCrisantemo = new Album("Just Crisantemo",[crisantemo],[05,12,2007],28000,27500)
 	
-	joaquin = new Musico( new MusicoDeGrupo(5),new Larguero(9,300),20,[albumLaFamilia],new CobroSegunCantidadArtistas(100))
+	joaquin = new Musico( new MusicoDeGrupo(5),new Larguero(300),20,[albumLaFamilia],new CobroSegunCantidadArtistas(100))
 	lucia = new Musico(new MusicoDeGrupo(-20),new Palabrero("familia"),70,[],new CobroSegunCapacidad(500,5000))
 	
 	presentacionLunaPark = new Presentacion(lunaPark, new Date(20,04,2017))

@@ -8,6 +8,7 @@ class Representante{
 		
 	}
 	method unaBanda()=bandaARepresentar
+	method cobras(presentacion)
 	}
 
 class RepresentanteCobroFijo inherits Representante{
@@ -18,7 +19,7 @@ class RepresentanteCobroFijo inherits Representante{
 		cobro= unCobro
 	}
 	
-	method cobras(presentacion)=cobro
+	override method cobras(presentacion)=cobro
 	
 }
 class RepresentanteCobroPorcentaje inherits Representante {
@@ -31,5 +32,5 @@ class RepresentanteCobroPorcentaje inherits Representante {
 	
 	method porcentaje()=porcentaje
 	method tusMusicosCobran(presentacion)=self.unaBanda().sum({musico => musico.cobras(presentacion)})
-	method cobras(presentacion)=self.tusMusicosCobran(presentacion)*self.porcentaje()
+	override method cobras(presentacion)=self.tusMusicosCobran(presentacion)*self.porcentaje()
 }

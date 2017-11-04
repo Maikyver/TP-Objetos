@@ -36,7 +36,7 @@ object laTrastienda{
 	method capacidadPorSabado(fecha)=if(fecha.dayOfWeek()!=5) self.primerPiso() else 0
 	}
 	
-object primDAmix{
+object prixDAmi{
 	method capacidad(fecha) = self.capacidad()
 	method capacidad() = 150
 }object laCueva{
