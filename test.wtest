@@ -1,0 +1,179 @@
+import Musico.*
+import Presentacion.*
+import Album.*
+import Cancion.*
+
+describe "Tests" {
+	
+	const joaquin
+	const lucia
+
+	
+	const presentacionLunaPark 
+	const presentacionLaTrastienda
+	
+	const albumLaFamilia 
+
+	const albumParaLosArboles
+	const albumJustCrisantemo
+	
+	const laFamilia
+
+	const cisne
+	const almaDeDiamante
+	const crisantemo
+	
+	fixture{
+	
+ 	presentacionLunaPark = new Presentacion(lunaPark, new Date(20,04,2017))
+ 	presentacionLunaPark.sePresentan([luisAlberto, joaquin,lucia])
+	presentacionLaTrastienda = new Presentacion(laTrastienda, new Date(15,11,2017))
+	presentacionLaTrastienda.sePresentan([luisAlberto, joaquin,lucia])
+	
+	laFamilia = new Cancion("La Familia" , "Quiero brindar por mi gente sencilla, por el amor brindo por la familia",264)
+	cisne = new Cancion("Cisne","Hoy el viento se abrió quedó vacío el aire una vez más y el manantial brotó y nadie está aquí y puedo ver que solo estallan las hojas al brillar",312)
+	almaDeDiamante = new Cancion("Alma de Diamante","Ven a mí con tu dulce luz alma de diamante. Y aunque el sol se nuble después sos alma de diamante. Cielo o piel silencio o verdad sos alma de diamante. Por eso ven así con la humanidad alma de diamante",216)	
+	crisantemo = new Cancion("Crisantemo","Tócame junto a esta pared, yo quede por aquí... cuando no hubo más luz... quiero mirar a través de mi piel... Crisantemo, que se abrió... encuentra el camino hacia el cielo",175)
+	
+	
+	albumLaFamilia = new Album("La Familia",[laFamilia],[17,06,1992],100000,8900)
+	albumParaLosArboles = new Album("Para los Arboles",[cisne,almaDeDiamante],[31,03,2003],50000,49000)
+	albumJustCrisantemo = new Album("Just Crisantemo",[crisantemo],[05,12,2007],28000,27500)
+	
+	joaquin = new Musico( new MusicoDeGrupo(5),new Larguero(300),20,[albumLaFamilia],new CobroSegunCantidadArtistas(100))
+	lucia = new Musico(new MusicoDeGrupo(-20),new Palabrero("familia"),70,[],new CobroSegunCapacidad(500,5000))
+	
+	presentacionLunaPark = new Presentacion(lunaPark, new Date(20,04,2017))
+ 	presentacionLunaPark.sePresentan([luisAlberto, joaquin,lucia])
+	presentacionLaTrastienda = new Presentacion(laTrastienda, new Date(15,11,2017))
+	presentacionLaTrastienda.sePresentan([luisAlberto, joaquin,lucia])
+}
+
+test "1.La habilidad de Joaquin en grupo es 25" {
+
+	assert.equals(joaquin.tuHabilidad(), 25)
+
+}
+test "2.La habilidad de Joaquin como solista es 20" {
+
+ joaquin.tipoDeArtista(new VocalistaPopular())
+	assert.equals(joaquin.tuHabilidad(), 20)
+
+}
+test "3.La habilidad de Lucia en grupo es 50" {
+	lucia.tipoDeArtista(new MusicoDeGrupo(-20))
+
+	assert.equals(lucia.tuHabilidad(), 50)
+
+}
+test "4.La habilidad de Lucia como solista es 70" {
+
+lucia.tipoDeArtista(new VocalistaPopular())
+	assert.equals(lucia.tuHabilidad(), 70)
+
+}
+test "5.La habilidad de Luis Alberto tocando con la fender es 80" {
+
+	luisAlberto.guitarra(fender)
+	assert.equals(luisAlberto.tuHabilidad(), 80)
+
+}
+test "6.La habilidad de Luis Alberto tocando con la gibson sana es 100" {
+
+	gibson.arreglate()
+	luisAlberto.guitarra(gibson)
+	assert.equals(luisAlberto.tuHabilidad(), 100)
+
+}
+test "7.La habilidad de Luis Alberto tocando con la fender rota es 40" {
+	
+	gibson.rompete()
+	luisAlberto.guitarra(gibson)
+	assert.equals(luisAlberto.tuHabilidad(),40)
+}
+test "8.Joaquín  interpreta bien la canción “La Familia”"{
+	
+	assert.that(joaquin.interpretasBien(laFamilia))
+	
+}
+test "9.Joaquín interpreta bien la canción “Cisne”" {
+	
+	assert.that(joaquin.interpretasBien(cisne))
+}
+
+test "10.Lucía  interpreta bien la canción “La Familia”" {
+	
+	assert.that(lucia.interpretasBien(laFamilia))
+	
+}
+
+test "11.Lucía interpreta bien la canción “Cisne” como solista" {
+	lucia.tipoDeArtista(new VocalistaPopular())
+	
+	assert.that(lucia.interpretasBien(cisne))
+}
+test "11.Lucía No interpreta bien la canción “Cisne” como cantante en grupo" {
+	lucia.tipoDeArtista(new MusicoDeGrupo(-20))
+	
+	assert.notThat(lucia.interpretasBien(cisne))
+}
+
+test "12.Luis Alberto interpreta bien la canción “La Familia”" {
+	
+	assert.that(luisAlberto.interpretasBien(laFamilia))
+}
+
+test "13.Luis Alberto interpreta bien la canción “Cisne”" {
+	
+	assert.that(luisAlberto.interpretasBien(cisne))
+}
+
+test "14.Joaquín cobra 50 por la presentación del Luna Park"
+ {
+	assert.equals(joaquin.cobras(presentacionLunaPark),50)
+}
+test "15.Joaquín, presentandoce solo, cobra 100 por la presentación de la trastienda del 15/11/17 "
+ {
+ 	presentacionLaTrastienda.sePresentan().clear()
+ 	presentacionLaTrastienda.sePresentan([joaquin])
+	assert.equals(joaquin.cobras(presentacionLaTrastienda),100)
+}
+test "16.La capacidad de La trastienda para el 05 de Agosto del 2017 es de 700"
+ {
+ 	presentacionLaTrastienda.fecha(new Date(05,08,2017))
+	assert.equals(presentacionLaTrastienda.capacidadPresentacion(),700)
+}
+test "17.La capacidad de La trastienda para el 08 de Agosto del 2017 es de 400"
+ {
+ 	presentacionLaTrastienda.fecha(new Date(08,08,2017))
+	assert.equals(presentacionLaTrastienda.capacidadPresentacion(),700)
+}
+test "18.Lucía cobra $500 por la presentación del Luna Park"
+ {
+	assert.equals(lucia.cobras(presentacionLunaPark),500)
+}
+test "19.Lucía cobra $400 por la presentación del Trastienda"
+ {
+	assert.equals(lucia.cobras(presentacionLaTrastienda),400)
+}
+test "20.Luis Alberto cobra $1000 por la presentación del Luna Park"
+ {
+	assert.equals(luisAlberto.cobras(presentacionLunaPark),1000)
+}
+test "21.Luis Alberto cobra $1200 por la presentación del Trastienda"
+ {
+	assert.equals(luisAlberto.cobras(presentacionLaTrastienda),1200)
+}
+test "22.El costo de la presentación del Luna Park es $1550"
+ {
+ 	assert.equals(presentacionLunaPark.costo(),1550)
+	
+}
+test "23.El costo de la presentación de La Trastienda el 15/11/2017 es $1650"
+ {
+	assert.equals(presentacionLaTrastienda.costo(),1650)
+}
+
+
+}
+

@@ -1,0 +1,176 @@
+import Musico.*
+import Presentacion.*
+import PresentacionConRestricciones.*
+import Cancion.*
+import Album.*
+import remix.*
+import Mashup.*
+import Banda.*
+import Representante.*
+
+
+describe "Tests" {	
+	
+	const joaquin
+	const lucia
+	const soledad
+	const kike
+	
+	const felix
+	const cachorro
+	
+	const pimpisole
+	const elEternoRetorno
+	
+	const presentacionLunaPark 
+	const presentacionLaTrastienda
+	const presentacionprixDAmi 
+	const presentacionlaCueva
+	const presentacionPDePalooza
+	
+	const albumLaFamilia 
+	const albumLaSole
+	const albumParaLosArboles
+	const albumJustCrisantemo
+	
+	const laFamilia
+	const eres
+	const corazonAmericano
+	const cisne
+	const almaDeDiamante
+	const crisantemo
+	const cancionDeAliciaEnElPais
+	const remixLaFamilia
+	const mashupCrisantemoYAlmaDeDiamante
+	fixture{
+	
+	laFamilia = new Cancion("La Familia" , "Quiero brindar por mi gente sencilla, por el amor brindo por la familia",264)	
+	eres = new Cancion("Eres", "Eres lo mejor que me pasó en la vida, no tengo duda, no habrá más nada después de ti. Eres lo que le dio brillo al día a día, y así será por siempre, no cambiará, hasta el final de mis días.",145)	
+	corazonAmericano = new Cancion("Corazón Americano","Canta corazón, canta más alto, que tu pena al fin se va marchando, el nuevo milenio ha de encontrarnos, junto corazón, como soñamos.",154)	
+	cisne = new Cancion("Cisne","Hoy el viento se abrió quedó vacío el aire una vez más y el manantial brotó y nadie está aquí y puedo ver que solo estallan las hojas al brillar",312)	
+	almaDeDiamante = new Cancion("Alma de Diamante","Ven a mí con tu dulce luz alma de diamante. Y aunque el sol se nuble después sos alma de diamante. Cielo o piel silencio o verdad sos alma de diamante. Por eso ven así con la humanidad alma de diamante",216)		
+	crisantemo = new Cancion("Crisantemo","Tócame junto a esta pared, yo quede por aquí... cuando no hubo más luz... quiero mirar a través de mi piel... Crisantemo, que se abrió... encuentra el camino hacia el cielo",175)	
+	cancionDeAliciaEnElPais = new Cancion("Canción de Alicia en el país","Quién sabe Alicia, este país no estuvo hecho porque sí. Te vas a ir, vas a salir pero te quedas, ¿dónde más vas a ir? Y es que aquí, sabes el trabalenguas, trabalenguas, el asesino te asesina, y es mucho para ti. Se acabó ese juego que te hacía feliz.",510)	
+	remixLaFamilia= new Remix (laFamilia)
+	mashupCrisantemoYAlmaDeDiamante = new Mashup([almaDeDiamante,crisantemo])
+	
+	
+	albumLaFamilia = new Album("La Familia",[laFamilia],[17,06,1992],100000,89000)	 
+	albumLaSole = new Album("LaSole",[eres, corazonAmericano],[04,02,2005],200000,130000)
+	albumParaLosArboles = new Album("Para los Arboles",[cisne,almaDeDiamante],[31,03,2003],50000,49000)
+	albumJustCrisantemo = new Album("Just Crisantemo",[crisantemo],[05,12,2007],28000,27500)
+		
+	
+	joaquin = new Musico(new MusicoDeGrupo(5), new Larguero(300),20,[albumLaFamilia],new CobroSegunCantidadArtistas(100))
+	lucia = new Musico(new VocalistaPopular(),new Palabrero("familia"),70,[],new CobroSegunCapacidad(500,5000))
+	soledad = new Musico(new VocalistaPopular(),new Palabrero("amor"),55,[albumLaSole],new CobroSegunCantidadArtistas(6000))
+	kike = new Musico(new VocalistaPopular(),new Imparero(),60,[],new CobroSegunInflacion(4000,new Date(08,01,2018),0.5))	
+	luisAlberto.albumesPublicados([albumParaLosArboles,albumJustCrisantemo])	
+	
+	cachorro= new RepresentanteCobroFijo(1982,[soledad,joaquin,lucia])
+	felix= new RepresentanteCobroPorcentaje(0.1,[kike,luisAlberto])
+	
+	pimpisole = new Banda("Pimpisole",[soledad,joaquin,lucia],cachorro)
+	elEternoRetorno = new Banda("El eterno retorno",[kike,luisAlberto],felix)
+
+	
+ 	presentacionLunaPark = new Presentacion(lunaPark, new Date(20,04,2017))
+	presentacionLaTrastienda = new Presentacion(laTrastienda, new Date(15,11,2017))
+	presentacionprixDAmi = new Presentacion(prixDAmi, new Date(30,06,2017))
+	presentacionprixDAmi.sePresentan([joaquin,soledad,elEternoRetorno])
+	presentacionlaCueva = new Presentacion(laCueva, new Date(05,01,2018))
+	presentacionlaCueva.sePresentan([pimpisole])
+	presentacionPDePalooza = new PresentacionConRestricciones([new PocaHabilidad(),new InterpertaBienCancion(cancionDeAliciaEnElPais),new TenerUnAlbum()],lunaPark, new Date(20,04,2017))
+
+	
+}
+test "1.Joaquín siendo imparero canta bien la canción 'La Familia'" {
+
+	joaquin.tipoDeMusico(new Imparero())
+	assert.that(joaquin.interpretasBien(laFamilia))
+
+
+
+}
+test "2.Joaquín siendo imparero NO canta bien la cancion 'Cisne'" {
+
+	joaquin.tipoDeMusico(new Imparero())
+	assert.notThat(joaquin.interpretasBien(cisne))
+
+}
+test "3.Kike seindo palabrero (de), del conjunto de canciones [“Corazón americano”, “Eres”, “La familia”, “Cisne”, “Alma de diamante”, “Canción de Alicia en el país” y “Crisantemo”] canta bien [“Corazón americano”, “Eres”, “Alma de diamante” y “Crisantemo”]" {
+	const canciones =[corazonAmericano,eres,laFamilia,cisne,almaDeDiamante,cancionDeAliciaEnElPais,crisantemo]
+
+	kike.tipoDeMusico(new Palabrero("de"))
+	assert.equals(kike.cualesInterpretasBien(canciones),[corazonAmericano,eres,almaDeDiamante,crisantemo])
+
+}
+test "4.Joaquin del conjunto de canciones [“Corazón americano”, “Eres”, “La familia”, “Cisne”, “Alma de diamante”, “Canción de Alicia en el país” y “Crisantemo”] canta bien [“La Familia” , “Cisne” y “Canción de Alicia en el país”]" {
+	const canciones =[corazonAmericano,eres,laFamilia,cisne,almaDeDiamante,cancionDeAliciaEnElPais,crisantemo]
+
+	assert.equals(joaquin.cualesInterpretasBien(canciones),[laFamilia,cisne,cancionDeAliciaEnElPais])
+}
+test "5.Joaquin siendo palabrero (xilofón), del conjunto de canciones [“Corazón americano”, “Eres”, “La familia”, “Cisne”, “Alma de diamante”, “Canción de Alicia en el país” y “Crisantemo”] canta bien solo “La Familia” " {
+	const canciones =[corazonAmericano,eres,laFamilia,cisne,almaDeDiamante,cancionDeAliciaEnElPais,crisantemo]
+
+	joaquin.tipoDeMusico(new Palabrero("xilofón"))
+	assert.equals(joaquin.cualesInterpretasBien(canciones),[laFamilia])
+}
+test "6.Lucia del conjunto de canciones [“Corazón americano”, “Eres”, “La familia”, “Cisne”, “Alma de diamante”, “Canción de Alicia en el país” y “Crisantemo”] canta bien todas" {
+	const canciones =[corazonAmericano,eres,laFamilia,cisne,almaDeDiamante,cancionDeAliciaEnElPais,crisantemo]
+	lucia.tipoDeMusico(new Imparero())
+	
+	assert.equals(lucia.cualesInterpretasBien(canciones),canciones)
+
+}
+test "7.Joaquin cobra por expctativa inflenciaria en Prix D´Ami" {
+	joaquin.tipoDeCobro(new CobroSegunInflacion(1000,new Date(01,02,2017),0.2))
+	assert.equals(joaquin.cobras(presentacionprixDAmi),1200)
+
+}
+test "8.Joaquin cobra 1000 por expctativa inflenciaria en Prix D´Ami" {
+	joaquin.tipoDeCobro(new CobroSegunInflacion(1000,new Date(01,02,2017),0.2))
+	presentacionprixDAmi.fecha(new Date(24,01,2017))
+	assert.equals(joaquin.cobras(presentacionprixDAmi),1000)
+
+}
+test "9.Joaquin cobra 50 en Prix D´Ami" {
+	assert.equals(joaquin.cobras(presentacionprixDAmi),50)
+
+}
+test "10.Joaquin cobra 2400 por capacidad en Prix D´Ami" {
+	joaquin.tipoDeCobro(new CobroSegunCapacidad(2500,13000))
+	assert.equals(joaquin.cobras(presentacionprixDAmi),2400)
+
+}
+test "11.Joaquin cobra 2500 por capacidad en La Cueva" {
+	joaquin.tipoDeCobro(new CobroSegunCapacidad(2500,13000))
+	assert.equals(joaquin.cobras(presentacionlaCueva),2500)
+}
+test "12.El grupo El eterno retorno cobra 5500 pesos por su presentacion en Prix D´Ami"{
+	assert.equals(elEternoRetorno.cobras(presentacionprixDAmi),5500)
+}
+
+test "13.El productor del show de Prix D´Ami debe pagar 8550 pesos"{
+	assert.equals(presentacionprixDAmi.costo(),8550)
+}
+ test "14.El productor del show de La Cueva debe pagar 5532 pesos"{
+	assert.equals(presentacionlaCueva.costo(),5532)
+}
+test "15.La habilidad del grupo El eterno retorno es de 154"{
+	
+	assert.equals(elEternoRetorno.tuHabilidad(),154)
+	
+}
+test "16.La magia del show en Prix D´Ami es de 234"{
+	assert.equals(presentacionprixDAmi.magia(),234)
+}
+test "17.La banda Pimpisole no puede interpretar bien la cancion Cisne"{
+	assert.notThat(pimpisole.puedenInterpretar(cisne))
+}
+test "18.La banda El eterno retorno puede interpretar bien la cancion Crisantemo"{
+	assert.that(elEternoRetorno.puedenInterpretar(crisantemo))
+}
+
+
+}
